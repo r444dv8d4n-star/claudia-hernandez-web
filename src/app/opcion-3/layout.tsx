@@ -9,6 +9,7 @@ const display = Bricolage_Grotesque({ subsets: ["latin"], variable: "--f-display
 const body = Figtree({ subsets: ["latin"], variable: "--f-body", display: "swap" });
 
 export const metadata: Metadata = {
+  robots: { index: false, follow: false },
   title: "Inicio · Mosaico vivo",
   description: "Claudia Hernández: concejala de Floridablanca (2024–2027), abogada, mamá y líder social. Conoce sus frentes de trabajo, acuerdos y cómo sumarte.",
 };

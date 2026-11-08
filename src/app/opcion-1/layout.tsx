@@ -8,6 +8,7 @@ const display = Fraunces({ subsets: ["latin"], variable: "--f-display", display:
 const body = DM_Sans({ subsets: ["latin"], variable: "--f-body", display: "swap" });
 
 export const metadata: Metadata = {
+  robots: { index: false, follow: false },
   title: "Inicio · Hilo de comunidad",
   description: "Claudia Hernández, concejala de Floridablanca (2024–2027), abogada, mamá y líder social. Mujeres, emprendimiento y comunidad.",
 };
