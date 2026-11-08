@@ -8,11 +8,11 @@ const display = Playfair_Display({ subsets: ["latin"], variable: "--f-display", 
 const body = Inter({ subsets: ["latin"], variable: "--f-body", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Inicio · Capítulos",
+  title: { absolute: "Claudia Hernández · Concejala de Floridablanca" },
   description: "Claudia Hernández, concejala de Floridablanca (2024–2027): una historia de familia, derecho y trabajo comunitario.",
 };
 
-export default function Layout({ children }: LayoutProps<"/opcion-2">) {
+export default function Layout({ children }: LayoutProps<"/">) {
   return (
     <div className={`${display.variable} ${body.variable} ${s.root}`}>
       <Loader className={s.loader}>
