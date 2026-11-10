@@ -11,7 +11,7 @@ export const person = {
   whatsapp: TBC, // número oficial por confirmar
   social: {
     instagram: "https://www.instagram.com/claudiahernandez.fblanca/",
-    tiktok: "https://www.tiktok.com/@claudia.hernandez.v",
+    tiktok: "https://www.tiktok.com/@claudiaconcejalav",
     facebook: "https://www.facebook.com/profile.php?id=100090595269312",
   },
 };
@@ -30,12 +30,17 @@ export const img = {
 };
 
 export const comisiones = [
+  { name: "Presidencia del Concejo", scope: "Presidenta de la corporación en 2026" },
   { name: "Comisión Segunda Permanente", scope: "Deporte, cultura, ambiente, salud y educación" },
   { name: "Comisión de Equidad de la Mujer", scope: "Comisión especial del Concejo" },
 ];
 
-export const frentes = [
-  { t: "Mujeres y emprendimiento", d: "Encuentros con grupos de mujeres y apoyo a emprendedoras y artesanas de Floridablanca." },
+export const frentes: { t: string; d: string; logro?: string }[] = [
+  {
+    t: "Mujeres y emprendimiento",
+    d: "Encuentros con grupos de mujeres y apoyo a emprendedoras y artesanas de Floridablanca.",
+    logro: "Por su iniciativa, en 2024 el Concejo otorgó la Orden Carlos Gutiérrez Gómez a Carmen Cecilia Pérez Gómez, una de las dos únicas mujeres que han sido alcaldesas de Floridablanca.",
+  },
   { t: "Educación y alimentación escolar", d: "Seguimiento a la educación y a la alimentación escolar en el municipio." },
   { t: "Cuidado y salud", d: "Pedagogía y prevención para que cada familia cuide de sí misma." },
   { t: "Cultura y territorio", d: "Orgullo por la Ciudad Dulce de Santander, sus tradiciones y su gente." },
