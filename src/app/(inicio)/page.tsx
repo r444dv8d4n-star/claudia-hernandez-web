@@ -14,7 +14,7 @@ const chapters = [
   { n: "I", t: "Raíces", d: `Antes de las sesiones y los expedientes, hubo una familia y un barrio que enseñaron a cuidar. ${TBC} Historia personal.`, p: img.familia },
   { n: "II", t: "Derecho", d: `Estudiar derecho fue elegir una herramienta para que las personas sean escuchadas. ${TBC} Formación y trayectoria.`, p: img.blazer },
   { n: "III", t: "Comunidad", d: `Con mujeres soñadoras y emprendedoras aprendió que el liderazgo se construye en la calle. ${TBC} Organizaciones y alianzas.`, p: img.mujeres },
-  { n: "IV", t: "Concejo", d: `Hoy trabaja desde el Concejo de Floridablanca (${person.period}) llevando esas voces a las decisiones del municipio.`, p: img.sesion },
+  { n: "IV", t: "Concejo", d: `Hoy trabaja desde el Concejo de Floridablanca (${person.period}) llevando esas voces a las decisiones del municipio. En 2026 sus colegas la eligieron presidenta de la corporación.`, p: img.sesion },
 ];
 
 export default function Opcion2() {
@@ -70,7 +70,7 @@ export default function Opcion2() {
         <section className={s.numbers} aria-label="En cifras">
           <Reveal><h2>En el Concejo, en cifras.</h2></Reveal>
           <div className={s.numGrid}>
-            <Reveal className={s.n}><Counter to={2} className={s.big} /><span>comisiones</span></Reveal>
+            <Reveal className={s.n}><Counter to={2} className={s.big} /><span>comisiones del Concejo</span></Reveal>
             <Reveal className={s.n} delay={120}><Counter to={209} className={s.big} /><span>años de Floridablanca celebrados</span></Reveal>
             <Reveal className={s.n} delay={240}><span className={`${s.big} ${s.tbc}`}>{TBC}</span><span>habitantes beneficiados</span></Reveal>
           </div>
@@ -106,7 +106,7 @@ export default function Opcion2() {
                 <span className={s.pIdx} aria-hidden="true">0{i + 1}</span>
                 <h3>{f.t}</h3>
                 <p>{f.d}</p>
-                <small>{TBC} Resultados y fotos.</small>
+                <small>{f.logro ?? `${TBC} Resultados y fotos.`}</small>
               </article>
             ))}
           </div>
@@ -161,7 +161,6 @@ export default function Opcion2() {
           <a href={person.social.tiktok} target="_blank" rel="noopener noreferrer">TikTok</a>
           <a href={person.social.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
         </p>
-        <p className={s.small}>Prototipo de diseño · Opción 2</p>
       </footer>
     </>
   );
