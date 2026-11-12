@@ -8,7 +8,8 @@ import ExtraSection from "@/components/ExtraSection";
 import { person, img, comisiones, frentes, acuerdos, blog, TBC } from "@/content/site";
 import s from "./o2.module.css";
 
-const collage = [img.sesion, img.mujeres, img.basilica, img.visita, img.feria, img.olla, img.familia, img.retrato, img.blazer].map((i) => i.src.replace("/img/", "/img/thumbs/"));
+const collageExtra = ["futsal-equipos", "payaso-ninos", "carnaval-con-musica", "encuentro-familias-barrio", "feria-noche-ninas", "foto-grupal-parque", "carpa-banderines", "entrega-diplomas", "escucha-comunidad", "carnaval-mascara"].map((n) => `/assets/img/thumbs/${n}.webp`);
+const collage = [img.sesion, img.mujeres, img.basilica, img.visita, img.feria, img.ninos, img.familia, img.retrato, img.blazer].map((i) => i.src.replace("/img/", "/img/thumbs/")).concat(collageExtra);
 
 const chapters = [
   { n: "I", t: "Raíces", d: `Antes de las sesiones y los expedientes, hubo una familia y un barrio que enseñaron a cuidar. ${TBC} Historia personal.`, p: img.familia },
@@ -116,7 +117,7 @@ export default function Opcion2() {
         <section className={s.wall} aria-label="Comunidad">
           <Reveal><h2>Floridablanca, de cerca.</h2></Reveal>
           <div className={s.wallGrid}>
-            {[img.basilica, img.olla, img.feria, img.visita].map((p, i) => (
+            {[img.basilica, img.ninos, img.feria, img.visita].map((p, i) => (
               <figure key={p.src} className={s.shot} style={{ ["--k" as string]: i }}>
                 <Image src={p.src} alt={p.alt} width={p.w} height={p.h} sizes="(max-width:900px) 92vw, 46vw" loading="lazy" />
               </figure>

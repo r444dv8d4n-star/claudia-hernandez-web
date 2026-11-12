@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://claudia-hernandez-web.vercel.app"),
+  metadataBase: new URL("https://campana-alcaldia.vercel.app"),
   title: { default: "Claudia Hernández · Concejala de Floridablanca", template: "%s · Claudia Hernández" },
   description:
     "Claudia Hernández: concejala de Floridablanca (2024–2027), abogada, mamá y líder social. Conoce su trabajo con mujeres, emprendedoras y comunidades.",
@@ -12,9 +12,9 @@ export const metadata: Metadata = {
     siteName: "Claudia Hernández",
     title: "Claudia Hernández · Concejala de Floridablanca",
     description: "Concejala, abogada, mamá y líder social. Creciendo con mujeres soñadoras y emprendedoras.",
-    images: [{ url: "/assets/img/retrato-camisa-morada.webp", width: 1200, height: 800, alt: "Claudia Hernández, concejala de Floridablanca" }],
+    images: [{ url: "/assets/img/og-claudia-hernandez.jpg", width: 1200, height: 630, alt: "Claudia Hernández, concejala de Floridablanca. Decisiones con corazón de barrio." }],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: { card: "summary_large_image", images: ["/assets/img/og-claudia-hernandez.jpg"] },
 };
 
 export const viewport: Viewport = { themeColor: "#4B1F78", width: "device-width", initialScale: 1 };
