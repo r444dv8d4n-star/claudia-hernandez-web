@@ -22,8 +22,13 @@ export default function HeroCollage({ thumbs, cls }: Props) {
       return;
     }
     const { width, height } = el.getBoundingClientRect();
+    // Si el contenedor aún no tiene tamaño, no hay malla que calcular (evita Infinity/NaN).
+    if (!(width > 0) || !(height > 0)) {
+      setDone(true);
+      return;
+    }
     const cols = width < 600 ? 4 : width < 1100 ? 6 : 8;
-    const rows = Math.max(3, Math.round(height / (width / cols)));
+    const rows = Math.min(12, Math.max(3, Math.round(height / (width / cols))));
     setGrid({ cols, rows });
   }, []);
 
