@@ -15,7 +15,9 @@ export const metadata: Metadata = {
   description: "Claudia Hernández, concejala de Floridablanca (2024–2027): una historia de familia, derecho y trabajo comunitario.",
 };
 
-const collage = [img.sesion, img.mujeres, img.basilica, img.visita, img.feria, img.olla, img.familia, img.retrato, img.blazer].map((i) => i.src.replace("/img/", "/img/thumbs/"));
+// Miniaturas del collage de entrada (fotos nuevas subidas a main por el equipo).
+const collageExtra = ["futsal-equipos", "payaso-ninos", "carnaval-con-musica", "encuentro-familias-barrio", "feria-noche-ninas", "foto-grupal-parque", "carpa-banderines", "entrega-diplomas", "escucha-comunidad", "carnaval-mascara"].map((n) => `/assets/img/thumbs/${n}.webp`);
+const collage = [img.sesion, img.mujeres, img.basilica, img.visita, img.feria, img.ninos, img.familia, img.retrato, img.blazer].map((i) => i.src.replace("/img/", "/img/thumbs/")).concat(collageExtra);
 
 export default function Inicio() {
   return (
@@ -31,7 +33,7 @@ export default function Inicio() {
       <Spotlight className={s.hero}>
         <div className={s.heroImg}>
           <Image src={img.consejo.src} alt={img.consejo.alt} width={img.consejo.w} height={img.consejo.h} priority sizes="(max-width:960px) 100vw, 50vw" />
-          <span className={s.heroCap}>Con el Consejo Municipal de Juventudes</span>
+          <span className={s.heroCap}>En un encuentro con la comunidad</span>
         </div>
         <HeroCollage cls={s} thumbs={collage} />
         <div className={s.heroCopy} id="prologo">
