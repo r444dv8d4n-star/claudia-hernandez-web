@@ -17,16 +17,16 @@ export const person = {
 };
 
 export const img = {
-  retrato: { src: "/assets/img/retrato-camisa-morada.webp", w: 1200, h: 800, alt: "Claudia Hernández sonriendo, con camisa morada, sentada en el recinto del Concejo" },
-  blazer: { src: "/assets/img/retrato-blazer-concejo.webp", w: 828, h: 828, alt: "Claudia Hernández con blazer blanco y blusa naranja, en su puesto del Concejo de Floridablanca" },
-  sesion: { src: "/assets/img/concejo-sesion.webp", w: 1079, h: 721, alt: "Claudia Hernández durante una sesión del Concejo de Floridablanca" },
-  consejo: { src: "/assets/img/consejo-juventudes-concejo.webp", w: 1600, h: 1069, alt: "Claudia Hernández con integrantes del Consejo Municipal de Juventudes en el recinto del Concejo de Floridablanca" },
-  mujeres: { src: "/assets/img/mujeres-imparables-jardin.webp", w: 1600, h: 1068, alt: "Grupo de mujeres del barrio Jardín posando junto a Claudia Hernández" },
-  basilica: { src: "/assets/img/floridablanca-basilica-evento.webp", w: 1600, h: 1068, alt: "Claudia Hernández en un evento frente a la basílica de Floridablanca" },
-  visita: { src: "/assets/img/visita-comunidad-religiosa.webp", w: 1600, h: 1068, alt: "Claudia Hernández conversando con una hermana de una comunidad religiosa" },
-  feria: { src: "/assets/img/equipo-feria-emprendedores.webp", w: 1079, h: 721, alt: "Claudia Hernández con un grupo de emprendedores en una feria" },
-  olla: { src: "/assets/img/olla-comunitaria.webp", w: 1079, h: 721, alt: "Claudia Hernández sirviendo comida en una olla comunitaria" },
-  familia: { src: "/assets/img/familia-mascotas.webp", w: 1200, h: 1600, alt: "Claudia Hernández con su hija y sus mascotas, con diademas de flores" },
+  retrato: { src: "/assets/img/retrato-concejal-placa.webp", w: 854, h: 569, alt: "Claudia Hernández, concejala, sonriendo en su puesto del Concejo de Floridablanca" },
+  blazer: { src: "/assets/img/retrato-camisa-blanca-jardin.webp", w: 854, h: 854, alt: "Claudia Hernández con camisa blanca institucional, de pie en un jardín" },
+  sesion: { src: "/assets/img/despacho-concejo-visita.webp", w: 1600, h: 1069, alt: "Claudia Hernández con tres personas en su despacho del Concejo de Floridablanca" },
+  consejo: { src: "/assets/img/hero-evento-comunidad.webp", w: 1600, h: 1069, alt: "Claudia Hernández, con blusa celeste, posando junto a una mujer y una niña en un evento comunitario al aire libre" },
+  mujeres: { src: "/assets/img/mujeres-encuentro-nocturno.webp", w: 1600, h: 1069, alt: "Grupo de mujeres y familias reunidas en un encuentro comunitario al aire libre, de noche" },
+  basilica: { src: "/assets/img/basilica-floridablanca-noche.webp", w: 1600, h: 1069, alt: "Claudia Hernández con un grupo de personas frente a la basílica de Floridablanca, de noche" },
+  visita: { src: "/assets/img/visita-hermana-religiosa.webp", w: 1600, h: 1068, alt: "Claudia Hernández compartiendo con una hermana religiosa de edad avanzada" },
+  feria: { src: "/assets/img/equipo-feria-jovenes.webp", w: 1600, h: 1070, alt: "Claudia Hernández con un grupo de jóvenes frente a una carpa en una feria" },
+  ninos: { src: "/assets/img/abrazo-nina-globo.webp", w: 1600, h: 1066, alt: "Claudia Hernández abrazando a una niña con un globo largo en un evento para niños" },
+  familia: { src: "/assets/img/paisaje-montanas.webp", w: 855, h: 1280, alt: "Claudia Hernández de pie, con un paisaje de montañas al fondo" },
 };
 
 export const comisiones = [
