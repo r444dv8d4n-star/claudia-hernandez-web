@@ -21,7 +21,7 @@ export const img = {
   blazer: { src: "/assets/img/retrato-blazer-concejo.webp", w: 828, h: 828, alt: "Claudia Hernández con blazer blanco y blusa naranja, en su puesto del Concejo de Floridablanca" },
   sesion: { src: "/assets/img/concejo-sesion.webp", w: 1079, h: 721, alt: "Claudia Hernández durante una sesión del Concejo de Floridablanca" },
   consejo: { src: "/assets/img/consejo-juventudes-concejo.webp", w: 1600, h: 1069, alt: "Claudia Hernández con integrantes del Consejo Municipal de Juventudes en el recinto del Concejo de Floridablanca" },
-  mujeres: { src: "/assets/img/mujeres-imparables-jardin.webp", w: 1600, h: 1068, alt: "Grupo de mujeres del barrio Jardín posando junto a Claudia Hernández" },
+  mujeres: { src: "/assets/img/mujeres-imparables-jardin.webp", w: 1600, h: 1068, alt: "Claudia Hernández con el grupo Mujeres Imparables del barrio Jardín de Limoncitos" },
   basilica: { src: "/assets/img/floridablanca-basilica-evento.webp", w: 1600, h: 1068, alt: "Claudia Hernández en un evento frente a la basílica de Floridablanca" },
   visita: { src: "/assets/img/visita-comunidad-religiosa.webp", w: 1600, h: 1068, alt: "Claudia Hernández conversando con una hermana de una comunidad religiosa" },
   feria: { src: "/assets/img/equipo-feria-emprendedores.webp", w: 1079, h: 721, alt: "Claudia Hernández con un grupo de emprendedores en una feria" },
@@ -29,35 +29,172 @@ export const img = {
   familia: { src: "/assets/img/familia-mascotas.webp", w: 1200, h: 1600, alt: "Claudia Hernández con su hija y sus mascotas, con diademas de flores" },
 };
 
+/** true cuando el texto ya no tiene marcas [POR CONFIRMAR]: solo eso se muestra en el sitio. */
+export const ready = (...s: string[]) => s.every((x) => !x.includes(TBC));
+
+/** Publicación de Instagram de Claudia (fuente de varios datos del sitio). */
+export const ig = (code: string) => `https://www.instagram.com/p/${code}/`;
+
+// Fuente: su publicación del 11-ene-2024 (C1-UurTpNFv).
 export const comisiones = [
-  { name: "Presidencia del Concejo", scope: "Presidenta de la corporación en 2026" },
-  { name: "Comisión Segunda Permanente", scope: "Deporte, cultura, ambiente, salud y educación" },
-  { name: "Comisión de Equidad de la Mujer", scope: "Comisión especial del Concejo" },
+  { name: "Comisión de Equidad de la Mujer", scope: "Presidenta desde enero de 2024" },
+  { name: "Comisión Primera · Plan y Bienes", scope: "Primera vicepresidenta en 2024. Presupuesto, plan de desarrollo y ordenamiento" },
 ];
 
-export const frentes: { t: string; d: string; logro?: string }[] = [
+/** Cifras de su trabajo. Cada una sale de una fuente verificada (ver comentarios). */
+export const cifras = [
+  { n: 2, l: "veces presidenta del Concejo", note: "La primera mujer en lograrlo" },
+  { n: 3, l: "acuerdos municipales de su autoría", note: "Niñez, ExpoMujer y arte urbano" },
+  { n: 2016, l: "año de su primer acuerdo", note: "La sesión de los niños en el Concejo" },
+  { n: 12, l: "emprendimientos contados en sus crónicas", note: "Hecho en Floridablanca", plus: true },
+];
+
+/** Logros verificados en fuentes públicas. Agregar aquí los nuevos, del más reciente al más antiguo. */
+export const reconocimientos: { year: string; t: string; d: string; src?: { label: string; href: string } }[] = [
   {
-    t: "Mujeres y emprendimiento",
-    d: "Encuentros con grupos de mujeres y apoyo a emprendedoras y artesanas de Floridablanca.",
-    logro: "Por su iniciativa, en 2024 el Concejo otorgó la Orden Carlos Gutiérrez Gómez a Carmen Cecilia Pérez Gómez, una de las dos únicas mujeres que han sido alcaldesas de Floridablanca.",
+    // Fuentes: episodio "La puerta que abrió 200 años después" (Detrás del Poder, 2026) y publicación conjunta en
+    // Instagram ("la primera mujer en presidir el Concejo de Floridablanca. Y lo hizo dos veces"); Vanguardia la
+    // nombra presidenta del Concejo en marzo de 2019; Plan de Desarrollo 2024–2027: presidenta en 2026.
+    year: "2019 · 2026",
+    t: "Primera mujer en presidir el Concejo de Floridablanca",
+    d: "En casi 200 años de historia ninguna mujer había llegado a esa silla. Ella lo hizo dos veces.",
+    src: { label: "Ver su historia", href: "https://www.youtube.com/watch?v=KMQU6dFsE7s" },
   },
+  {
+    // Fuente: su publicación del 10-jun-2025 (DKs83GPNESu).
+    year: "2025",
+    t: "ExpoMujer, referente nacional",
+    d: "La feria que impulsó desde 2022 y volvió acuerdo municipal puso a Floridablanca como ejemplo en el país.",
+    src: { label: "Ver publicación", href: "https://www.instagram.com/p/DKs83GPNESu/" },
+  },
+  {
+    // Fuentes: su publicación del 11-ene-2024 (C1-UurTpNFv) y el informe de gestión 2024 de Jhonatan Pinzón.
+    year: "2024",
+    t: "Presidenta de la Comisión de Equidad de la Mujer",
+    d: "Desde ahí reconoció a 18 mujeres rurales de las veredas del municipio. Ese año también fue ponente del Plan de Desarrollo 2024–2027.",
+    src: { label: "Ver publicación", href: "https://www.instagram.com/p/C1-UurTpNFv/" },
+  },
+];
+
+/** Notas de prensa verificadas (se leyeron completas). Agregar las nuevas arriba. */
+export const medios: { outlet: string; date: string; t: string; d: string; href: string }[] = [
+  {
+    outlet: "Detrás del Poder",
+    date: "Septiembre de 2026",
+    t: "Claudia Hernández: la puerta que abrió 200 años después",
+    d: "Podcast en video: su vida antes de la política y cómo llegó a presidir el Concejo.",
+    href: "https://www.youtube.com/watch?v=KMQU6dFsE7s",
+  },
+  {
+    outlet: "El Frente",
+    date: "Octubre de 2026",
+    t: "Concejo de Floridablanca elegirá nueva Junta Directiva este viernes",
+    d: "Sobre el cierre de su presidencia del Concejo de Floridablanca en 2026.",
+    href: "https://elfrente.com.co/concejo-de-floridablanca-elegira-nueva-junta-directiva-este-viernes/",
+  },
+  {
+    outlet: "Ciudad Florida",
+    date: "2026",
+    t: "Claudia Hernández, presidenta del Concejo de Floridablanca",
+    d: "Su mensaje a las madres florideñas como presidenta del Concejo.",
+    href: "https://ciudadflorida.com/claudia-hernandez-presidente-concejo-floridablanca/",
+  },
+  {
+    outlet: "Vanguardia",
+    date: "Noviembre de 2024",
+    t: "Carmen Cecilia Pérez Gómez: la mujer que transformó a Floridablanca",
+    d: "Cuenta cómo Claudia impulsó el homenaje del Concejo a una de las dos únicas alcaldesas en la historia de la ciudad.",
+    href: "https://www.vanguardia.com/entretenimiento/las-santandereanas/2024/11/25/carmen-cecilia-perez-gomez-la-mujer-que-transformo-floridablanca-con-pasion-y-compromiso/",
+  },
+];
+
+export const frentes: { t: string; d: string }[] = [
+  { t: "Mujeres y emprendimiento", d: "ExpoMujer, la Comisión de la Mujer y la serie «Hecho en Floridablanca», donde presenta emprendedoras con nombre propio." },
   { t: "Educación y alimentación escolar", d: "Seguimiento a la educación y a la alimentación escolar en el municipio." },
   { t: "Cuidado y salud", d: "Pedagogía y prevención para que cada familia cuide de sí misma." },
   { t: "Cultura y territorio", d: "Orgullo por la Ciudad Dulce de Santander, sus tradiciones y su gente." },
   { t: "Barrios y comunidad", d: "Presencia en barrios, ollas comunitarias y encuentros con vecinos." },
 ];
 
+/** Acuerdos de su autoría. Fuentes: sus publicaciones de Instagram (código en `src`). */
 export const acuerdos = [
-  { n: `Acuerdo Municipal N.° ${TBC}`, t: `${TBC} Título del acuerdo`, d: `${TBC} Qué resuelve y a quién beneficia.`, year: TBC },
-  { n: `Acuerdo Municipal N.° ${TBC}`, t: `${TBC} Título del acuerdo`, d: `${TBC} Qué resuelve y a quién beneficia.`, year: TBC },
-  { n: `Acuerdo Municipal N.° ${TBC}`, t: `${TBC} Título del acuerdo`, d: `${TBC} Qué resuelve y a quién beneficia.`, year: TBC },
+  {
+    year: "2016",
+    n: "Acuerdo Municipal 038 de 2016",
+    rol: "Autora",
+    t: "Los niños también sesionan en el Concejo",
+    d: "Cada último jueves de abril, niñas, niños y adolescentes tienen su propia sesión en el Concejo, y los concejales se comprometen a hacer seguimiento a sus peticiones. Se cumple desde 2017.",
+    src: ig("CwDsWsqJb_L"),
+  },
+  {
+    year: "2024",
+    n: "Acuerdo Municipal 005 de 2024",
+    rol: "Coautora, con la concejala Liliana Mendoza",
+    t: "ExpoMujer queda institucionalizada",
+    d: "Convierte en norma la feria que impulsa a las emprendedoras florideñas. La aprobaron todos los concejales y en 2025 fue referente nacional.",
+    src: ig("DKs83GPNESu"),
+  },
+  {
+    year: "2024",
+    n: "Acuerdo municipal de 2024",
+    rol: "Autora",
+    t: "Festival de Arte Urbano Gráfico",
+    d: "Institucionaliza el festival y su comité para reconocer y promover a los artistas florideños.",
+    src: ig("C8f68OHNHo3"),
+  },
 ];
 
-export const blog = [
-  { t: "Educación y alimentación escolar: temas de seguimiento en Floridablanca", tag: "Concejo", date: TBC },
-  { t: "Cuida de ti con la misma dedicación con la que cuidas a los tuyos", tag: "Salud", date: TBC },
-  { t: "Detrás de cada tejido, un sueño: emprendedoras de Floridablanca", tag: "Emprendimiento", date: TBC },
+export const acuerdosListos = acuerdos.filter((a) => ready(a.n, a.t, a.d, a.year));
+
+/** Línea de tiempo. Fuentes: sus publicaciones, el podcast Detrás del Poder y Vanguardia (2019). */
+export const timeline = [
+  { y: "2016", t: "Autora del Acuerdo 038", d: "Los niños, niñas y adolescentes tienen su propia sesión en el Concejo." },
+  { y: "2016–2019", t: "Primera mujer presidenta del Concejo", d: "Su foto llegó a la pared de presidentes, donde nunca había estado una mujer." },
+  { y: "2022", t: "Nace la idea de ExpoMujer", d: "La empieza a trabajar desde el Consejo Consultivo de Mujeres." },
+  { y: "2023", t: "Regresa al Concejo", d: "Con el voto de 1.134 florideños." },
+  { y: "2024", t: "Tres frentes a la vez", d: "Preside la Comisión de la Mujer, ExpoMujer se vuelve el Acuerdo 005 y nace el Festival de Arte Urbano." },
+  { y: "2024", t: "Hecho en Floridablanca", d: "Cada martes, un emprendimiento local contado en sus redes." },
+  { y: "2025", t: "La Bitácora de Claudia", d: "Un espacio para escuchar: «escuchar también es gobernar»." },
+  { y: "Dic. 2025", t: "Segunda presidencia del Concejo", d: "«Las mujeres lideran, transforman y dejan huella.»" },
+  { y: "2026", t: "Su historia, contada", d: "Presidenta del Concejo, crónicas de emprendedores y el podcast Detrás del Poder." },
 ];
+
+/** Emprendimientos que ha presentado en sus crónicas. Solo nombre y enlace a su publicación (sin datos de contacto). */
+export const emprendedores = [
+  { n: "Fiore", who: "Catalina", d: "Bolsos y accesorios hechos a mano.", year: "2026", src: ig("Defl7TDNvZm") },
+  { n: "Alma Love", who: "Una creadora florideña", d: "Velas artesanales con esencias.", year: "2026", src: ig("Da1LFD5O-xB") },
+  { n: "personaliza.me", who: "Johanna Angarita", d: "Tazas, termos, agendas y álbumes personalizados.", year: "2026", src: ig("DfTNKnxOliq") },
+  { n: "Impresión 3D", who: "Heider y su novia", d: "Una pareja joven que emprende en equipo.", year: "2026", src: ig("DeAvwH-upqc") },
+  { n: "Heladería Pirineos", who: "Un negocio familiar", d: "Helados con la pujanza de Floridablanca.", year: "2026", src: ig("DWXg5rwjqlc") },
+  { n: "Arepas Mega Queso", who: "Barrio Helechales", d: "Arepas recién hechas y con mucho queso.", year: "2026", src: ig("DV9uO-VDomo") },
+];
+
+export const chapters = [
+  { n: "I", t: "Raíces", d: "Mamá de un abogado y una pediatra. Antes del Concejo fue guardiana de una cárcel, ayudante de construcción y trabajadora de aseo.", p: img.familia },
+  { n: "II", t: "Derecho", d: "Estudiar derecho fue elegir una herramienta para que las personas sean escuchadas.", p: img.blazer },
+  { n: "III", t: "Comunidad", d: "Con grupos como las Mujeres Imparables de Jardín de Limoncitos aprendió que el liderazgo se construye en la calle.", p: img.mujeres },
+  { n: "IV", t: "Concejo", d: `Hoy trabaja desde el Concejo de Floridablanca (${person.period}) llevando esas voces a las decisiones del municipio. Fue la primera mujer en presidirlo, y lo ha hecho dos veces.`, p: img.sesion },
+];
+
+export const wall = [
+  { ...img.basilica, caption: "Celebrando frente a nuestra basílica" },
+  { ...img.olla, caption: "Sirviendo en una olla comunitaria" },
+  { ...img.feria, caption: "Con emprendedores en una feria" },
+  { ...img.visita, caption: "De visita con las hermanas de una comunidad religiosa" },
+];
+
+/** Episodio de Detrás del Poder con su historia (YouTube). */
+export const video = {
+  id: "KMQU6dFsE7s",
+  title: "Claudia Hernández: la puerta que abrió 200 años después · Detrás del Poder",
+  href: "https://www.youtube.com/watch?v=KMQU6dFsE7s",
+};
+
+export const redes = [
+  { name: "Instagram", href: person.social.instagram },
+  { name: "TikTok", href: person.social.tiktok },
+  { name: "Facebook", href: person.social.facebook },
+] as const;
 
 export const agenda = [
   { d: TBC, t: "Sesión del Concejo", p: "Concejo de Floridablanca" },

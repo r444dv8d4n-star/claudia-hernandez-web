@@ -17,14 +17,15 @@ export default function HeroCollage({ thumbs, cls }: Props) {
   useEffect(() => {
     const el = root.current;
     if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setDone(true);
-      return;
-    }
-    const { width, height } = el.getBoundingClientRect();
-    const cols = width < 600 ? 4 : width < 1100 ? 6 : 8;
-    const rows = Math.max(3, Math.round(height / (width / cols)));
-    setGrid({ cols, rows });
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const id = requestAnimationFrame(() => {
+      if (reduce) { setDone(true); return; }
+      const { width, height } = el.getBoundingClientRect();
+      const cols = width < 600 ? 4 : width < 1100 ? 6 : 8;
+      const rows = Math.max(3, Math.round(height / (width / cols)));
+      setGrid({ cols, rows });
+    });
+    return () => cancelAnimationFrame(id);
   }, []);
 
   // 2) Anima cuando las piezas ya existen en el DOM.
