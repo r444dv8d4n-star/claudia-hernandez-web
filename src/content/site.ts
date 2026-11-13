@@ -39,7 +39,7 @@ export const frentes: { t: string; d: string; logro?: string }[] = [
   {
     t: "Mujeres y emprendimiento",
     d: "Encuentros con grupos de mujeres y apoyo a emprendedoras y artesanas de Floridablanca.",
-    logro: "Por su iniciativa, en 2024 el Concejo otorgó la Orden Carlos Gutiérrez Gómez a Carmen Cecilia Pérez Gómez, una de las dos únicas mujeres que han sido alcaldesas de Floridablanca.",
+    logro: "Por su iniciativa, en 2024 el Concejo otorgó la Orden Carlos Gutiérrez Gómez a Carmen Cecilia Pérez Gómez, una de las dos únicas mujeres que han dirigido el municipio de Floridablanca.",
   },
   { t: "Educación y alimentación escolar", d: "Seguimiento a la educación y a la alimentación escolar en el municipio." },
   { t: "Cuidado y salud", d: "Pedagogía y prevención para que cada familia cuide de sí misma." },
