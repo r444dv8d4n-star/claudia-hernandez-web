@@ -103,7 +103,7 @@ export const medios: { outlet: string; date: string; t: string; d: string; href:
     outlet: "Vanguardia",
     date: "Noviembre de 2024",
     t: "Carmen Cecilia Pérez Gómez: la mujer que transformó a Floridablanca",
-    d: "Cuenta cómo Claudia impulsó el homenaje del Concejo a una de las dos únicas alcaldesas en la historia de la ciudad.",
+    d: "Cuenta cómo Claudia impulsó el homenaje del Concejo a una de las dos únicas mujeres que han dirigido el municipio.",
     href: "https://www.vanguardia.com/entretenimiento/las-santandereanas/2024/11/25/carmen-cecilia-perez-gomez-la-mujer-que-transformo-floridablanca-con-pasion-y-compromiso/",
   },
 ];
