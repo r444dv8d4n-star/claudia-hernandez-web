@@ -8,7 +8,10 @@ export default function Counter({ to, suffix = "", className }: { to: number; su
     const el = ref.current;
     if (!el) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce || typeof IntersectionObserver === "undefined") { setN(to); return; }
+    if (reduce || typeof IntersectionObserver === "undefined") {
+      const id = requestAnimationFrame(() => setN(to));
+      return () => cancelAnimationFrame(id);
+    }
     const io = new IntersectionObserver(([e]) => {
       if (!e.isIntersecting) return;
       io.disconnect();
