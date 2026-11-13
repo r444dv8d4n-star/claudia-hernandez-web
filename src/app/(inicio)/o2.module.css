@@ -382,10 +382,11 @@
 
 /* ===== pie de página ===== */
 .footer{background:var(--ink);color:var(--cream);padding:56px 16px 28px;display:grid;gap:36px}
-.fBrand{display:grid;gap:12px;max-width:38ch}
+.fBrand{display:grid;gap:12px;max-width:46ch}
 .fBrand .logo{color:var(--cream);font-size:1.5rem}
 .fBrand .logo span{color:var(--must)}
 .fBrand p{opacity:.8}
+.fLines span{display:block}
 .fCols{display:grid;gap:28px;grid-template-columns:1fr 1fr}
 .fCol{display:grid;gap:8px;align-content:start}
 .fCol h3{font-family:var(--f-body),sans-serif!important;font-size:.8rem!important;letter-spacing:.14em;text-transform:uppercase;color:var(--must)}

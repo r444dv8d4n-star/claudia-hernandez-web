@@ -292,7 +292,7 @@ export function Hablemos() {
       <div className={s.cText}>
         <Reveal><p className={s.eyebrow}>Hablemos</p></Reveal>
         <Reveal delay={80}><h2>Tu voz también cuenta en esta historia.</h2></Reveal>
-        <Reveal delay={160}><p>Escríbele sobre tu barrio, tu emprendimiento o una idea para Floridablanca.</p></Reveal>
+        <Reveal delay={160}><p>Escríbele sobre tu barrio, tu emprendimiento o una idea para{" "}Floridablanca.</p></Reveal>
         <Reveal delay={240} as="figure" className={s.quote}>
           <blockquote>“La fuerza de Floridablanca está en su gente y en nuestra unión.”</blockquote>
           <figcaption>Claudia Hernández</figcaption>

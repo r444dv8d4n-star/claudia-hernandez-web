@@ -12,7 +12,7 @@ export default function ProyectosPage() {
       <PageHero
         eyebrow="Proyectos"
         title={<>Donde está el <em>trabajo</em>.</>}
-        lead="Cinco frentes que guían su labor en el Concejo y en los barrios de Floridablanca."
+        lead={"Cinco frentes que guían su labor en el Concejo y en los barrios de Floridablanca."}
       />
       <Proyectos />
       <HechoEnFloridablanca />

@@ -37,7 +37,7 @@ export default function Inicio() {
         </div>
         <HeroCollage cls={s} thumbs={collage} />
         <div className={s.heroCopy} id="prologo">
-          <p className={s.kicker}>{person.role} · {person.period}</p>
+          <p className={s.kicker}>{person.role.replace(/ (\S+)$/, " $1")}{" · "}{person.period}</p>
           <h1>De aquí, <em>como tú.</em></h1>
           <p className={s.lead}>Florideña, mamá, abogada y líder social.</p>
           <div className={s.ctas}>
