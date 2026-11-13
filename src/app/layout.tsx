@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://campana-alcaldia.vercel.app"),
+  metadataBase: new URL("https://claudia-hernandez-web.vercel.app"),
   title: { default: "Claudia Hernández · Concejala de Floridablanca", template: "%s · Claudia Hernández" },
   description:
     "Claudia Hernández: concejala de Floridablanca (2024–2027), abogada, mamá y líder social. Conoce su trabajo con mujeres, emprendedoras y comunidades.",
