@@ -170,10 +170,10 @@ export const emprendedores = [
 ];
 
 export const chapters = [
-  { n: "I", t: "Raíces", d: "Mamá de un abogado y una pediatra. Antes del Concejo fue guardiana de una cárcel, ayudante de construcción y trabajadora de aseo.", p: img.familia },
-  { n: "II", t: "Derecho", d: "Estudiar derecho fue elegir una herramienta para que las personas sean escuchadas.", p: img.blazer },
-  { n: "III", t: "Comunidad", d: "Con grupos como las Mujeres Imparables de Jardín de Limoncitos aprendió que el liderazgo se construye en la calle.", p: img.mujeres },
-  { n: "IV", t: "Concejo", d: `Hoy trabaja desde el Concejo de Floridablanca (${person.period}) llevando esas voces a las decisiones del municipio. Fue la primera mujer en presidirlo, y lo ha hecho dos veces.`, p: img.sesion },
+  { n: "I", t: "Raíces", d: "Mamá de un abogado y una pediatra. Antes fue guardiana de una cárcel, ayudante de construcción y de aseo.", p: img.familia },
+  { n: "II", t: "Derecho", d: "Estudiar derecho fue elegir una herramienta para que las personas sean escuchadas y sus voces cuenten.", p: img.blazer },
+  { n: "III", t: "Comunidad", d: "Con las Mujeres Imparables de Jardín de Limoncitos aprendió que el liderazgo se construye en la calle, con la gente.", p: img.mujeres },
+  { n: "IV", t: "Concejo", d: `Desde el Concejo (${person.period}) lleva esas voces a las decisiones. Primera mujer en presidirlo, y lo hizo dos veces.`, p: img.sesion },
 ];
 
 export const wall = [
