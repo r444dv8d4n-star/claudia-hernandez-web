@@ -173,7 +173,7 @@ export const chapters = [
   { n: "I", t: "Raíces", d: "Mamá de un abogado y una pediatra. Antes fue guardiana de una cárcel, ayudante de construcción y de aseo.", p: img.familia },
   { n: "II", t: "Derecho", d: "Estudiar derecho fue elegir una herramienta para que las personas sean escuchadas y sus voces cuenten.", p: img.blazer },
   { n: "III", t: "Comunidad", d: "Con las Mujeres Imparables de Jardín de Limoncitos aprendió que el liderazgo se construye en la calle, con la gente.", p: img.mujeres },
-  { n: "IV", t: "Concejo", d: `Desde el Concejo (${person.period}) lleva esas voces a las decisiones. Primera mujer en presidirlo, y lo hizo dos veces.`, p: img.sesion },
+  { n: "IV", t: "Concejo", d: `Desde el Concejo (${person.period}) lleva esas voces a las decisiones. Primera mujer en presidirlo, dos veces.`, p: img.sesion },
 ];
 
 export const wall = [
