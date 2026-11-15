@@ -505,3 +505,4 @@
 
 .awards .awardBody{grid-template-rows:auto auto 1fr}
 .awards .award,.snap .awards .award{align-items:stretch}
+@media(min-width:960px){.awards .award h3{min-height:2.44em;display:flex;align-items:flex-start}}

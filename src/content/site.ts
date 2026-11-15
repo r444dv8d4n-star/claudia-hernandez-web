@@ -71,7 +71,7 @@ export const reconocimientos: { year: string; t: string; d: string; src?: { labe
     // Fuentes: su publicación del 11-ene-2024 (C1-UurTpNFv) y el informe de gestión 2024 de Jhonatan Pinzón.
     year: "2024",
     t: "Presidenta de la Comisión de Equidad de la Mujer",
-    d: "Desde ahí reconoció a 18 mujeres rurales de las veredas del municipio. Ese año también fue ponente del Plan de Desarrollo 2024–2027.",
+    d: "Reconoció a 18 mujeres rurales de las veredas del municipio. Ese año también fue ponente del Plan de Desarrollo 2024–2027.",
     src: { label: "Ver publicación", href: "https://www.instagram.com/p/C1-UurTpNFv/" },
   },
 ];
