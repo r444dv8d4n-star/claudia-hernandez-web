@@ -56,7 +56,7 @@ export const reconocimientos: { year: string; t: string; d: string; src?: { labe
     // Instagram ("la primera mujer en presidir el Concejo de Floridablanca. Y lo hizo dos veces"); Vanguardia la
     // nombra presidenta del Concejo en marzo de 2019; Plan de Desarrollo 2024–2027: presidenta en 2026.
     year: "2019 · 2026",
-    t: "Primera mujer en presidir el Concejo de Floridablanca",
+    t: "Primera mujer en presidir el Concejo",
     d: "En casi 200 años de historia ninguna mujer había llegado a esa silla. Ella lo hizo dos veces.",
     src: { label: "Ver su historia", href: "https://www.youtube.com/watch?v=KMQU6dFsE7s" },
   },

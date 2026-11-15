@@ -505,4 +505,6 @@
 
 .awards .awardBody{grid-template-rows:auto auto 1fr}
 .awards .award,.snap .awards .award{align-items:stretch}
-@media(min-width:960px){.awards .award h3{min-height:2.44em;display:flex;align-items:flex-start}}
+/* los títulos caben en una línea en pantallas anchas; en anchos medios reservan dos líneas para no desalinear */
+@media(min-width:960px) and (max-width:1279px){.awards .award h3{min-height:2.44em}}
+@media(min-width:960px){.awards .award h3{font-size:1.05rem}.awards .awardBody{padding-right:5.5rem}}
