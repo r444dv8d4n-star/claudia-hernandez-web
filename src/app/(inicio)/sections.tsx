@@ -144,11 +144,11 @@ export function Reconocimientos({ more = false }: { more?: boolean }) {
       <ol className={s.awardList}>
         {reconocimientos.map((r, i) => (
           <Reveal as="li" key={r.t} className={s.award} delay={i * 120}>
-            <span className={s.awardYear}>{r.year}</span>
-            <div>
+            <span className={s.awardYear}>{r.year.split(" · ").map((y) => <b key={y}>{y}</b>)}</span>
+            <div className={s.awardBody}>
               <h3>{r.t}</h3>
               <p>{r.d}</p>
-              {r.src && <a className={s.awardSrc} href={r.src.href} target="_blank" rel="noopener noreferrer">{r.src.label} <span aria-hidden="true">↗</span></a>}
+              {r.src && <a className={s.awardSrc} href={r.src.href} target="_blank" rel="noopener noreferrer">{r.src.label} <span aria-hidden="true">→</span></a>}
             </div>
           </Reveal>
         ))}

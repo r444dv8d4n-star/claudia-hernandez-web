@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Loader from "@/components/Loader";
 import Spotlight from "@/components/Spotlight";
+import HeroName from "@/components/HeroName";
 import HeroCollage from "@/components/HeroCollage";
 import ExtraSection from "@/components/ExtraSection";
 import SocialIcons from "@/components/SocialIcons";
@@ -37,14 +38,14 @@ export default function Inicio() {
         <HeroCollage cls={s} thumbs={collage} />
         <div className={s.heroCopy} id="prologo">
           <p className={s.kicker}>{person.role} · {person.period}</p>
-          <h1>Claudia <em>Hernández</em></h1>
+          <HeroName />
           <p className={s.tagline}>De aquí, como tú.</p>
           <ul className={s.roleChips} aria-label="Quién es Claudia">
             {["Florideña", "Mamá", "Abogada", "Líder social"].map((r, i) => (
               <li key={r} style={{ ["--i" as string]: i }}>{r}</li>
             ))}
           </ul>
-          <p className={s.firstBadge}>★ Primera mujer en presidir el Concejo de Floridablanca</p>
+          <p className={s.lead}>Primera mujer en presidir el Concejo de Floridablanca.</p>
           <div className={s.ctas}>
             <Link className={s.btn} href="/historia#video"><span aria-hidden="true">▶</span> Conoce su historia</Link>
             <Link className={s.btnGhost} href="/logros">Mira su trabajo <span aria-hidden="true">→</span></Link>

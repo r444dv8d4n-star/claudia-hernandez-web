@@ -450,3 +450,29 @@
 .dots i.on{background:var(--must);width:34px}
 @media(prefers-reduced-motion:reduce){.slide{transition:none;transform:none}}
 @media(min-width:960px) and (min-height:600px){.snap .awards .slidesWrap{grid-column:1;grid-row:2;margin-top:8px}.snap .awards .slides{height:clamp(300px,58svh,520px)}.snap .awards .frame{aspect-ratio:auto}}
+
+/* ===== reconocimientos: tarjetas compactas; el año aparece con el fondo al pasar el mouse ===== */
+.awards .awardList{gap:14px}
+.awards .award{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;gap:0;padding:20px 22px;border-radius:20px;transition:color .35s,border-color .35s,transform .35s}
+.awards .award::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,var(--must),#f2c35a);transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.7,0,.2,1)}
+.awards .awardBody{display:grid;gap:4px}
+.awards .award h3{font-size:1.1rem;line-height:1.22;margin:0}
+.awards .award p{font-size:.88rem;line-height:1.45;margin:0;opacity:.82;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.awards .awardSrc{margin-top:8px;font-size:.88rem;justify-self:start}
+.awards .awardYear{order:-1;display:flex;gap:6px;font-family:var(--f-body),sans-serif;font-style:normal;font-size:.78rem;letter-spacing:.14em;margin-bottom:6px;color:var(--must)}
+.awards .awardYear b{font-weight:700}
+.awards .awardYear b + b::before{content:"–";margin-right:6px}
+@media(hover:hover) and (pointer:fine){
+  .awards .awardBody{padding-right:7.5rem}
+  .awards .awardYear{position:absolute;right:22px;top:50%;margin:0;flex-direction:column;align-items:flex-end;gap:0;letter-spacing:0;font-family:var(--f-display),serif;font-style:italic;font-size:2.1rem;line-height:1.05;color:var(--ink);opacity:0;transform:translate(26px,-50%);transition:opacity .35s .1s,transform .55s cubic-bezier(.2,.7,.2,1) .1s}
+  .awards .awardYear b + b::before{content:none}
+  .awards .award:hover,.awards .award:focus-within{color:var(--ink);border-color:var(--must);transform:translateX(-6px)}
+  .awards .award:hover::before,.awards .award:focus-within::before{transform:scaleX(1)}
+  .awards .award:hover .awardYear,.awards .award:focus-within .awardYear{opacity:1;transform:translate(0,-50%)}
+  .awards .award:hover h3,.awards .award:focus-within h3,.awards .award:hover p,.awards .award:focus-within p{color:var(--ink);opacity:1}
+  .awards .award:hover .awardSrc,.awards .award:focus-within .awardSrc{color:var(--ink);border-color:var(--ink)}
+}
+@media(min-width:960px) and (min-height:600px){.snap .awards .award{display:flex;padding:20px 22px;gap:0}.snap .awards .awardList{gap:clamp(10px,1.8svh,16px)}}
+@media(prefers-reduced-motion:reduce){.awards .award,.awards .award::before,.awards .awardYear{transition:none}}
+.hero h1 :global(.nm-mask){display:inline-block;overflow:hidden;vertical-align:top;padding:0 .01em;line-height:1.12;margin-bottom:-.12em;padding-bottom:.12em}
+.hero h1 :global(.nm-ch){display:inline-block;will-change:transform}
