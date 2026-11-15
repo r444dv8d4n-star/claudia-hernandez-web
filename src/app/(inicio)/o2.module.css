@@ -56,6 +56,7 @@
 .heroImg{overflow:hidden;background:var(--must)}
 .heroImg img{filter:saturate(1.05) contrast(1.03)}
 .heroImg::before{content:none}
+.heroImg img{-webkit-mask-image:linear-gradient(180deg,#000 78%,transparent 99%);mask-image:linear-gradient(180deg,#000 78%,transparent 99%)}
 /* fundido suave hacia el mostaza (curva en varios pasos para que no se vea la raya) */
 .heroImg::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,#e3a92b00 0%,#e3a92b00 55%,#e3a92b40 68%,#e3a92b99 82%,#e3a92be6 94%,var(--must) 100%)}
 .collage{position:absolute;inset:0;z-index:3;pointer-events:none}
@@ -455,7 +456,7 @@
 .awards .award::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,var(--must),#f2c35a);transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.7,0,.2,1)}
 .awards .awardBody{display:grid;gap:4px}
 .awards .award h3{font-size:1.1rem;line-height:1.22;margin:0}
-.awards .award p{font-size:.88rem;line-height:1.45;margin:0;opacity:.82;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.awards .award p{font-size:.88rem;line-height:1.45;margin:0;opacity:.82;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .awards .awardSrc{margin-top:8px;font-size:.88rem;justify-self:start}
 .awards .awardYear{order:-1;display:flex;gap:6px;font-family:var(--f-body),sans-serif;font-style:normal;font-size:.78rem;letter-spacing:.14em;margin-bottom:6px;color:var(--must)}
 .awards .awardYear b{font-weight:700}
@@ -488,8 +489,10 @@
   .awards .slidesWrap{grid-column:1;grid-row:2;display:flex}
   .awards .slidesWrap .slides{flex:1;height:auto}
   .awards .awardList{grid-column:2;grid-row:2;display:grid;grid-template-columns:1fr;grid-auto-rows:1fr;margin:0}
-  .awards .award{justify-content:center}
-  .awards .more{grid-column:1 / -1;grid-row:3;justify-self:center}
+  .awards .award{justify-content:flex-start;padding-top:24px;padding-bottom:22px}
+  .awards .awardBody{flex:1;align-content:start}
+  .awards .awardSrc{margin-top:auto;padding-top:10px}
+  .awards .more{grid-column:1;grid-row:3;justify-self:start}
 }
 @media(min-width:960px) and (min-height:600px){
   .snap .awards{grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:stretch;align-content:center}
@@ -497,5 +500,8 @@
   .snap .awards .slidesWrap{grid-column:1;grid-row:2;margin-top:0}
   .snap .awards .slides{height:auto;min-height:clamp(300px,52svh,480px)}
   .snap .awards .awardList{grid-column:2;grid-row:2}
-  .snap .awards .more{grid-column:1 / -1;grid-row:3;justify-self:center}
+  .snap .awards .more{grid-column:1;grid-row:3;justify-self:start}
 }
+
+.awards .awardBody{grid-template-rows:auto auto 1fr}
+.awards .award,.snap .awards .award{align-items:stretch}
