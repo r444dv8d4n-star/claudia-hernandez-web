@@ -1,12 +1,13 @@
 "use client";
 import { useEffect, useRef } from "react";
 
+// cada palabra va en un bloque sin cortes para que "Hernández" nunca se parta en dos líneas
 const Letters = ({ text }: { text: string }) => (
-  <>
+  <span className="nm-word" aria-hidden="true">
     {[...text].map((c, i) => (
-      <span key={i} className="nm-mask" aria-hidden="true"><span className="nm-ch">{c}</span></span>
+      <span key={i} className="nm-mask"><span className="nm-ch">{c}</span></span>
     ))}
-  </>
+  </span>
 );
 
 /**
@@ -25,13 +26,13 @@ export default function HeroName({ className }: { className?: string }) {
       const { gsap } = await import("gsap");
       if (cancelled) return;
       const chars = gsap.utils.toArray<HTMLElement>(".nm-ch", el);
-      const intro = gsap.from(chars, { yPercent: 115, rotate: 9, duration: 0.9, ease: "expo.out", stagger: 0.045, delay: 0.25 });
+      const intro = gsap.from(chars, { yPercent: 135, rotate: 16, scale: 0.8, duration: 1.15, ease: "expo.out", stagger: 0.07, delay: 0.25 });
       let n = 0;
       const poll = setInterval(() => {
         n++;
         if (!document.querySelector("[data-collage]") || n > 160) {
           clearInterval(poll);
-          if (n <= 160) gsap.to(chars, { keyframes: [{ yPercent: -14, scale: 1.06, duration: 0.28 }, { yPercent: 0, scale: 1, duration: 0.5, ease: "bounce.out" }], stagger: 0.05 });
+          if (n <= 160) gsap.to(chars, { keyframes: [{ yPercent: -22, scale: 1.1, duration: 0.3 }, { yPercent: 0, scale: 1, duration: 0.6, ease: "bounce.out" }], stagger: 0.06 });
         }
       }, 100);
       cleanup = () => { clearInterval(poll); intro.kill(); gsap.killTweensOf(chars); };

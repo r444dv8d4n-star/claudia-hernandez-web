@@ -40,11 +40,7 @@ export default function Inicio() {
           <p className={s.kicker}>{person.role} · {person.period}</p>
           <HeroName />
           <p className={s.tagline}>De aquí, como tú.</p>
-          <ul className={s.roleChips} aria-label="Quién es Claudia">
-            {["Florideña", "Mamá", "Abogada", "Líder social"].map((r, i) => (
-              <li key={r} style={{ ["--i" as string]: i }}>{r}</li>
-            ))}
-          </ul>
+          <p className={s.traits}>{["Florideña", "Mamá", "Abogada", "Líder social"].map((t, i) => (<span key={t} className={s.trait}>{i > 0 && <i aria-hidden="true"> · </i>}{t}</span>))}</p>
           <p className={s.lead}>Primera mujer en presidir el Concejo de Floridablanca.</p>
           <div className={s.ctas}>
             <Link className={s.btn} href="/historia#video"><span aria-hidden="true">▶</span> Conoce su historia</Link>

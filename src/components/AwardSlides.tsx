@@ -11,7 +11,7 @@ export default function AwardSlides({ slides, title, sub }: { slides: Slide[]; t
   const [prev, setPrev] = useState(-1);
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const t = setInterval(() => setI((c) => { setPrev(c); return (c + 1) % slides.length; }), 4800);
+    const t = setInterval(() => setI((c) => { setPrev(c); return (c + 1) % slides.length; }), 3600);
     return () => clearInterval(t);
   }, [slides.length]);
   return (
