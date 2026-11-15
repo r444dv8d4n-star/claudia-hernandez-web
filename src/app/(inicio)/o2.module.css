@@ -64,7 +64,8 @@
 .tiles{position:absolute;inset:0;display:grid;gap:3px;padding:3px}
 .tile{position:relative;overflow:hidden;border-radius:6px;will-change:transform,opacity;opacity:0}
 .face{display:block;width:100%;height:100%;object-fit:cover}
-.heroCopy{position:relative;z-index:2;padding:36px 16px 48px;display:grid;gap:18px;align-content:center;background:radial-gradient(600px circle at var(--mx) var(--my),#f6dfa555,transparent 60%)}
+.heroCopy{position:relative;z-index:2;padding:36px 16px 48px;display:grid;gap:18px;align-content:center}
+/* sin brillo que siga al mouse: cruzaba el borde de la foto y se veía como una división */
 .kicker{color:var(--ink);letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;font-weight:700;opacity:.85}
 .hero h1{font-size:clamp(2.3rem,8.4vw,4.6rem);letter-spacing:-.02em;text-wrap:balance}
 .hero h1 em{color:var(--purple);font-style:italic}
@@ -80,6 +81,8 @@
 .heroSoc .icons a:hover{background:var(--ink);color:var(--must)}
 @media(min-width:960px){
   .heroImg::after{inset:0 0 0 -2px;background:linear-gradient(90deg,var(--must) 0%,#e3a92bf2 8%,#e3a92bd0 16%,#e3a92b99 26%,#e3a92b5c 36%,#e3a92b2e 46%,#e3a92b0f 56%,#e3a92b00 66%)}
+  /* la foto trae una franja oscura/blanca en su borde izquierdo: se difumina contra el fondo mostaza */
+  .heroImg img{-webkit-mask-image:linear-gradient(90deg,transparent 0,transparent 3%,#000 26%);mask-image:linear-gradient(90deg,transparent 0,transparent 3%,#000 26%)}
   .hero{grid-template-columns:1.05fr 1fr;min-height:calc(100svh - 66px)}
   .heroCopy{padding:60px max(24px,5vw);order:-1}
   .heroImg{min-height:auto}

@@ -136,8 +136,8 @@ export function Reconocimientos({ more = false }: { more?: boolean }) {
       <SecHead eyebrow="Reconocimientos" title="Hechos, no solo palabras." id="logros-title" />
       <Reveal variant="clip" className={s.slidesWrap}>
         <AwardSlides
-          title="Los premios llevan su nombre. El mérito es de Floridablanca."
-          sub="Creciendo junto a mujeres soñadoras y emprendedoras."
+          title="El mérito es de Floridablanca."
+          
           slides={(["reunion-comunitaria-escucha", "evento-comunitario-tarima", "retrato-concejal-placa", "encuentro-mujeres-noche", "retrato-camisa-institucional-despacho", "abrazo-encuentro-mujeres"] as const).map((k) => ({ ...galeria[k], pos: k.startsWith("retrato") ? "50% 22%" : k === "evento-comunitario-tarima" ? "60% 30%" : "50% 35%" }))}
         />
       </Reveal>

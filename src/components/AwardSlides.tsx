@@ -6,7 +6,7 @@ import s from "@/app/(inicio)/o2.module.css";
 type Slide = { src: string; w: number; h: number; alt: string; pos?: string };
 
 /** Fotos que se relevan solas con un deslizamiento vertical suave. Sin movimiento si el usuario lo pidió. */
-export default function AwardSlides({ slides, title, sub }: { slides: Slide[]; title: string; sub: string }) {
+export default function AwardSlides({ slides, title, sub }: { slides: Slide[]; title: string; sub?: string }) {
   const [i, setI] = useState(0);
   const [prev, setPrev] = useState(-1);
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function AwardSlides({ slides, title, sub }: { slides: Slide[]; t
       </div>
       <figcaption className={s.slidesCap}>
         <strong>{title}</strong>
-        <span>{sub}</span>
+        {sub && <span>{sub}</span>}
       </figcaption>
     </figure>
   );
