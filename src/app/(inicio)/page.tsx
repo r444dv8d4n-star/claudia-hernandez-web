@@ -38,11 +38,17 @@ export default function Inicio() {
         <HeroCollage cls={s} thumbs={collage} />
         <div className={s.heroCopy} id="prologo">
           <p className={s.kicker}>{person.role} · {person.period}</p>
-          <h1>De aquí, <em>como tú.</em></h1>
-          <p className={s.lead}>Florideña, mamá, abogada y líder social.</p>
+          <h1>Conoce a la florideña que <em>abrió la puerta</em> para todos.</h1>
+          <p className={s.tagline}>De aquí, como tú.</p>
+          <ul className={s.roleChips} aria-label="Quién es Claudia">
+            {["Florideña", "Mamá", "Abogada", "Líder social"].map((r, i) => (
+              <li key={r} style={{ ["--i" as string]: i }}>{r}</li>
+            ))}
+          </ul>
+          <p className={s.lead}>Primera mujer en presidir el Concejo de Floridablanca. Conoce su historia y lo que hace por tu barrio.</p>
           <div className={s.ctas}>
-            <Link className={s.btn} href="/logros">Conoce su trabajo <span aria-hidden="true">→</span></Link>
-            <Link className={s.btnGhost} href="/historia#video"><span aria-hidden="true">▶</span> Ver su historia</Link>
+            <Link className={s.btn} href="/historia#video"><span aria-hidden="true">▶</span> Conoce su historia</Link>
+            <Link className={s.btnGhost} href="/logros">Mira su trabajo <span aria-hidden="true">→</span></Link>
           </div>
           <div className={s.heroSoc}><span>También en</span><SocialIcons /></div>
         </div>

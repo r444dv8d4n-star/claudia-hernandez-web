@@ -53,7 +53,11 @@
 .heroImg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 30%;animation:slow 24s ease-in-out infinite alternate}
 @keyframes slow{to{transform:scale(1.06)}}
 .heroCap{position:absolute;left:16px;bottom:16px;z-index:2;padding:7px 14px;border-radius:999px;background:#2a1240cc;color:var(--cream);font-size:.82rem;font-weight:600;backdrop-filter:blur(6px)}
-.heroImg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,#2a124055)}
+.heroImg img{filter:sepia(.22) saturate(1.08) contrast(1.02)}
+/* tono mostaza sobre toda la foto + degradado que la funde con el panel mostaza */
+.heroImg::before{content:"";position:absolute;inset:0;z-index:1;background:var(--must);mix-blend-mode:multiply;opacity:.3;pointer-events:none}
+.heroImg::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,transparent 42%,#e3a92b8c 78%,var(--must) 100%)}
+.heroCap{z-index:2}
 .collage{position:absolute;inset:0;z-index:3;pointer-events:none}
 .scrim{position:absolute;inset:0;background:linear-gradient(180deg,#2a1240aa,#2a1240dd)}
 .base{position:absolute;inset:0;background:var(--ink)}
@@ -75,6 +79,7 @@
 .heroSoc .icons a{color:var(--ink);border-color:#2a124055}
 .heroSoc .icons a:hover{background:var(--ink);color:var(--must)}
 @media(min-width:960px){
+  .heroImg::after{background:linear-gradient(90deg,var(--must) 0%,#e3a92bd9 12%,#e3a92b66 30%,transparent 55%),linear-gradient(180deg,transparent 70%,#e3a92b55)}
   .hero{grid-template-columns:1.05fr 1fr;min-height:calc(100svh - 66px)}
   .heroCopy{padding:60px max(24px,5vw);order:-1}
   .heroImg{min-height:auto}
@@ -394,3 +399,35 @@
 .footer .icons a{color:var(--cream);border-color:#ffffff33}
 .fBottom{border-top:1px solid #ffffff1f;padding-top:20px;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;font-size:.85rem;opacity:.7}
 @media(min-width:960px){.footer{grid-template-columns:1.2fr 1fr;padding:72px max(24px,6vw) 32px}.fBottom{grid-column:1 / -1}}
+
+/* ===== portada: lema, etiquetas y llamada a la acción ===== */
+.hero h1{font-size:clamp(2.1rem,7.4vw,3.6rem);line-height:1.04;max-width:16ch}
+.tagline{font-family:var(--f-display),serif;font-style:italic;font-weight:700;font-size:clamp(1.25rem,4.4vw,1.7rem);color:var(--purple);margin:0;position:relative;justify-self:start}
+.tagline::after{content:"";display:block;height:5px;margin-top:2px;border-radius:5px;background:var(--purple);opacity:.85;width:100%;transform-origin:left;animation:taglineLine 1s .6s both cubic-bezier(.2,.7,.2,1)}
+@keyframes taglineLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.roleChips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.roleChips li{padding:8px 16px;border-radius:999px;background:var(--purple);color:var(--cream);font-weight:700;font-size:.95rem;letter-spacing:.01em;box-shadow:0 8px 18px -10px var(--ink);animation:chipIn .6s calc(.3s + var(--i) * .09s) both cubic-bezier(.2,.8,.2,1)}
+.roleChips li:nth-child(odd){background:var(--ink)}
+@keyframes chipIn{from{opacity:0;transform:translateY(10px) scale(.9)}to{opacity:1;transform:none}}
+@media(min-width:960px){.hero h1{font-size:clamp(2.6rem,min(4.6vw,8.6svh),4.6rem)}}
+@media(min-width:960px) and (min-height:600px){.snap .hero h1{font-size:clamp(2.6rem,min(4.6vw,8.6svh),4.6rem)}.snap .hero .lead{font-size:1.05rem}}
+@media(prefers-reduced-motion:reduce){.roleChips li,.tagline::after{animation:none}}
+
+/* ===== reconocimientos: foto con ella resaltada ===== */
+.awardPhoto{position:relative;margin:0;border-radius:26px;overflow:hidden;border:3px solid var(--must);box-shadow:0 26px 50px -28px #000,0 0 0 6px #e3a92b22}
+.awardPhoto img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:60% 30%;filter:saturate(1.08) brightness(1.04)}
+/* ella queda iluminada; el resto de la escena se oscurece suavemente */
+.awardPhoto::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 30% 40% at 62% 36%,transparent 0%,transparent 55%,#150a2488 100%),radial-gradient(ellipse 30% 36% at 62% 34%,#fff0c755,transparent 70%)}
+.awardPhoto figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;display:grid;gap:2px;padding:42px 20px 16px;background:linear-gradient(180deg,transparent,#150a24e6 55%);color:var(--cream)}
+.awardPhoto figcaption strong{font-family:var(--f-display),serif;font-size:clamp(1.15rem,3.2vw,1.5rem);line-height:1.15;color:var(--must)}
+.awardPhoto figcaption span{font-size:.95rem;opacity:.95}
+@media(min-width:960px) and (min-height:600px){
+  .snap .awards{grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:clamp(32px,4vw,64px);row-gap:clamp(12px,2.4svh,22px);align-items:center}
+  .snap .awards .secHead{grid-column:1;grid-row:1}
+  .snap .awards .awardPhoto{grid-column:1;grid-row:2}
+  .snap .awards .awardPhoto img{aspect-ratio:auto;height:clamp(190px,36svh,360px)}
+  .snap .awards .more{grid-column:1;grid-row:3}
+  .snap .awards .awardList{grid-column:2;grid-row:1 / span 3;grid-template-columns:1fr;gap:clamp(10px,2svh,18px)}
+  .snap .awards .award{grid-template-columns:auto 1fr;gap:18px;align-items:center}
+}
+@media(min-width:960px) and (min-height:600px){.snap .awards .awardPhoto{margin-top:12px}.snap .awards .awardPhoto img{height:clamp(220px,42svh,420px)}}
