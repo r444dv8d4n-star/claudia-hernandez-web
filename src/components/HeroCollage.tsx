@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
 
 type Props = { thumbs: string[]; cls: Record<string, string> };
 
@@ -13,22 +14,20 @@ export default function HeroCollage({ thumbs, cls }: Props) {
   const [grid, setGrid] = useState<{ cols: number; rows: number } | null>(null);
   const [done, setDone] = useState(false);
 
-  // 1) Calcula la malla según el tamaño del hero y descarta si hay movimiento reducido.
-  useEffect(() => {
+  // 1) Calcula la malla según el tamaño del hero antes de pintar (sin esperas) y descarta si hay movimiento reducido.
+  useLayoutEffect(() => {
     const el = root.current;
     if (!el) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    // setState dentro de requestAnimationFrame (no directo en el efecto) para cumplir la regla de React.
-    const id = requestAnimationFrame(() => {
-      if (reduce) { setDone(true); return; }
-      const { width, height } = el.getBoundingClientRect();
-      // Si el contenedor aún no tiene tamaño, no hay malla que calcular (evita Infinity/NaN).
-      if (!(width > 0) || !(height > 0)) { setDone(true); return; }
-      const cols = width < 600 ? 4 : width < 1100 ? 6 : 8;
-      const rows = Math.min(12, Math.max(3, Math.round(height / (width / cols))));
-      setGrid({ cols, rows });
-    });
-    return () => cancelAnimationFrame(id);
+    /* eslint-disable react-hooks/set-state-in-effect */
+    if (reduce) { setDone(true); return; }
+    const { width, height } = el.getBoundingClientRect();
+    // Si el contenedor aún no tiene tamaño, no hay malla que calcular (evita Infinity/NaN).
+    if (!(width > 0) || !(height > 0)) { setDone(true); return; }
+    const cols = width < 600 ? 4 : width < 1100 ? 6 : 8;
+    const rows = Math.min(12, Math.max(3, Math.round(height / (width / cols))));
+    setGrid({ cols, rows });
+    /* eslint-enable react-hooks/set-state-in-effect */
   }, []);
 
   // 2) Anima cuando las piezas ya existen en el DOM.
@@ -36,17 +35,14 @@ export default function HeroCollage({ thumbs, cls }: Props) {
     const el = root.current;
     if (!grid || !el) return;
     let tl: { kill: () => void } | null = null;
-    let cancelled = false;
-    (async () => {
-      const { gsap } = await import("gsap");
-      if (cancelled) return;
+    {
       const tiles = gsap.utils.toArray<HTMLElement>(`.${cls.tile}`, el);
       const faces = tiles.map((t) => t.querySelector<HTMLElement>(`.${cls.face}`)!);
       const base = el.querySelector<HTMLElement>(`.${cls.base}`)!;
       const hero = el.parentElement as HTMLElement;
       const scrim = el.querySelector<HTMLElement>(`.${cls.scrim}`)!;
       const picked = Math.floor(grid.cols * 0.55) + Math.floor(grid.rows * 0.3) * grid.cols; // pieza donde está su rostro
-      const t = gsap.timeline({ delay: 0.25, onComplete: () => setDone(true) });
+      const t = gsap.timeline({ delay: 0, onComplete: () => setDone(true) });
       tl = t;
       t.fromTo(
         tiles,
@@ -68,9 +64,8 @@ export default function HeroCollage({ thumbs, cls }: Props) {
         )
         .fromTo(hero.querySelector(`.${cls.heroImg}`), { filter: "brightness(1.35)" }, { filter: "brightness(1)", duration: 0.8, ease: "power2.out" }, "<")
         .to(scrim, { autoAlpha: 0, duration: 0.5, ease: "power1.inOut" }, "<");
-    })();
+    }
     return () => {
-      cancelled = true;
       tl?.kill();
     };
   }, [grid, cls]);
