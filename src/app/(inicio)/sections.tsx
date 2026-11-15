@@ -169,7 +169,7 @@ export function Acuerdos() {
         {acuerdosListos.map((a, i) => (
           <Reveal as="li" key={a.t} className={s.law} delay={i * 110}>
             <span className={s.lawYear}>{a.year}</span>
-            <p className={s.lawN}>{a.n} · {a.rol}{a.con && <span className={s.lawWith} tabIndex={0}>{a.con}</span>}</p>
+            <p className={s.lawN}>{a.n} · {a.rol}</p>
             <h3>{a.t}</h3>
             <p>{a.d}</p>
             <a className={s.lawSrc} href={a.src} target="_blank" rel="noopener noreferrer">Ver publicación <span aria-hidden="true">↗</span></a>

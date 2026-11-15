@@ -522,13 +522,3 @@
   .pressItem{grid-row:span 5;grid-template-rows:subgrid;row-gap:6px;height:auto}
 }
 @media(min-width:960px) and (max-width:1199px){.pressList{row-gap:16px}}
-
-/* ===== acuerdos: dato extra de coautoría que aparece debajo de la etiqueta al pasar el mouse ===== */
-.lawN{position:relative}
-.lawWith{display:block;margin-top:4px;font-size:.82rem;letter-spacing:.02em;text-transform:none;font-weight:600;color:var(--muted);outline:none}
-@media(hover:hover) and (pointer:fine){
-  .law{position:relative}
-  .lawWith{position:absolute;left:0;top:100%;z-index:3;margin-top:6px;padding:6px 12px;border-radius:10px;white-space:nowrap;background:var(--ink);color:var(--cream);box-shadow:0 10px 24px -10px #2a124099;opacity:0;transform:translateY(-4px);pointer-events:none;transition:opacity .25s,transform .25s}
-  .law:hover .lawWith,.law:focus-within .lawWith,.lawWith:focus{opacity:1;transform:none}
-}
-@media(prefers-reduced-motion:reduce){.lawWith{transition:none}}
