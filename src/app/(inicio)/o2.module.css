@@ -307,9 +307,9 @@
   /* historia: fotos más bajas para que las cuatro tarjetas quepan */
   .snap .chPic img{aspect-ratio:auto;height:clamp(130px,25svh,300px)}
   .snap .chNum{width:44px;height:44px;font-size:1.2rem}
-  .snap .histHome{grid-template-columns:1fr auto}
+  .snap .histHome{grid-template-columns:1fr}
   .snap .histHome .secHead{grid-column:1}
-  .snap .histHome .more{grid-column:2;grid-row:1;align-self:end}
+  .snap .histHome .more{grid-column:1;grid-row:3;justify-self:start}
   .snap .histHome .chGrid{grid-column:1 / -1}
   .snap .chBody{padding:16px 18px 20px;gap:6px}
   .snap .chBody h3{font-size:1.35rem}
