@@ -7,6 +7,7 @@ import { SHOW_CONTACT_FORM } from "@/config/features";
 import Counter from "@/components/Counter";
 import { chapters, comisiones, reconocimientos, medios, frentes, wall, redes, acuerdosListos, video, cifras, timeline, emprendedores } from "@/content/site";
 import { galeria } from "@/content/galeria";
+import AwardSlides from "@/components/AwardSlides";
 import { published, formatDate, bitacora } from "@/content/blog";
 import s from "./o2.module.css";
 
@@ -133,12 +134,12 @@ export function Reconocimientos({ more = false }: { more?: boolean }) {
   return (
     <section id="reconocimientos" className={`${s.sec} ${s.awards}`} aria-labelledby="logros-title">
       <SecHead eyebrow="Reconocimientos" title="Hechos, no solo palabras." id="logros-title" />
-      <Reveal as="figure" variant="clip" className={s.awardPhoto}>
-        <Image src={galeria["evento-comunitario-tarima"].src} alt={galeria["evento-comunitario-tarima"].alt} width={galeria["evento-comunitario-tarima"].w} height={galeria["evento-comunitario-tarima"].h} sizes="(max-width:960px) 92vw, 40vw" loading="lazy" />
-        <figcaption>
-          <strong>Por y para la comunidad florideña.</strong>
-          <span>Creciendo con mujeres soñadoras y emprendedoras.</span>
-        </figcaption>
+      <Reveal variant="clip" className={s.slidesWrap}>
+        <AwardSlides
+          title="Los premios llevan su nombre. El mérito es de Floridablanca."
+          sub="Creciendo junto a mujeres soñadoras y emprendedoras."
+          slides={(["reunion-comunitaria-escucha", "evento-comunitario-tarima", "retrato-concejal-placa", "encuentro-mujeres-noche", "retrato-camisa-institucional-despacho", "abrazo-encuentro-mujeres"] as const).map((k) => ({ ...galeria[k], pos: k.startsWith("retrato") ? "50% 22%" : k === "evento-comunitario-tarima" ? "60% 30%" : "50% 35%" }))}
+        />
       </Reveal>
       <ol className={s.awardList}>
         {reconocimientos.map((r, i) => (

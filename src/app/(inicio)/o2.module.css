@@ -53,11 +53,11 @@
 .heroImg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 30%;animation:slow 24s ease-in-out infinite alternate}
 @keyframes slow{to{transform:scale(1.06)}}
 .heroCap{position:absolute;left:16px;bottom:16px;z-index:2;padding:7px 14px;border-radius:999px;background:#2a1240cc;color:var(--cream);font-size:.82rem;font-weight:600;backdrop-filter:blur(6px)}
-.heroImg img{filter:sepia(.22) saturate(1.08) contrast(1.02)}
-/* tono mostaza sobre toda la foto + degradado que la funde con el panel mostaza */
-.heroImg::before{content:"";position:absolute;inset:0;z-index:1;background:var(--must);mix-blend-mode:multiply;opacity:.3;pointer-events:none}
-.heroImg::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,transparent 42%,#e3a92b8c 78%,var(--must) 100%)}
-.heroCap{z-index:2}
+.heroImg{overflow:hidden;background:var(--must)}
+.heroImg img{filter:saturate(1.05) contrast(1.03)}
+.heroImg::before{content:none}
+/* fundido suave hacia el mostaza (curva en varios pasos para que no se vea la raya) */
+.heroImg::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,#e3a92b00 0%,#e3a92b00 55%,#e3a92b40 68%,#e3a92b99 82%,#e3a92be6 94%,var(--must) 100%)}
 .collage{position:absolute;inset:0;z-index:3;pointer-events:none}
 .scrim{position:absolute;inset:0;background:linear-gradient(180deg,#2a1240aa,#2a1240dd)}
 .base{position:absolute;inset:0;background:var(--ink)}
@@ -79,7 +79,7 @@
 .heroSoc .icons a{color:var(--ink);border-color:#2a124055}
 .heroSoc .icons a:hover{background:var(--ink);color:var(--must)}
 @media(min-width:960px){
-  .heroImg::after{background:linear-gradient(90deg,var(--must) 0%,#e3a92bd9 12%,#e3a92b66 30%,transparent 55%),linear-gradient(180deg,transparent 70%,#e3a92b55)}
+  .heroImg::after{inset:0 0 0 -2px;background:linear-gradient(90deg,var(--must) 0%,#e3a92bf2 8%,#e3a92bd0 16%,#e3a92b99 26%,#e3a92b5c 36%,#e3a92b2e 46%,#e3a92b0f 56%,#e3a92b00 66%)}
   .hero{grid-template-columns:1.05fr 1fr;min-height:calc(100svh - 66px)}
   .heroCopy{padding:60px max(24px,5vw);order:-1}
   .heroImg{min-height:auto}
@@ -401,7 +401,7 @@
 @media(min-width:960px){.footer{grid-template-columns:1.2fr 1fr;padding:72px max(24px,6vw) 32px}.fBottom{grid-column:1 / -1}}
 
 /* ===== portada: lema, etiquetas y llamada a la acción ===== */
-.hero h1{font-size:clamp(2.1rem,7.4vw,3.6rem);line-height:1.04;max-width:16ch}
+.hero h1{font-size:clamp(2.6rem,11vw,4.6rem);line-height:1;max-width:none}
 .tagline{font-family:var(--f-display),serif;font-style:italic;font-weight:700;font-size:clamp(1.25rem,4.4vw,1.7rem);color:var(--purple);margin:0;position:relative;justify-self:start}
 .tagline::after{content:"";display:block;height:5px;margin-top:2px;border-radius:5px;background:var(--purple);opacity:.85;width:100%;transform-origin:left;animation:taglineLine 1s .6s both cubic-bezier(.2,.7,.2,1)}
 @keyframes taglineLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
@@ -431,3 +431,22 @@
   .snap .awards .award{grid-template-columns:auto 1fr;gap:18px;align-items:center}
 }
 @media(min-width:960px) and (min-height:600px){.snap .awards .awardPhoto{margin-top:12px}.snap .awards .awardPhoto img{height:clamp(220px,42svh,420px)}}
+
+.firstBadge{margin:0;font-weight:700;font-size:.95rem;color:var(--ink);display:inline-block;padding:8px 14px;border-radius:12px;background:#fbf4e6cc;border:1px solid #2a124033;justify-self:start}
+@media(min-width:960px){.hero h1,.snap .hero h1{font-size:clamp(3rem,min(6vw,11svh),5.6rem)}}
+
+/* ===== reconocimientos: presentación de fotos ===== */
+.slides{display:flex;flex-direction:column;overflow:hidden;border-radius:26px;border:3px solid var(--must);box-shadow:0 26px 50px -28px #000;background:#150a24;margin:0}
+.frame{position:relative;overflow:hidden;aspect-ratio:4/3;flex:1 1 auto;min-height:0}
+.slide{position:absolute;inset:0;opacity:0;transform:translateY(8%) scale(1.04);transition:opacity .9s ease,transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.slide img{width:100%;height:100%;object-fit:cover;display:block}
+.slideOn{opacity:1;transform:none;z-index:1}
+.slideOut{opacity:0;transform:translateY(-8%) scale(1.02);z-index:0}
+.slidesCap{display:grid;gap:4px;padding:16px 20px 18px;color:var(--cream)}
+.slidesCap strong{font-family:var(--f-display),serif;font-size:clamp(1.2rem,3.4vw,1.6rem);line-height:1.15;color:var(--must)}
+.slidesCap span{font-size:.98rem}
+.dots{position:absolute;z-index:3;left:16px;bottom:12px;display:flex;gap:6px}
+.dots i{width:22px;height:4px;border-radius:4px;background:#fbf4e688;transition:background .3s,width .3s}
+.dots i.on{background:var(--must);width:34px}
+@media(prefers-reduced-motion:reduce){.slide{transition:none;transform:none}}
+@media(min-width:960px) and (min-height:600px){.snap .awards .slidesWrap{grid-column:1;grid-row:2;margin-top:8px}.snap .awards .slides{height:clamp(300px,58svh,520px)}.snap .awards .frame{aspect-ratio:auto}}
