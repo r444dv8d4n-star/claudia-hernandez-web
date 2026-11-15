@@ -42,7 +42,7 @@ export default function HeroCollage({ thumbs, cls }: Props) {
       const hero = el.parentElement as HTMLElement;
       const scrim = el.querySelector<HTMLElement>(`.${cls.scrim}`)!;
       const picked = Math.floor(grid.cols * 0.55) + Math.floor(grid.rows * 0.3) * grid.cols; // pieza donde está su rostro
-      const t = gsap.timeline({ delay: 0, onComplete: () => setDone(true) });
+      const t = gsap.timeline({ delay: 0.1, onComplete: () => setDone(true) });
       tl = t;
       t.fromTo(
         tiles,
@@ -53,17 +53,17 @@ export default function HeroCollage({ thumbs, cls }: Props) {
           scale: () => gsap.utils.random(0.2, 1.8),
           autoAlpha: 0,
         },
-        { x: 0, y: 0, rotation: 0, scale: 1, autoAlpha: 1, duration: 0.7, ease: "power3.out", stagger: { amount: 0.5, from: "random" } },
+        { x: 0, y: 0, rotation: 0, scale: 1, autoAlpha: 1, duration: 1.1, ease: "power3.out", stagger: { amount: 0.9, from: "random" } },
       )
         // las piezas se encienden y se desvanecen desde el rostro hacia afuera
-        .to(base, { autoAlpha: 0, duration: 0.5, ease: "power1.inOut" }, "+=0.05")
+        .to(base, { autoAlpha: 0, duration: 0.8, ease: "power1.inOut" }, "+=0.15")
         .to(
           faces,
-          { autoAlpha: 0, duration: 0.45, ease: "power2.inOut", stagger: { amount: 0.5, from: picked } },
+          { autoAlpha: 0, duration: 0.7, ease: "power2.inOut", stagger: { amount: 0.9, from: picked } },
           "<0.1",
         )
-        .fromTo(hero.querySelector(`.${cls.heroImg}`), { filter: "brightness(1.35)" }, { filter: "brightness(1)", duration: 0.8, ease: "power2.out" }, "<")
-        .to(scrim, { autoAlpha: 0, duration: 0.5, ease: "power1.inOut" }, "<");
+        .fromTo(hero.querySelector(`.${cls.heroImg}`), { filter: "brightness(1.35)" }, { filter: "brightness(1)", duration: 1.2, ease: "power2.out" }, "<")
+        .to(scrim, { autoAlpha: 0, duration: 0.8, ease: "power1.inOut" }, "<");
     }
     return () => {
       tl?.kill();
