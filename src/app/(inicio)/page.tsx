@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import Loader from "@/components/Loader";
 import Spotlight from "@/components/Spotlight";
 import HeroName from "@/components/HeroName";
 import HeroCollage from "@/components/HeroCollage";
@@ -23,10 +22,6 @@ const collage = [img.sesion, img.mujeres, img.basilica, img.visita, img.feria, i
 export default function Inicio() {
   return (
     <>
-      <Loader className={s.loader}>
-        <span className={s.loaderBar} />
-        <span className={s.loaderName}>Claudia Hernández</span>
-      </Loader>
 
       {/* Inicio por pantallas: cada sección ocupa una pantalla y el scroll pasa de una a otra */}
       <div className={s.snap}>
