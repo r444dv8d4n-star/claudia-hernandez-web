@@ -508,3 +508,17 @@
 /* los títulos caben en una línea en pantallas anchas; en anchos medios reservan dos líneas para no desalinear */
 @media(min-width:960px) and (max-width:1279px){.awards .award h3{min-height:2.44em}}
 @media(min-width:960px){.awards .award h3{font-size:1.05rem}.awards .awardBody{padding-right:5.5rem}}
+
+/* ===== tarjetas en fila: cada renglón (título, texto, enlace) se alinea entre tarjetas con subgrid ===== */
+@media(min-width:960px){
+  .lawGrid{row-gap:0}
+  .law{grid-row:span 5;grid-template-rows:subgrid;row-gap:8px}
+  .snap .law{row-gap:6px}
+  .bitList{row-gap:0}
+  .bitList > li{display:grid;grid-row:span 3;grid-template-rows:subgrid}
+  .entry{grid-row:span 3;grid-template-rows:subgrid;row-gap:8px}
+  .pressList{row-gap:0}
+  .pressList > li{display:grid;grid-row:span 5;grid-template-rows:subgrid}
+  .pressItem{grid-row:span 5;grid-template-rows:subgrid;row-gap:6px;height:auto}
+}
+@media(min-width:960px) and (max-width:1199px){.pressList{row-gap:16px}}

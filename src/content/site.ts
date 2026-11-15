@@ -96,14 +96,14 @@ export const medios: { outlet: string; date: string; t: string; d: string; href:
     outlet: "Ciudad Florida",
     date: "2026",
     t: "Claudia Hernández, presidenta del Concejo de Floridablanca",
-    d: "Su mensaje a las madres florideñas como presidenta del Concejo.",
+    d: "Su mensaje a las madres florideñas como presidenta del Concejo de Floridablanca.",
     href: "https://ciudadflorida.com/claudia-hernandez-presidente-concejo-floridablanca/",
   },
   {
     outlet: "Vanguardia",
     date: "Noviembre de 2024",
     t: "Carmen Cecilia Pérez Gómez: la mujer que transformó a Floridablanca",
-    d: "Cuenta cómo Claudia impulsó el homenaje del Concejo a una de las dos únicas mujeres que han dirigido el municipio.",
+    d: "Cuenta cómo Claudia impulsó el homenaje a una de las dos únicas mujeres que han dirigido el municipio.",
     href: "https://www.vanguardia.com/entretenimiento/las-santandereanas/2024/11/25/carmen-cecilia-perez-gomez-la-mujer-que-transformo-floridablanca-con-pasion-y-compromiso/",
   },
 ];
@@ -123,7 +123,7 @@ export const acuerdos = [
     n: "Acuerdo Municipal 038 de 2016",
     rol: "Autora",
     t: "Los niños también sesionan en el Concejo",
-    d: "Cada último jueves de abril, niñas, niños y adolescentes tienen su propia sesión en el Concejo, y los concejales se comprometen a hacer seguimiento a sus peticiones. Se cumple desde 2017.",
+    d: "Cada último jueves de abril, niñas, niños y adolescentes tienen su propia sesión en el Concejo, y los concejales hacen seguimiento a sus peticiones.",
     src: ig("CwDsWsqJb_L"),
   },
   {
@@ -139,7 +139,7 @@ export const acuerdos = [
     n: "Acuerdo municipal de 2024",
     rol: "Autora",
     t: "Festival de Arte Urbano Gráfico",
-    d: "Institucionaliza el festival y su comité para reconocer y promover a los artistas florideños.",
+    d: "Institucionaliza el festival y su comité para reconocer y promover a los artistas florideños, y darle un lugar permanente al arte urbano gráfico.",
     src: ig("C8f68OHNHo3"),
   },
 ];
