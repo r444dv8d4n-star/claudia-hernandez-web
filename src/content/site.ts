@@ -56,7 +56,7 @@ export const reconocimientos: { year: string; t: string; d: string; src?: { labe
     // Instagram ("la primera mujer en presidir el Concejo de Floridablanca. Y lo hizo dos veces"); Vanguardia la
     // nombra presidenta del Concejo en marzo de 2019; Plan de Desarrollo 2024–2027: presidenta en 2026.
     year: "2019 · 2026",
-    t: "Primera mujer en presidir el Concejo de Floridablanca",
+    t: "Primera mujer en presidir el Concejo",
     d: "En casi 200 años de historia ninguna mujer había llegado a esa silla. Ella lo hizo dos veces.",
     src: { label: "Ver su historia", href: "https://www.youtube.com/watch?v=KMQU6dFsE7s" },
   },
@@ -71,7 +71,7 @@ export const reconocimientos: { year: string; t: string; d: string; src?: { labe
     // Fuentes: su publicación del 11-ene-2024 (C1-UurTpNFv) y el informe de gestión 2024 de Jhonatan Pinzón.
     year: "2024",
     t: "Presidenta de la Comisión de Equidad de la Mujer",
-    d: "Desde ahí reconoció a 18 mujeres rurales de las veredas del municipio. Ese año también fue ponente del Plan de Desarrollo 2024–2027.",
+    d: "Reconoció a 18 mujeres rurales de las veredas del municipio. Ese año también fue ponente del Plan de Desarrollo 2024–2027.",
     src: { label: "Ver publicación", href: "https://www.instagram.com/p/C1-UurTpNFv/" },
   },
 ];
@@ -96,14 +96,14 @@ export const medios: { outlet: string; date: string; t: string; d: string; href:
     outlet: "Ciudad Florida",
     date: "2026",
     t: "Claudia Hernández, presidenta del Concejo de Floridablanca",
-    d: "Su mensaje a las madres florideñas como presidenta del Concejo.",
+    d: "Su mensaje a las madres florideñas como presidenta del Concejo de Floridablanca.",
     href: "https://ciudadflorida.com/claudia-hernandez-presidente-concejo-floridablanca/",
   },
   {
     outlet: "Vanguardia",
     date: "Noviembre de 2024",
     t: "Carmen Cecilia Pérez Gómez: la mujer que transformó a Floridablanca",
-    d: "Cuenta cómo Claudia impulsó el homenaje del Concejo a una de las dos únicas mujeres que han dirigido el municipio.",
+    d: "Cuenta cómo Claudia impulsó el homenaje a una de las dos únicas mujeres que han dirigido el municipio.",
     href: "https://www.vanguardia.com/entretenimiento/las-santandereanas/2024/11/25/carmen-cecilia-perez-gomez-la-mujer-que-transformo-floridablanca-con-pasion-y-compromiso/",
   },
 ];
@@ -122,16 +122,16 @@ export const acuerdos = [
     year: "2016",
     n: "Acuerdo Municipal 038 de 2016",
     rol: "Autora",
-    t: "Los niños también sesionan en el Concejo",
-    d: "Cada último jueves de abril, niñas, niños y adolescentes tienen su propia sesión en el Concejo, y los concejales se comprometen a hacer seguimiento a sus peticiones. Se cumple desde 2017.",
+    t: "Los niños sesionan en el Concejo",
+    d: "Cada último jueves de abril, niñas, niños y adolescentes tienen su propia sesión en el Concejo, y los concejales hacen seguimiento a sus peticiones.",
     src: ig("CwDsWsqJb_L"),
   },
   {
     year: "2024",
     n: "Acuerdo Municipal 005 de 2024",
-    rol: "Coautora, con la concejala Liliana Mendoza",
+    rol: "Coautora",
     t: "ExpoMujer queda institucionalizada",
-    d: "Convierte en norma la feria que impulsa a las emprendedoras florideñas. La aprobaron todos los concejales y en 2025 fue referente nacional.",
+    d: "Convierte en norma la feria que impulsa a las emprendedoras del municipio. La aprobaron todos los concejales y en 2025 fue referente nacional.",
     src: ig("DKs83GPNESu"),
   },
   {
@@ -139,7 +139,7 @@ export const acuerdos = [
     n: "Acuerdo municipal de 2024",
     rol: "Autora",
     t: "Festival de Arte Urbano Gráfico",
-    d: "Institucionaliza el festival y su comité para reconocer y promover a los artistas florideños.",
+    d: "Institucionaliza el festival y su comité para reconocer y promover a los artistas florideños, y darle un lugar permanente al arte urbano gráfico.",
     src: ig("C8f68OHNHo3"),
   },
 ];
@@ -170,10 +170,10 @@ export const emprendedores = [
 ];
 
 export const chapters = [
-  { n: "I", t: "Raíces", d: "Mamá de un abogado y una pediatra. Antes del Concejo fue guardiana de una cárcel, ayudante de construcción y trabajadora de aseo.", p: img.familia },
-  { n: "II", t: "Derecho", d: "Estudiar derecho fue elegir una herramienta para que las personas sean escuchadas.", p: img.blazer },
-  { n: "III", t: "Comunidad", d: "Con grupos como las Mujeres Imparables de Jardín de Limoncitos aprendió que el liderazgo se construye en la calle.", p: img.mujeres },
-  { n: "IV", t: "Concejo", d: `Hoy trabaja desde el Concejo de Floridablanca (${person.period}) llevando esas voces a las decisiones del municipio. Fue la primera mujer en presidirlo, y lo ha hecho dos veces.`, p: img.sesion },
+  { n: "I", t: "Raíces", d: "Mamá de un abogado y una pediatra. Antes fue guardiana de una cárcel, ayudante de construcción y de aseo.", p: img.familia },
+  { n: "II", t: "Derecho", d: "Estudiar derecho fue elegir una herramienta para que las personas sean escuchadas y sus voces cuenten.", p: img.blazer },
+  { n: "III", t: "Comunidad", d: "Con las Mujeres Imparables de Jardín de Limoncitos aprendió que el liderazgo nace en la calle, con la gente.", p: img.mujeres },
+  { n: "IV", t: "Concejo", d: `Desde el Concejo (${person.period}) lleva esas voces a las decisiones locales. Primera mujer en presidirlo, dos veces.`, p: img.sesion },
 ];
 
 export const wall = [

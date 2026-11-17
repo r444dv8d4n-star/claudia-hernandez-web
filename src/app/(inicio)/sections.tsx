@@ -6,6 +6,8 @@ import { socialIcon } from "@/components/Icons";
 import { SHOW_CONTACT_FORM } from "@/config/features";
 import Counter from "@/components/Counter";
 import { chapters, comisiones, reconocimientos, medios, frentes, wall, redes, acuerdosListos, video, cifras, timeline, emprendedores } from "@/content/site";
+import { galeria } from "@/content/galeria";
+import AwardSlides from "@/components/AwardSlides";
 import { published, formatDate, bitacora } from "@/content/blog";
 import s from "./o2.module.css";
 
@@ -132,14 +134,21 @@ export function Reconocimientos({ more = false }: { more?: boolean }) {
   return (
     <section id="reconocimientos" className={`${s.sec} ${s.awards}`} aria-labelledby="logros-title">
       <SecHead eyebrow="Reconocimientos" title="Hechos, no solo palabras." id="logros-title" />
+      <Reveal variant="clip" className={s.slidesWrap}>
+        <AwardSlides
+          title="El mérito es de Floridablanca."
+          
+          slides={(["reunion-comunitaria-escucha", "evento-comunitario-tarima", "retrato-concejal-placa", "encuentro-mujeres-noche", "retrato-camisa-institucional-despacho", "abrazo-encuentro-mujeres"] as const).map((k) => ({ ...galeria[k], pos: k.startsWith("retrato") ? "50% 22%" : k === "evento-comunitario-tarima" ? "60% 30%" : "50% 35%" }))}
+        />
+      </Reveal>
       <ol className={s.awardList}>
         {reconocimientos.map((r, i) => (
           <Reveal as="li" key={r.t} className={s.award} delay={i * 120}>
-            <span className={s.awardYear}>{r.year}</span>
-            <div>
+            <span className={s.awardYear}>{r.year.split(" · ").map((y) => <b key={y}>{y}</b>)}</span>
+            <div className={s.awardBody}>
               <h3>{r.t}</h3>
               <p>{r.d}</p>
-              {r.src && <a className={s.awardSrc} href={r.src.href} target="_blank" rel="noopener noreferrer">{r.src.label} <span aria-hidden="true">↗</span></a>}
+              {r.src && <a className={s.awardSrc} href={r.src.href} target="_blank" rel="noopener noreferrer">{r.src.label} <span aria-hidden="true">→</span></a>}
             </div>
           </Reveal>
         ))}
