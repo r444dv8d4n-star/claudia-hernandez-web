@@ -13,7 +13,8 @@
 /* intro */
 
 /* ===== encabezado ===== */
-.header{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.header{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 16px;background:transparent;border-bottom:1px solid transparent;transition:background .3s,border-color .3s,box-shadow .3s}
+.headerSolid{background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom-color:var(--line);box-shadow:0 12px 30px -26px var(--shadow)}
 .logo{font-family:var(--f-display),serif;font-weight:700;text-decoration:none;font-size:1.2rem;color:var(--text);white-space:nowrap}
 .logo span{color:var(--mustDeep);font-style:italic}
 :global(html[data-theme="dark"]) .logo span{color:var(--must)}
@@ -28,18 +29,8 @@
 .icons svg{width:17px;height:17px}
 .pill{background:var(--ink);color:var(--must)!important;font-weight:700;padding:10px 20px;border-radius:999px;text-decoration:none;white-space:nowrap}
 :global(html[data-theme="dark"]) .pill{background:var(--must);color:var(--ink)!important}
-.toggle{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--text);cursor:pointer}
-.toggle svg{width:18px;height:18px}
-.mMenu{position:relative}
-.mMenu summary{list-style:none;cursor:pointer;display:grid;place-items:center;width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--text)}
-.mMenu summary::-webkit-details-marker{display:none}
-.mMenu summary svg{width:20px;height:20px}
-.mPanel{position:absolute;right:0;top:50px;min-width:230px;display:grid;gap:4px;padding:12px;border-radius:18px;background:var(--surface);border:1px solid var(--line);box-shadow:0 24px 50px -24px var(--shadow)}
-.mPanel a{padding:10px 12px;border-radius:10px;text-decoration:none;font-weight:600;color:var(--text)}
-.mPanel a:hover{background:var(--mustSoft);color:var(--ink)}
-.mPanel .icons{padding:8px 6px 2px}
 .hideM{display:none}
-@media(min-width:960px){.nav{display:flex}.mMenu{display:none}.hideM{display:flex}.header{padding:14px max(24px,4vw)}}
+@media(min-width:960px){.nav{display:flex}.hideM{display:flex}.header{padding:14px max(24px,4vw)}}
 
 /* ===== portada: panel mostaza + foto ===== */
 .hero{--mx:70%;--my:30%;position:relative;display:grid;overflow:hidden;background:var(--must);color:var(--ink)}
@@ -598,3 +589,30 @@
 .postImg{position:relative;display:block;aspect-ratio:16/9;border-radius:24px;overflow:hidden;background:var(--mustSoft);box-shadow:0 30px 60px -36px var(--shadow)}
 .postCover figcaption{font-size:.85rem;color:var(--muted)}
 .postSrc{font-size:.9rem;color:var(--muted);max-width:70ch}
+
+/* ===== Navegación: enlace activo, interruptor sol/luna y barra flotante en celular ===== */
+.nav a[aria-current="page"]{text-decoration:underline;text-decoration-color:var(--must);text-decoration-thickness:3px;text-underline-offset:8px}
+
+.toggle{position:relative;display:inline-flex;align-items:center;flex:none;width:74px;height:38px;padding:0 3px;border-radius:999px;border:1px solid var(--line);background:var(--surface);cursor:pointer;color:var(--muted)}
+.toggle [data-thumb]{position:absolute;top:3px;left:3px;width:30px;height:30px;border-radius:50%;background:var(--must);box-shadow:0 4px 10px -4px var(--shadow);transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+:global(html[data-theme="dark"]) .toggle [data-thumb]{transform:translateX(36px)}
+.toggle [data-ico]{position:relative;z-index:1;display:grid;place-items:center;width:34px;height:30px}
+.toggle svg{width:17px;height:17px}
+.toggle [data-ico="light"]{color:var(--ink)}
+:global(html[data-theme="dark"]) .toggle [data-ico="light"]{color:var(--muted)}
+:global(html[data-theme="dark"]) .toggle [data-ico="dark"]{color:var(--ink)}
+
+.dock{position:fixed;left:0;right:0;bottom:max(14px,env(safe-area-inset-bottom));z-index:70;display:grid;justify-items:center;gap:10px;padding:0 14px;pointer-events:none}
+.dock>*{pointer-events:auto}
+.dockBar{width:min(100%,520px);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:7px 7px 7px 16px;border-radius:999px;background:var(--surface);border:1px solid var(--line);box-shadow:0 18px 40px -16px var(--shadow)}
+.dockMenu{display:inline-flex;align-items:center;gap:10px;font:inherit;font-weight:700;color:var(--text);background:none;border:0;padding:10px 6px;cursor:pointer}
+.dockMenu svg{width:22px;height:22px;color:var(--mustDeep)}
+.dockCta{background:var(--ink);color:var(--must);font-weight:700;padding:13px 26px;border-radius:999px;text-decoration:none;white-space:nowrap}
+.dockPanel{width:min(100%,520px);display:grid;gap:4px;padding:12px;border-radius:24px;background:var(--surface);border:1px solid var(--line);box-shadow:0 24px 50px -20px var(--shadow);animation:dockUp .25s cubic-bezier(.2,.7,.2,1)}
+.dockPanel a{padding:13px 14px;border-radius:14px;text-decoration:none;font-weight:600;font-size:1.05rem;color:var(--text)}
+.dockPanel a:hover,.dockPanel a[aria-current="page"]{background:var(--mustSoft);color:var(--ink)}
+.dockPanel .icons{padding:8px 8px 2px}
+.dockPanel .icons a{padding:0}
+@keyframes dockUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:959px){.root{padding-bottom:84px}}
+@media(min-width:960px){.dock{display:none}}
