@@ -4,6 +4,8 @@
  * Si el artículo resume una nota de prensa, llena `fuente` para enlazar la nota original.
  * Mientras la lista esté vacía, la página /blog muestra un aviso "muy pronto".
  */
+import type { GaleriaId } from "@/content/galeria";
+
 export type Fuente = {
   medio: string;
   titulo: string; // título exacto de la nota original
@@ -18,6 +20,9 @@ export type Articulo = {
   date: string; // AAAA-MM-DD
   excerpt: string;
   body: string[];
+  /** Foto de portada: una de las fotos de src/content/galeria.ts. Es foto de archivo, no del hecho de la nota. */
+  portada: GaleriaId;
+  portadaPos?: string; // object-position del recorte, ej. "50% 20%"
   fuente?: Fuente;
   draft?: boolean;
 };
@@ -44,6 +49,8 @@ export const articulos: Articulo[] = [
       "Según la nota, Claudia presentó su carta de renuncia a la presidencia de la corporación, pero seguirá como concejal. Mientras se elige a su reemplazo, la presidencia está a cargo de Wilson Ardila Parra, presidente encargado desde la semana anterior.",
       "La nota también anuncia una segunda elección, antes de que termine la vigencia actual, para designar la mesa directiva de 2027.",
     ],
+    portada: "retrato-concejal-placa",
+    portadaPos: "50% 18%",
     fuente: {
       medio: "El Frente",
       titulo: "Concejo de Floridablanca elegirá nueva Junta Directiva este viernes",
@@ -64,6 +71,8 @@ export const articulos: Articulo[] = [
       "Carmen Cecilia fue nombrada alcaldesa de Floridablanca en 1977 por el gobernador Alberto Montoya Puyana. Durante su alcaldía trabajó con la Academia de Historia en la bandera y el escudo del municipio.",
       "La nota recoge además que Claudia considera «un avance significativo» que se hayan considerado los nombres de dos mujeres para la alcaldía.",
     ],
+    portada: "encuentro-mujeres-noche",
+    portadaPos: "50% 40%",
     fuente: {
       medio: "Vanguardia",
       titulo: "Carmen Cecilia Pérez Gómez: la mujer que transformó a Floridablanca con pasión y compromiso",
