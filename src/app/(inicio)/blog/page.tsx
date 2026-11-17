@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { articulosPublicados, blog } from "@/content/articulos";
+import { formatDate } from "@/content/blog";
 import { person } from "@/content/site";
 import { Hablemos, PageHero, Pantallas } from "../sections";
 import s from "../o2.module.css";
@@ -22,10 +23,16 @@ export default function Blog() {
           <ul className={s.entries}>
             {articulosPublicados.map((a) => (
               <li key={a.slug}>
-                <article className={s.entry}>
-                  <span className={s.eM}>{a.tag} · {a.date}</span>
+                <article className={`${s.entry} ${s.entryStatic}`}>
+                  <span className={s.eM}>{a.tag} · {formatDate(a.date)}</span>
                   <h3>{a.title}</h3>
-                  <p>{a.excerpt}</p>
+                  {a.body.map((p, i) => <p key={i}>{p}</p>)}
+                  {a.fuente && (
+                    <a className={s.more} href={a.fuente.url} target="_blank" rel="noopener noreferrer">
+                      Leer la nota original en {a.fuente.medio} <span aria-hidden="true">↗</span>
+                      <span className="sr"> (se abre en una pestaña nueva)</span>
+                    </a>
+                  )}
                 </article>
               </li>
             ))}

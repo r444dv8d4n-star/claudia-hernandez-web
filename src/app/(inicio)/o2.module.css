@@ -548,3 +548,8 @@
     .pGrid .pcard:nth-child(5){--k:4}
   }
 }
+
+/* Blog: las entradas son texto completo, no enlaces; no se levantan al pasar el mouse */
+.entryStatic{align-content:start}
+.entryStatic:hover{transform:none}
+.entryStatic p{color:var(--muted)}
