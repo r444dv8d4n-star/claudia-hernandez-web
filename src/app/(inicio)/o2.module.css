@@ -516,3 +516,35 @@
   .pressItem{grid-row:span 5;grid-template-rows:subgrid;row-gap:6px;height:auto}
 }
 @media(min-width:960px) and (max-width:1199px){.pressList{row-gap:16px}}
+
+/* ===== Efectos de movimiento restaurados (apilado y paralaje) =====
+   Se desactivan con "reducir movimiento". Las tarjetas y paneles tienen fondo opaco
+   para que cada uno cubra al anterior al hacer scroll. */
+@keyframes parallax{from{transform:translateY(60px) scale(.94);opacity:.2}to{transform:none;opacity:1}}
+
+@media (prefers-reduced-motion:no-preference){
+  /* Galería: las fotos entran subiendo y creciendo al hacer scroll */
+  @supports (animation-timeline:view()){
+    .shot{animation:parallax linear both;animation-timeline:view();animation-range:entry 0% cover 60%}
+  }
+
+  /* Historia: cada capítulo queda pegado y el siguiente lo cubre (pantalla completa) */
+  @media (min-height:640px){
+    .storyRow{position:sticky;top:var(--hdr,72px);min-height:calc(100svh - var(--hdr,72px));align-content:center;background:var(--bg);border-top:1px solid var(--line);box-shadow:0 -28px 50px -34px var(--shadow)}
+  }
+
+  /* Celular (una columna): tarjetas de capítulos y de proyectos se apilan como un mazo */
+  @media (max-width:959px) and (min-height:640px){
+    .chGrid .chapter{position:sticky;top:calc(var(--hdr,72px) + var(--k,0) * 18px)}
+    .chGrid .chapter:nth-child(2){--k:1}
+    .chGrid .chapter:nth-child(3){--k:2}
+    .chGrid .chapter:nth-child(4){--k:3}
+  }
+  @media (max-width:699px) and (min-height:640px){
+    .pGrid .pcard{position:sticky;top:calc(var(--hdr,72px) + var(--k,0) * 22px)}
+    .pGrid .pcard:nth-child(2){--k:1}
+    .pGrid .pcard:nth-child(3){--k:2}
+    .pGrid .pcard:nth-child(4){--k:3}
+    .pGrid .pcard:nth-child(5){--k:4}
+  }
+}
