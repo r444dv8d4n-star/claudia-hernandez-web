@@ -13,6 +13,21 @@ export const RED = {
   mensajeInvitacion: "Te invito a unirte a la red de Claudia Hernández en Floridablanca. Regístrate con mi enlace:",
 };
 
+/**
+ * Responsable del tratamiento de los datos (Ley 1581 de 2012). TODO POR CONFIRMAR con el equipo de Claudia.
+ * Mientras algún dato diga POR CONFIRMAR, /terminos muestra el aviso de borrador.
+ */
+export const RESPONSABLE = {
+  nombre: "[POR CONFIRMAR: nombre de la persona o de la campaña]",
+  identificacion: "[POR CONFIRMAR: cédula o NIT]",
+  direccion: "[POR CONFIRMAR: dirección física]",
+  correo: "[POR CONFIRMAR: correo para datos personales]",
+  telefono: "[POR CONFIRMAR: teléfono]",
+  /** Hasta cuándo se guardan los datos (POR CONFIRMAR). */
+  conservacion: "hasta seis (6) meses después de terminado el proceso electoral para el que se creó la red [POR CONFIRMAR]",
+};
+export const esBorrador = () => Object.values(RESPONSABLE).some((v) => v.includes("POR CONFIRMAR"));
+
 /** Puntos (POR CONFIRMAR): por cada invitado directo y por cada invitado de ellos. */
 export const PUNTOS = { directo: 10, segundoNivel: 2 };
 

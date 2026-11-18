@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "probar:red": "node --env-file=.env.local scripts/probar-red.mjs",
+    "limpiar:pruebas": "node --env-file=.env.local scripts/limpiar-pruebas.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
