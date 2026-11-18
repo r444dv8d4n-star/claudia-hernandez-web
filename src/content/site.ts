@@ -63,21 +63,19 @@ export const reconocimientos: { year: string; t: string; d: string; src?: { labe
     year: "2019 · 2026",
     t: "Primera mujer en presidir el Concejo",
     d: "Ninguna mujer había llegado antes a esa silla. Ella lo hizo dos veces.",
-    src: { label: "Ver su historia", href: "https://www.youtube.com/watch?v=KMQU6dFsE7s" },
+    src: { label: "Verla contarlo en video", href: "/historia#video" },
   },
   {
     // Fuente: su publicación del 10-jun-2025 (DKs83GPNESu).
     year: "2025",
     t: "ExpoMujer, referente nacional",
     d: "La feria que impulsó desde 2022 y volvió acuerdo municipal puso a Floridablanca como ejemplo en el país.",
-    src: { label: "Ver publicación", href: "https://www.instagram.com/p/DKs83GPNESu/" },
   },
   {
     // Fuentes: su publicación del 11-ene-2024 (C1-UurTpNFv) y el informe de gestión 2024 de Jhonatan Pinzón.
     year: "2024",
     t: "Presidenta de la Comisión de Equidad de la Mujer",
     d: "Reconoció a 18 mujeres rurales de las veredas del municipio. Ese año también fue ponente del Plan de Desarrollo 2024–2027.",
-    src: { label: "Ver publicación", href: "https://www.instagram.com/p/C1-UurTpNFv/" },
   },
 ];
 
@@ -165,13 +163,14 @@ export const timeline = [
 ];
 
 /** Emprendimientos que ha presentado en sus crónicas. Solo nombre y enlace a su publicación (sin datos de contacto). */
+const ef = (slug: string, w: number, h: number, pos = "50% 50%") => ({ src: `/assets/emprendedores/${slug}.webp`, w, h, pos });
 export const emprendedores = [
-  { n: "Fiore", who: "Catalina", d: "Bolsos y accesorios hechos a mano.", year: "2026", src: ig("Defl7TDNvZm") },
-  { n: "Alma Love", who: "Una creadora florideña", d: "Velas artesanales con esencias.", year: "2026", src: ig("Da1LFD5O-xB") },
-  { n: "personaliza.me", who: "Johanna Angarita", d: "Tazas, termos, agendas y álbumes personalizados.", year: "2026", src: ig("DfTNKnxOliq") },
-  { n: "Impresión 3D", who: "Heider y su novia", d: "Una pareja joven que emprende en equipo.", year: "2026", src: ig("DeAvwH-upqc") },
-  { n: "Heladería Pirineos", who: "Un negocio familiar", d: "Helados con la pujanza de Floridablanca.", year: "2026", src: ig("DWXg5rwjqlc") },
-  { n: "Arepas Mega Queso", who: "Barrio Helechales", d: "Arepas recién hechas y con mucho queso.", year: "2026", src: ig("DV9uO-VDomo") },
+  { n: "Fiore", who: "Catalina", d: "Bolsos y accesorios hechos a mano.", year: "2026", src: ig("Defl7TDNvZm"), foto: ef("fiore", 720, 405) },
+  { n: "Alma Love", who: "Una creadora florideña", d: "Velas artesanales con esencias.", year: "2026", src: ig("Da1LFD5O-xB"), foto: ef("alma-love", 720, 405) },
+  { n: "personaliza.me", who: "Johanna Angarita", d: "Tazas, termos, agendas y álbumes personalizados.", year: "2026", src: ig("DfTNKnxOliq"), foto: ef("personaliza-me", 720, 405) },
+  { n: "Impresión 3D", who: "Heider y su novia", d: "Una pareja joven que emprende en equipo.", year: "2026", src: ig("DeAvwH-upqc"), foto: ef("impresion-3d", 640, 360) },
+  { n: "Heladería Pirineos", who: "Un negocio familiar", d: "Helados con la pujanza de Floridablanca.", year: "2026", src: ig("DWXg5rwjqlc"), foto: ef("heladeria-pirineos", 640, 1136, "50% 55%") },
+  { n: "Arepas Mega Queso", who: "Barrio Helechales", d: "Arepas recién hechas y con mucho queso.", year: "2026", src: ig("DV9uO-VDomo"), foto: ef("arepas-mega-queso", 640, 568) },
 ];
 
 export const chapters = [
@@ -186,16 +185,15 @@ export const slidesReconocimientos = [
   galeria["abrazo-encuentro-mujeres"],
   galeria["retrato-camisa-institucional-despacho"],
   galeria["feria-calle-madre-e-hija"],
-  galeria["equipo-futsal-femenino"],
-  galeria["basilica-verde-familias"],
+  galeria["carnaval-microfono"],
   img.feria,
 ];
 
 export const wall = [
   { ...galeria["carnaval-recorrido-horizontal"], caption: "En el recorrido del carnaval" },
-  { ...galeria["carnaval-microfono"], caption: "Con micrófono y traje de matachín" },
-  { ...galeria["personajes-carnaval"], caption: "Matachines en la calle" },
-  { ...galeria["halloween-globos"], caption: "Tarde de disfraces" },
+  { ...galeria["equipo-futsal-femenino"], caption: "Con el fútbol sala femenino" },
+  { ...galeria["basilica-verde-familias"], caption: "Con las familias, frente a la basílica" },
+  { ...galeria["halloween-globos"], caption: "Tarde de disfraces con los niños" },
 ];
 
 /** Episodio de Detrás del Poder con su historia (YouTube). */

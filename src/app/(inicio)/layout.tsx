@@ -2,6 +2,7 @@ import { Playfair_Display, Inter } from "next/font/google";
 import PersonSchema from "@/components/PersonSchema";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 import s from "./o2.module.css";
 
 const display = Playfair_Display({ subsets: ["latin"], variable: "--f-display", display: "swap", style: ["normal", "italic"] });
@@ -15,6 +16,7 @@ export default function Layout({ children }: LayoutProps<"/">) {
       <SiteHeader />
       <main id="main">{children}</main>
       <SiteFooter />
+      <WhatsAppFloat className={s.waFloat} />
     </div>
   );
 }

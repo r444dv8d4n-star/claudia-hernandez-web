@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { galeria } from "@/content/galeria";
-import { Reconocimientos, Medios, Comisiones, Acuerdos, PageHero, Pantallas } from "../sections";
+import { Reconocimientos, Medios, Comisiones, Acuerdos, Franja, PageHero, Pantallas } from "../sections";
 
 export const metadata: Metadata = {
   title: "Logros",
@@ -17,6 +17,7 @@ export default function Logros() {
         lead="Lo que ha impulsado desde el Concejo de Floridablanca, con sus fuentes. Esta página crece a medida que se confirman nuevos resultados."
       />
       <Reconocimientos />
+      <Franja quote="Las mujeres lideran, transforman y dejan huella." />
       <Medios />
       <Comisiones />
       <Acuerdos />

@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { published, formatDate, bitacora } from "@/content/blog";
+import { published, bitacora } from "@/content/blog";
 import { person } from "@/content/site";
-import { PageHero, Pantallas } from "../sections";
+import { EntryCard, PageHero, Pantallas } from "../sections";
 import s from "../o2.module.css";
 
 export const metadata: Metadata = {
@@ -23,11 +22,7 @@ export default function Bitacora() {
           <ul className={s.entries}>
             {published.map((p) => (
               <li key={p.slug}>
-                <Link className={s.entry} href={`/bitacora/${p.slug}`}>
-                  <span className={s.eM}>{p.tag} · {formatDate(p.date)}</span>
-                  <h3>{p.title}</h3>
-                  <p>{p.excerpt}</p>
-                </Link>
+                <EntryCard p={p} />
               </li>
             ))}
           </ul>

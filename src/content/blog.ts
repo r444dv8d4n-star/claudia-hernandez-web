@@ -13,8 +13,12 @@ export type Post = {
   excerpt: string;
   body: string[];
   ig?: string;
+  /** Portada tomada de su publicación (`pos` = dónde centrar el recorte). */
+  foto?: { src: string; w: number; h: number; pos: string };
   draft?: boolean;
 };
+
+const foto = (slug: string, w: number, h: number, pos: string) => ({ src: `/assets/bitacora/${slug}.webp`, w, h, pos });
 
 export const bitacora = {
   name: "La Bitácora de Claudia",
@@ -35,6 +39,7 @@ export const posts: Post[] = [
       "«Porque contar estas historias… también es endulzar el alma.»",
     ],
     ig: "https://www.instagram.com/p/DRNxVKIDpED/",
+    foto: foto("pioneras-del-dulce-florideno", 640, 1136, "50% 40%"),
   },
   {
     slug: "tropi-carranga-fusion",
@@ -47,6 +52,7 @@ export const posts: Post[] = [
       "Para Claudia, son un ejemplo de cómo las nuevas generaciones mantienen viva la cultura, la reinventan y la comparten con amor por nuestras raíces.",
     ],
     ig: "https://www.instagram.com/p/DN1b8Xq3Dt-/",
+    foto: foto("tropi-carranga-fusion", 675, 1200, "40% 34%"),
   },
   {
     slug: "turismo-en-floridablanca",
@@ -59,6 +65,7 @@ export const posts: Post[] = [
       "«Las respuestas nos inspiran, nos retan y nos recuerdan que el turismo también es identidad, historia y comunidad.»",
     ],
     ig: "https://www.instagram.com/p/DL8FRzhOrRg/",
+    foto: foto("turismo-en-floridablanca", 675, 1200, "50% 40%"),
   },
   {
     slug: "que-significa-ser-concejal",
@@ -71,6 +78,7 @@ export const posts: Post[] = [
       "«La bitácora de Claudia también es de todos los que quieren dejar una historia, una idea, una leyenda o un sueño. Porque a veces, lo que se escribe no se borra… se transforma.»",
     ],
     ig: "https://www.instagram.com/p/DLk6xBUuABl/",
+    foto: foto("que-significa-ser-concejal", 675, 1200, "50% 50%"),
   },
   {
     slug: "que-es-la-bitacora",
@@ -83,6 +91,7 @@ export const posts: Post[] = [
       "Cada comentario, sugerencia o inquietud que nace del día a día merece ser escuchado con atención y respeto. «Porque La Bitácora no es solo de Claudia. Es de todos. Es de Floridablanca.»",
     ],
     ig: "https://www.instagram.com/p/DLSwJi-OrHm/",
+    foto: foto("que-es-la-bitacora", 676, 1200, "50% 46%"),
   },
 ];
 

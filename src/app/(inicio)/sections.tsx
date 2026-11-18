@@ -7,7 +7,7 @@ import { SHOW_CONTACT_FORM } from "@/config/features";
 import Counter from "@/components/Counter";
 import { chapters, slidesReconocimientos, comisiones, reconocimientos, medios, frentes, wall, redes, acuerdosListos, video, cifras, timeline, emprendedores } from "@/content/site";
 import AwardSlides from "@/components/AwardSlides";
-import { published, formatDate, bitacora } from "@/content/blog";
+import { published, formatDate, bitacora, type Post } from "@/content/blog";
 import s from "./o2.module.css";
 
 type Head = { eyebrow: string; title: string; lead?: string; id?: string };
@@ -147,7 +147,7 @@ export function Reconocimientos({ more = false }: { more?: boolean }) {
             <div className={s.awardBody}>
               <h3>{r.t}</h3>
               <p>{r.d}</p>
-              {r.src && <a className={s.awardSrc} href={r.src.href} target="_blank" rel="noopener noreferrer">{r.src.label} <span aria-hidden="true">→</span></a>}
+              {r.src && <Link className={s.awardSrc} href={r.src.href}>{r.src.label} <span aria-hidden="true">→</span></Link>}
             </div>
           </Reveal>
         ))}
@@ -171,7 +171,6 @@ export function Acuerdos() {
             <p className={s.lawN}>{a.n} · {a.rol}</p>
             <h3>{a.t}</h3>
             <p>{a.d}</p>
-            <a className={s.lawSrc} href={a.src} target="_blank" rel="noopener noreferrer">Ver publicación <span aria-hidden="true">↗</span></a>
           </Reveal>
         ))}
       </ol>
@@ -218,6 +217,34 @@ export function LineaDeTiempo() {
   );
 }
 
+/** Tarjeta de una entrada de la Bitácora, con la portada de su publicación. */
+export function EntryCard({ p }: { p: Post }) {
+  return (
+    <Link className={s.entry} href={`/bitacora/${p.slug}`}>
+      {p.foto && (
+        <span className={s.entryPic}>
+          <Image src={p.foto.src} alt="" width={p.foto.w} height={p.foto.h} sizes="(max-width:960px) 92vw, 30vw" loading="lazy" style={{ objectPosition: p.foto.pos }} />
+        </span>
+      )}
+      <span className={s.eM}>{p.tag} · {formatDate(p.date)}</span>
+      <h3>{p.title}</h3>
+      <p>{p.excerpt}</p>
+    </Link>
+  );
+}
+
+/** Franja de color con una frase suya en grande: rompe la secuencia de tarjetas. */
+export function Franja({ quote, by = "Claudia Hernández", tone = "purple" }: { quote: string; by?: string; tone?: "purple" | "must" }) {
+  return (
+    <section className={`${s.sec} ${s.franja} ${tone === "must" ? s.franjaMust : ""}`} aria-label="Frase de Claudia Hernández">
+      <Reveal as="figure" className={s.franjaFig}>
+        <blockquote>“{quote}”</blockquote>
+        <figcaption>{by}</figcaption>
+      </Reveal>
+    </section>
+  );
+}
+
 /** Adelanto de La Bitácora de Claudia (inicio). */
 export function BitacoraTeaser() {
   if (published.length === 0) return null;
@@ -227,11 +254,7 @@ export function BitacoraTeaser() {
       <ul className={s.bitList}>
         {published.slice(0, 3).map((p, i) => (
           <Reveal as="li" key={p.slug} delay={i * 100}>
-            <Link className={s.entry} href={`/bitacora/${p.slug}`}>
-              <span className={s.eM}>{p.tag} · {formatDate(p.date)}</span>
-              <h3>{p.title}</h3>
-              <p>{p.excerpt}</p>
-            </Link>
+            <EntryCard p={p} />
           </Reveal>
         ))}
       </ul>
@@ -249,10 +272,12 @@ export function HechoEnFloridablanca() {
       <ul className={s.makerGrid}>
         {emprendedores.map((e, i) => (
           <Reveal as="li" key={e.n} className={s.maker} delay={i * 70}>
+            <div className={s.makerPic}>
+              <Image src={e.foto.src} alt={`${e.n}: ${e.d}`} width={e.foto.w} height={e.foto.h} sizes="(max-width:700px) 92vw, (max-width:1100px) 46vw, 30vw" loading="lazy" style={{ objectPosition: e.foto.pos }} />
+            </div>
             <h3>{e.n}</h3>
             <p className={s.makerWho}>{e.who}</p>
             <p>{e.d}</p>
-            <a href={e.src} target="_blank" rel="noopener noreferrer">Ver la crónica <span aria-hidden="true">↗</span></a>
           </Reveal>
         ))}
       </ul>

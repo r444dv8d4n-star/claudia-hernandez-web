@@ -531,11 +531,15 @@
 /* ===== tarjetas en fila: cada renglón (título, texto, enlace) se alinea entre tarjetas con subgrid ===== */
 @media(min-width:960px){
   .lawGrid{row-gap:0}
-  .law{grid-row:span 5;grid-template-rows:subgrid;row-gap:8px}
+  .law{grid-row:span 4;grid-template-rows:subgrid;row-gap:8px}
   .snap .law{row-gap:6px}
   .bitList{row-gap:0}
   .bitList > li{display:grid;grid-row:span 3;grid-template-rows:subgrid}
   .entry{grid-row:span 3;grid-template-rows:subgrid;row-gap:8px}
+  .entry:has(.entryPic){grid-row:span 4}
+  .bitList > li:has(.entryPic){grid-row:span 4}
+
+  .entries > li{display:grid;grid-row:span 4;grid-template-rows:subgrid}
   .pressList{row-gap:0}
   .pressList > li{display:grid;grid-row:span 5;grid-template-rows:subgrid}
   .pressItem{grid-row:span 5;grid-template-rows:subgrid;row-gap:6px;height:auto}
@@ -641,3 +645,47 @@
 /* Portadas con foto dentro de las páginas por pantallas: sin el relleno de la portada de solo texto */
 .snap > .pageHeroFoto{padding:0;align-content:stretch}
 @media(min-width:960px){.snap > .pageHeroFoto h1{font-size:clamp(2.6rem,min(5vw,10svh),4.8rem);max-width:16ch}}
+
+/* ===== Cifras alineadas: números con la misma base y renglones parejos ===== */
+.big{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1}
+@media(min-width:960px){
+  .numGrid{grid-template-rows:auto auto auto;row-gap:0}
+  .n{grid-row:span 3;grid-template-rows:subgrid;align-content:start}
+  .n strong{align-self:start}
+}
+
+/* ===== Tarjetas con foto (Bitácora y Hecho en Floridablanca) ===== */
+.entryPic{display:block;margin:-24px -24px 6px;aspect-ratio:16/10;overflow:hidden;border-radius:14px 20px 0 0}
+.entryPic img,.makerPic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.entry:hover .entryPic img,.maker:hover .makerPic img{transform:scale(1.04)}
+.maker{align-content:start;overflow:hidden}
+.makerPic{margin:-22px -22px 8px;aspect-ratio:16/10;overflow:hidden;background:var(--mustSoft)}
+@media(min-width:700px){.makerGrid{grid-auto-rows:auto}}
+@media(min-width:1100px){
+  .makerGrid{row-gap:18px}
+  .makerGrid > .maker{grid-row:span 4;grid-template-rows:subgrid;row-gap:6px}
+}
+.snapOn .makerPic{margin:-16px -18px 6px;aspect-ratio:16/8}
+.snapOn .entryPic{margin:-14px -20px 4px;aspect-ratio:16/8}
+@media(max-height:760px) and (min-width:960px){.snapOn .makerPic,.snapOn .entryPic{aspect-ratio:16/6}}
+
+/* ===== Franja con frase: rompe la secuencia de tarjetas ===== */
+.franja{background:var(--purple);color:var(--cream);display:grid;place-items:center;text-align:center}
+.franjaMust{background:var(--must);color:var(--ink)}
+.franjaFig{margin:0 auto;width:100%;max-width:960px;display:grid;gap:22px;justify-items:center}
+.franja > *{grid-column:1 / -1}
+.franjaFig blockquote{margin:0;font-family:var(--f-display),serif;font-style:italic;font-weight:700;font-size:clamp(2rem,5.4vw,4.4rem);line-height:1.1;text-wrap:balance}
+.franjaFig figcaption{font-size:.9rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--must)}
+.franjaMust .franjaFig figcaption{color:var(--ink);opacity:.75}
+.franjaFig::before{content:"";width:64px;height:5px;border-radius:3px;background:var(--must)}
+
+/* ===== Botón flotante de WhatsApp ===== */
+.waFloat{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:10px;padding:12px 18px 12px 14px;border-radius:999px;background:#25D366;color:#0b2e17;font-weight:800;text-decoration:none;box-shadow:0 14px 30px -12px #0b2e1799;transition:transform .2s}
+.waFloat:hover{transform:translateY(-2px)}
+.waFloat svg{width:26px;height:26px}
+@media(max-width:600px){.waFloat span{display:none}.waFloat{padding:14px}}
+.bitHome .entryPic{aspect-ratio:16/7}
+@media(max-height:800px) and (min-width:960px){.bitHome .entryPic{aspect-ratio:16/5}}
+@media(min-width:960px) and (max-height:900px){.snapOn .makerPic{aspect-ratio:3/1}.snapOn .makers .secHead p:not(.eyebrow){display:none}}
+@media(min-width:960px) and (max-height:900px){.snapOn .makerPic{aspect-ratio:4/1}}
+@media(min-width:1100px){.entries{grid-template-columns:repeat(3,1fr)}}
