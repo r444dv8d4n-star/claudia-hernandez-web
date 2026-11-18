@@ -34,6 +34,12 @@ Todo lo que el equipo puede querer ajustar está en `src/content/red.ts`:
 nombre de la red, mensaje de WhatsApp, **puntos y niveles**, municipios, barrios sugeridos y **datos del responsable**.
 La estructura de la base de datos está en `supabase/migrations/`.
 
+## 🔒 Interruptor
+
+Mientras la variable `RED_ABIERTA` no valga `si`, todas las páginas de la red responden «Página no encontrada».
+Así el código puede estar publicado sin recibir datos reales antes de cumplir lo de abajo.
+Para abrirla: en Vercel → Settings → Environment Variables, agregar `RED_ABIERTA` = `si` y volver a publicar.
+
 ## ✅ Antes de abrir la red al público
 
 1. **Responsable de los datos**: nombre, cédula/NIT, dirección, correo y teléfono → `RESPONSABLE` en `src/content/red.ts`.
@@ -48,6 +54,7 @@ La estructura de la base de datos está en `supabase/migrations/`.
    - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` = la llave pública (empieza por `sb_publishable_`)
    - `SUPABASE_SECRET_KEY` = la llave secreta (empieza por `sb_secret_`) — **marcarla como Sensitive**
    - `NEXT_PUBLIC_SITE_URL` = `https://claudia-hernandez-web.vercel.app` (o el dominio final)
+   - `RED_ABIERTA` = `si` — **solo cuando todo lo demás esté listo** (es lo que abre la red)
 7. **Dominio final**: agregarlo también en Supabase → Authentication → URL Configuration → Redirect URLs.
 8. **Primer administrador real**: registrarse con su correo y pedir que lo promuevan (hoy el único es una cuenta de prueba).
 9. **Borrar los datos de prueba**: `npm run limpiar:pruebas -- --confirmar`
