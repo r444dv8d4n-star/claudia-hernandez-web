@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function Bitacora() {
   return (
-    <Pantallas>
+    <Pantallas saltar={false}>
       <PageHero
         eyebrow={bitacora.name}
         title={<>Escuchar también es <em>gobernar</em>.</>}

@@ -25,7 +25,7 @@ export default function Inicio() {
     <>
 
       {/* Inicio por pantallas: cada sección ocupa una pantalla y el scroll pasa de una a otra */}
-      <div className={s.snap}>
+      <div className={`${s.snap} ${s.snapOn}`}>
       {/* PORTADA: panel mostaza + foto */}
       <Spotlight className={s.hero}>
         <div className={s.heroImg}>

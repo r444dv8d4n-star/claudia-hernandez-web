@@ -689,3 +689,11 @@
 @media(min-width:960px) and (max-height:900px){.snapOn .makerPic{aspect-ratio:3/1}.snapOn .makers .secHead p:not(.eyebrow){display:none}}
 @media(min-width:960px) and (max-height:900px){.snapOn .makerPic{aspect-ratio:4/1}}
 @media(min-width:1100px){.entries{grid-template-columns:repeat(3,1fr)}}
+
+/* ===== Portview: dónde sí y dónde no =====
+   Solo en computador (pantalla ancha y alta): Inicio, Historia, Logros y Proyectos saltan de pantalla en pantalla.
+   En celular y en pantallas bajas casi ninguna sección cabe completa, así que el scroll es normal. */
+@media (max-width:959px),(max-height:599px){:global(html):has(.snapOn){scroll-snap-type:none}}
+/* Inicio · Bitácora: que quepa en una pantalla (texto de cada entrada en máximo 3 líneas). */
+@media(min-width:960px){.snap .bitHome .entry p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}}
+@media(min-width:960px) and (max-height:800px){.snap .bitHome .secHead p:not(.eyebrow){display:none}}

@@ -353,9 +353,10 @@ export function Hablemos() {
 }
 
 /** Envoltura de "inicio por pantallas": cada hijo directo ocupa una pantalla en computador. */
-export function Pantallas({ children }: { children: React.ReactNode }) {
+export function Pantallas({ children, saltar = true }: { children: React.ReactNode; saltar?: boolean }) {
   // snapOn: en las páginas del menú el scroll salta de una sección completa a la siguiente.
-  return <div className={`${s.snap} ${s.snapOn}`}>{children}</div>;
+  // saltar=false: mismo diseño por pantallas, pero con scroll libre (páginas largas de leer).
+  return <div className={saltar ? `${s.snap} ${s.snapOn}` : s.snap}>{children}</div>;
 }
 
 type Foto = { src: string; w: number; h: number; alt: string; pos?: string };
