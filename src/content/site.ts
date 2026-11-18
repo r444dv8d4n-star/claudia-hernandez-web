@@ -38,7 +38,7 @@ export const ig = (code: string) => `https://www.instagram.com/p/${code}/`;
 // Fuente: su publicación del 11-ene-2024 (C1-UurTpNFv).
 export const comisiones = [
   { name: "Comisión de Equidad de la Mujer", scope: "Presidenta desde enero de 2024" },
-  { name: "Comisión Primera · Plan y Bienes", scope: "Primera vicepresidenta en 2024. Presupuesto, plan de desarrollo y ordenamiento" },
+  { name: "Comisión Primera · Plan y Bienes", scope: "Primera vicepresidenta en 2024. Presupuesto, plan de desarrollo y ordenamiento" },
 ];
 
 /** Cifras de su trabajo. Cada una sale de una fuente verificada (ver comentarios). */
@@ -163,9 +163,9 @@ export const timeline = [
 export const emprendedores = [
   { n: "Fiore", who: "Catalina", d: "Bolsos y accesorios hechos a mano.", year: "2026", src: ig("Defl7TDNvZm") },
   { n: "Alma Love", who: "Una creadora florideña", d: "Velas artesanales con esencias.", year: "2026", src: ig("Da1LFD5O-xB") },
-  { n: "personaliza.me", who: "Johanna Angarita", d: "Tazas, termos, agendas y álbumes personalizados.", year: "2026", src: ig("DfTNKnxOliq") },
+  { n: "personaliza.me", who: "Johanna Angarita", d: "Tazas, termos, agendas y álbumes personalizados.", year: "2026", src: ig("DfTNKnxOliq") },
   { n: "Impresión 3D", who: "Heider y su novia", d: "Una pareja joven que emprende en equipo.", year: "2026", src: ig("DeAvwH-upqc") },
-  { n: "Heladería Pirineos", who: "Un negocio familiar", d: "Helados con la pujanza de Floridablanca.", year: "2026", src: ig("DWXg5rwjqlc") },
+  { n: "Heladería Pirineos", who: "Un negocio familiar", d: "Helados con la pujanza de Floridablanca.", year: "2026", src: ig("DWXg5rwjqlc") },
   { n: "Arepas Mega Queso", who: "Barrio Helechales", d: "Arepas recién hechas y con mucho queso.", year: "2026", src: ig("DV9uO-VDomo") },
 ];
 

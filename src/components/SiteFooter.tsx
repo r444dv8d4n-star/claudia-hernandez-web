@@ -8,7 +8,11 @@ export default function SiteFooter() {
     <footer className={s.footer}>
       <div className={s.fBrand}>
         <Link href="/" className={s.logo}>Claudia <span>Hernández</span></Link>
-        <p>{person.role} ({person.period}). Mamá, abogada y líder social. Creciendo con mujeres soñadoras y emprendedoras.</p>
+        <p className={s.fLines}>
+          <span>{person.role} ({person.period}).</span>
+          <span>Mamá, abogada y líder social.</span>
+          <span>Creciendo con mujeres soñadoras y{" "}emprendedoras.</span>
+        </p>
         <SocialIcons />
       </div>
       <div className={s.fCols}>

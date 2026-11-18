@@ -32,7 +32,7 @@ export default function Inicio() {
         </div>
         <HeroCollage cls={s} thumbs={collage} />
         <div className={s.heroCopy} id="prologo">
-          <p className={s.kicker}>{person.role} · {person.period}</p>
+          <p className={s.kicker}>{person.role.replace(/ (\S+)$/, " $1")}{" · "}{person.period}</p>
           <HeroName />
           <p className={s.tagline}>De aquí, como tú.</p>
           <p className={s.traits}>{["Florideña", "Mamá", "Abogada", "Líder social"].map((t, i) => (<span key={t} className={s.trait}>{i > 0 && <i aria-hidden="true"> · </i>}{t}</span>))}</p>

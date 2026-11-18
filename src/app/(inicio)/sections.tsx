@@ -301,7 +301,7 @@ export function Hablemos() {
       <div className={s.cText}>
         <Reveal><p className={s.eyebrow}>Hablemos</p></Reveal>
         <Reveal delay={80}><h2>Tu voz también cuenta en esta historia.</h2></Reveal>
-        <Reveal delay={160}><p>Escríbele sobre tu barrio, tu emprendimiento o una idea para Floridablanca.</p></Reveal>
+        <Reveal delay={160}><p>Escríbele sobre tu barrio, tu emprendimiento o una idea para{" "}Floridablanca.</p></Reveal>
         <Reveal delay={240} as="figure" className={s.quote}>
           <blockquote>“La fuerza de Floridablanca está en su gente y en nuestra unión.”</blockquote>
           <figcaption>Claudia Hernández</figcaption>
@@ -334,12 +334,22 @@ export function Pantallas({ children }: { children: React.ReactNode }) {
   return <div className={`${s.snap} ${s.snapOn}`}>{children}</div>;
 }
 
-export function PageHero({ eyebrow, title, lead }: { eyebrow: string; title: React.ReactNode; lead: string }) {
+type Foto = { src: string; w: number; h: number; alt: string };
+
+/** Portada de cada página. Con `foto`, el texto va en el panel mostaza y la foto a la derecha (arriba en celular). */
+export function PageHero({ eyebrow, title, lead, foto, fotoPos = "50% 30%" }: { eyebrow: string; title: React.ReactNode; lead: string; foto?: Foto; fotoPos?: string }) {
   return (
-    <section className={s.pageHero}>
-      <p className={s.eyebrow}>{eyebrow}</p>
-      <h1>{title}</h1>
-      <p>{lead}</p>
+    <section className={`${s.pageHero} ${foto ? s.pageHeroFoto : ""}`}>
+      {foto && (
+        <div className={s.phImg}>
+          <Image src={foto.src} alt={foto.alt} width={foto.w} height={foto.h} priority sizes="(max-width:960px) 100vw, 50vw" style={{ objectPosition: fotoPos }} />
+        </div>
+      )}
+      <div className={s.phCopy}>
+        <p className={s.eyebrow}>{eyebrow}</p>
+        <h1>{title}</h1>
+        <p>{lead}</p>
+      </div>
     </section>
   );
 }
