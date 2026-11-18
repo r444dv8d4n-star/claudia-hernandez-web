@@ -12,7 +12,6 @@ export default function ProyectosPage() {
     <Pantallas>
       <PageHero
         foto={galeria["reunion-comunitaria-escucha"]}
-        fotoPos="50% 40%"
         eyebrow="Proyectos"
         title={<>Donde está el <em>trabajo</em>.</>}
         lead={"Cinco frentes que guían su labor en el Concejo y en los barrios de Floridablanca."}

@@ -28,7 +28,7 @@ export default function Inicio() {
       {/* PORTADA: panel mostaza + foto */}
       <Spotlight className={s.hero}>
         <div className={s.heroImg}>
-          <Image src={img.consejo.src} alt={img.consejo.alt} width={img.consejo.w} height={img.consejo.h} priority sizes="(max-width:960px) 100vw, 50vw" />
+          <Image src={img.consejo.src} alt={img.consejo.alt} width={img.consejo.w} height={img.consejo.h} priority sizes="(max-width:960px) 100vw, 50vw" style={{ objectPosition: img.consejo.pos }} />
         </div>
         <HeroCollage cls={s} thumbs={collage} />
         <div className={s.heroCopy} id="prologo">

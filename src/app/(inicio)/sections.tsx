@@ -5,8 +5,7 @@ import ContactForm from "@/components/ContactForm";
 import { socialIcon } from "@/components/Icons";
 import { SHOW_CONTACT_FORM } from "@/config/features";
 import Counter from "@/components/Counter";
-import { chapters, comisiones, reconocimientos, medios, frentes, wall, redes, acuerdosListos, video, cifras, timeline, emprendedores } from "@/content/site";
-import { galeria } from "@/content/galeria";
+import { chapters, slidesReconocimientos, comisiones, reconocimientos, medios, frentes, wall, redes, acuerdosListos, video, cifras, timeline, emprendedores } from "@/content/site";
 import AwardSlides from "@/components/AwardSlides";
 import { published, formatDate, bitacora } from "@/content/blog";
 import s from "./o2.module.css";
@@ -36,7 +35,7 @@ export function HistoriaCards({ more = false }: { more?: boolean }) {
         {chapters.map((c, i) => (
           <Reveal as="article" key={c.n} className={s.chapter} delay={i * 90}>
             <div className={s.chPic}>
-              <Image src={c.p.src} alt={c.p.alt} width={c.p.w} height={c.p.h} sizes="(max-width:960px) 92vw, 24vw" loading="lazy" />
+              <Image src={c.p.src} alt={c.p.alt} width={c.p.w} height={c.p.h} sizes="(max-width:960px) 92vw, 24vw" loading="lazy" style={{ objectPosition: c.p.pos }} />
               <span className={s.chNum} aria-hidden="true">{c.n}</span>
             </div>
             <div className={s.chBody}>
@@ -59,7 +58,7 @@ export function HistoriaCompleta() {
       {chapters.map((c, i) => (
         <section key={c.n} className={`${s.sec} ${s.storyRow}`} aria-label={`Capítulo ${c.n}: ${c.t}`}>
           <Reveal className={s.chPic} variant="clip">
-            <Image src={c.p.src} alt={c.p.alt} width={c.p.w} height={c.p.h} sizes="(max-width:960px) 92vw, 44vw" loading={i === 0 ? "eager" : "lazy"} />
+            <Image src={c.pFull.src} alt={c.pFull.alt} width={c.pFull.w} height={c.pFull.h} sizes="(max-width:960px) 92vw, 44vw" loading={i === 0 ? "eager" : "lazy"} style={{ objectPosition: c.pFull.pos }} />
           </Reveal>
           <div className={s.storyTxt}>
             <Reveal><p className={s.chLabel}>Capítulo {c.n}</p></Reveal>
@@ -138,7 +137,7 @@ export function Reconocimientos({ more = false }: { more?: boolean }) {
         <AwardSlides
           title="El mérito es de Floridablanca."
           
-          slides={(["reunion-comunitaria-escucha", "evento-comunitario-tarima", "retrato-concejal-placa", "encuentro-mujeres-noche", "retrato-camisa-institucional-despacho", "abrazo-encuentro-mujeres"] as const).map((k) => ({ ...galeria[k], pos: k.startsWith("retrato") ? "50% 22%" : k === "evento-comunitario-tarima" ? "60% 30%" : "50% 35%" }))}
+          slides={slidesReconocimientos}
         />
       </Reveal>
       <ol className={s.awardList}>
@@ -286,7 +285,7 @@ export function Muro() {
       <div className={s.wallGrid}>
         {wall.map((p, i) => (
           <figure key={p.src} className={s.shot}>
-            <Image src={p.src} alt={p.alt} width={p.w} height={p.h} sizes={i === 0 ? "(max-width:960px) 92vw, 50vw" : "(max-width:960px) 92vw, 25vw"} loading="lazy" />
+            <Image src={p.src} alt={p.alt} width={p.w} height={p.h} sizes={i === 0 ? "(max-width:960px) 92vw, 50vw" : "(max-width:960px) 92vw, 25vw"} loading="lazy" style={{ objectPosition: p.pos }} />
             <figcaption>{p.caption}</figcaption>
           </figure>
         ))}
@@ -334,15 +333,15 @@ export function Pantallas({ children }: { children: React.ReactNode }) {
   return <div className={`${s.snap} ${s.snapOn}`}>{children}</div>;
 }
 
-type Foto = { src: string; w: number; h: number; alt: string };
+type Foto = { src: string; w: number; h: number; alt: string; pos?: string };
 
 /** Portada de cada página. Con `foto`, el texto va en el panel mostaza y la foto a la derecha (arriba en celular). */
-export function PageHero({ eyebrow, title, lead, foto, fotoPos = "50% 30%" }: { eyebrow: string; title: React.ReactNode; lead: string; foto?: Foto; fotoPos?: string }) {
+export function PageHero({ eyebrow, title, lead, foto, fotoPos }: { eyebrow: string; title: React.ReactNode; lead: string; foto?: Foto; fotoPos?: string }) {
   return (
     <section className={`${s.pageHero} ${foto ? s.pageHeroFoto : ""}`}>
       {foto && (
         <div className={s.phImg}>
-          <Image src={foto.src} alt={foto.alt} width={foto.w} height={foto.h} priority sizes="(max-width:960px) 100vw, 50vw" style={{ objectPosition: fotoPos }} />
+          <Image src={foto.src} alt={foto.alt} width={foto.w} height={foto.h} priority sizes="(max-width:960px) 100vw, 50vw" style={{ objectPosition: fotoPos ?? foto.pos ?? "50% 30%" }} />
         </div>
       )}
       <div className={s.phCopy}>

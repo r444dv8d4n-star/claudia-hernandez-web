@@ -1,3 +1,4 @@
+import { galeria } from "@/content/galeria";
 export const TBC = "[POR CONFIRMAR]";
 
 export const person = {
@@ -16,17 +17,21 @@ export const person = {
   },
 };
 
+/**
+ * Fotos del sitio. Las que también están en la galería se toman de allí (antes había copias duplicadas).
+ * `pos` = dónde está la cara (x% y%): los recortes se centran en ese punto.
+ */
 export const img = {
-  retrato: { src: "/assets/img/retrato-concejal-placa.webp", w: 854, h: 569, alt: "Claudia Hernández, concejala, sonriendo en su puesto del Concejo de Floridablanca" },
-  blazer: { src: "/assets/img/retrato-camisa-blanca-jardin.webp", w: 854, h: 854, alt: "Claudia Hernández con camisa blanca institucional, de pie en un jardín" },
-  sesion: { src: "/assets/img/despacho-concejo-visita.webp", w: 1600, h: 1069, alt: "Claudia Hernández con tres personas en su despacho del Concejo de Floridablanca" },
-  consejo: { src: "/assets/img/hero-evento-comunidad.webp", w: 1600, h: 1069, alt: "Claudia Hernández, con blusa celeste, posando junto a una mujer y una niña en un evento comunitario al aire libre" },
-  mujeres: { src: "/assets/img/mujeres-encuentro-nocturno.webp", w: 1600, h: 1069, alt: "Grupo de mujeres y familias reunidas en un encuentro comunitario al aire libre, de noche" },
-  basilica: { src: "/assets/img/basilica-floridablanca-noche.webp", w: 1600, h: 1069, alt: "Claudia Hernández con un grupo de personas frente a la basílica de Floridablanca, de noche" },
-  visita: { src: "/assets/img/visita-hermana-religiosa.webp", w: 1600, h: 1068, alt: "Claudia Hernández compartiendo con una hermana religiosa de edad avanzada" },
-  feria: { src: "/assets/img/equipo-feria-jovenes.webp", w: 1600, h: 1070, alt: "Claudia Hernández con un grupo de jóvenes frente a una carpa en una feria" },
-  ninos: { src: "/assets/img/abrazo-nina-globo.webp", w: 1600, h: 1066, alt: "Claudia Hernández abrazando a una niña con un globo largo en un evento para niños" },
-  familia: { src: "/assets/img/paisaje-montanas.webp", w: 855, h: 1280, alt: "Claudia Hernández de pie, con un paisaje de montañas al fondo" },
+  retrato: galeria["retrato-concejal-placa"],
+  blazer: galeria["retrato-camisa-institucional-jardin"],
+  consejo: galeria["evento-comunitario-tarima"],
+  mujeres: galeria["encuentro-mujeres-noche"],
+  basilica: galeria["basilica-noche-horizontal"],
+  familia: galeria["retrato-camiseta-celeste-montana"],
+  sesion: { src: "/assets/img/despacho-concejo-visita.webp", w: 1600, h: 1069, alt: "Claudia Hernández con tres personas en su despacho del Concejo de Floridablanca", pos: "40% 25%" },
+  visita: { src: "/assets/img/visita-hermana-religiosa.webp", w: 1600, h: 1068, alt: "Claudia Hernández compartiendo con una hermana religiosa de edad avanzada", pos: "42% 22%" },
+  feria: { src: "/assets/img/equipo-feria-jovenes.webp", w: 1600, h: 1070, alt: "Claudia Hernández con un grupo de jóvenes frente a una carpa en una feria", pos: "42% 25%" },
+  ninos: { src: "/assets/img/abrazo-nina-globo.webp", w: 1600, h: 1066, alt: "Claudia Hernández abrazando a una niña con un globo largo en un evento para niños", pos: "55% 32%" },
 };
 
 /** true cuando el texto ya no tiene marcas [POR CONFIRMAR]: solo eso se muestra en el sitio. */
@@ -170,17 +175,27 @@ export const emprendedores = [
 ];
 
 export const chapters = [
-  { n: "I", t: "Raíces", d: "Mamá de un abogado y una pediatra. Antes fue guardiana de una cárcel, ayudante de construcción y de aseo.", p: img.familia },
-  { n: "II", t: "Derecho", d: "Estudiar derecho fue elegir una herramienta para que las personas sean escuchadas y sus voces cuenten.", p: img.blazer },
-  { n: "III", t: "Comunidad", d: "Con las Mujeres Imparables de Jardín de Limoncitos aprendió que el liderazgo nace en la calle, con la gente.", p: img.mujeres },
-  { n: "IV", t: "Concejo", d: `Desde el Concejo (${person.period}) lleva esas voces a las decisiones locales. Primera mujer en presidirlo, dos veces.`, p: img.sesion },
+  { n: "I", t: "Raíces", d: "Mamá de un abogado y una pediatra. Antes fue guardiana de una cárcel, ayudante de construcción y de aseo.", p: img.familia, pFull: img.ninos },
+  { n: "II", t: "Derecho", d: "Estudiar derecho fue elegir una herramienta para que las personas sean escuchadas y sus voces cuenten.", p: img.blazer, pFull: img.visita },
+  { n: "III", t: "Comunidad", d: "Con las Mujeres Imparables de Jardín de Limoncitos aprendió que el liderazgo nace en la calle, con la gente.", p: img.mujeres, pFull: galeria["evento-comunitario-parque"] },
+  { n: "IV", t: "Concejo", d: `Desde el Concejo (${person.period}) lleva esas voces a las decisiones locales. Primera mujer en presidirlo, dos veces.`, p: img.sesion, pFull: galeria["retrato-camisa-institucional-escritorio"] },
+];
+
+/** Carrusel de Reconocimientos (inicio y Logros). Ninguna se repite en otra sección. */
+export const slidesReconocimientos = [
+  galeria["abrazo-encuentro-mujeres"],
+  galeria["retrato-camisa-institucional-despacho"],
+  galeria["feria-calle-madre-e-hija"],
+  galeria["equipo-futsal-femenino"],
+  galeria["basilica-verde-familias"],
+  img.feria,
 ];
 
 export const wall = [
-  { ...img.basilica, caption: "Frente a nuestra basílica, de noche" },
-  { ...img.ninos, caption: "Celebrando con los niños" },
-  { ...img.feria, caption: "Con jóvenes en una feria" },
-  { ...img.visita, caption: "De visita con una hermana religiosa" },
+  { ...galeria["carnaval-recorrido-horizontal"], caption: "En el recorrido del carnaval" },
+  { ...galeria["carnaval-microfono"], caption: "Con micrófono y traje de matachín" },
+  { ...galeria["personajes-carnaval"], caption: "Matachines en la calle" },
+  { ...galeria["halloween-globos"], caption: "Tarde de disfraces" },
 ];
 
 /** Episodio de Detrás del Poder con su historia (YouTube). */

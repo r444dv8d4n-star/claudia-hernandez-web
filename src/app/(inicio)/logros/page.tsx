@@ -12,7 +12,6 @@ export default function Logros() {
     <Pantallas>
       <PageHero
         foto={galeria["retrato-concejal-placa"]}
-        fotoPos="50% 30%"
         eyebrow="Logros"
         title={<>Hechos que se pueden <em>contar</em>.</>}
         lead="Lo que ha impulsado desde el Concejo de Floridablanca, con sus fuentes. Esta página crece a medida que se confirman nuevos resultados."
