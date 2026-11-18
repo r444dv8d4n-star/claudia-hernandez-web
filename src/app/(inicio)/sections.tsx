@@ -330,7 +330,8 @@ export function Hablemos() {
 
 /** Envoltura de "inicio por pantallas": cada hijo directo ocupa una pantalla en computador. */
 export function Pantallas({ children }: { children: React.ReactNode }) {
-  return <div className={s.snap}>{children}</div>;
+  // snapOn: en las páginas del menú el scroll salta de una sección completa a la siguiente.
+  return <div className={`${s.snap} ${s.snapOn}`}>{children}</div>;
 }
 
 export function PageHero({ eyebrow, title, lead }: { eyebrow: string; title: React.ReactNode; lead: string }) {
