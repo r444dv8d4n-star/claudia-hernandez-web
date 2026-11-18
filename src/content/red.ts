@@ -2,6 +2,9 @@
  * Configuración de la red de referidos.
  * Los valores marcados POR CONFIRMAR los debe aprobar el equipo de Claudia antes de publicar.
  */
+/** ¿La red está abierta al público? (variable RED_ABIERTA=si en Vercel). Cerrada, el sitio no la muestra. */
+export const redAbierta = process.env.RED_ABIERTA === "si";
+
 export const RED = {
   /** Nombre de la red (POR CONFIRMAR). */
   nombre: "Amigos de Claudia",

@@ -1,0 +1,21 @@
+/* Sección «Súmate a la red» del inicio: franja morada con botón mostaza (colores de la red). */
+.unete{background:radial-gradient(900px circle at 10% 0%,#7a4bc255,transparent 60%),var(--ink,#2A1240);color:var(--cream,#FBF4E6);display:grid;gap:clamp(28px,4vw,56px);align-items:center}
+@media(min-width:960px){.unete{grid-template-columns:minmax(0,6fr) minmax(0,5fr)}}
+.texto{display:grid;gap:16px;justify-items:start}
+.eyebrow{font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--must,#E3A92B)}
+.texto h2{color:var(--cream,#FBF4E6)}
+.texto h2 em{color:var(--must,#E3A92B)}
+.lead{font-size:clamp(1.05rem,1.6vw,1.25rem);max-width:46ch;color:#fbf4e6d9}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.btn,.btnGhost{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:999px;font-weight:800;text-decoration:none;transition:transform .2s,background .2s}
+.btn{background:var(--must,#E3A92B);color:#2A1240}
+.btn:hover{background:#F0BC45;transform:translateY(-2px)}
+.btnGhost{border:2px solid #fbf4e666;color:var(--cream,#FBF4E6)}
+.btnGhost:hover{border-color:var(--must,#E3A92B);color:var(--must,#E3A92B)}
+.nota{font-size:.88rem;color:#fbf4e6a6}
+.nota a{color:var(--must,#E3A92B)}
+.pasos{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.pasos li{display:flex;gap:16px;align-items:flex-start;background:#ffffff0d;border:1px solid #ffffff1f;border-radius:20px;padding:18px 20px}
+.num{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--must,#E3A92B);color:#2A1240;font-weight:800;font-size:1.2rem}
+.pasos h3{font-size:1.2rem;color:var(--cream,#FBF4E6);margin:0 0 4px}
+.pasos p{color:#fbf4e6bf;font-size:.95rem}
