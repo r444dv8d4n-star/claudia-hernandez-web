@@ -5,6 +5,7 @@ import Spotlight from "@/components/Spotlight";
 import HeroName from "@/components/HeroName";
 import HeroCollage from "@/components/HeroCollage";
 import ExtraSection from "@/components/ExtraSection";
+import UneteRed from "@/components/UneteRed";
 import SocialIcons from "@/components/SocialIcons";
 import { person, img } from "@/content/site";
 import { HistoriaCards, Cifras, Reconocimientos, Medios, Acuerdos, BitacoraTeaser, Proyectos, Hablemos } from "./sections";
@@ -53,6 +54,7 @@ export default function Inicio() {
       <Medios />
       <Proyectos more />
       <ExtraSection className={s.extra} />
+      <UneteRed />
       <Hablemos />
       </div>
     </>
