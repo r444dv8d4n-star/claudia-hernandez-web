@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { galeria } from "@/content/galeria";
-import { Reconocimientos, Medios, Comisiones, Acuerdos, Hablemos, PageHero, Pantallas } from "../sections";
+import { Reconocimientos, Medios, Comisiones, Acuerdos, PageHero, Pantallas } from "../sections";
 
 export const metadata: Metadata = {
   title: "Logros",
@@ -20,7 +20,6 @@ export default function Logros() {
       <Medios />
       <Comisiones />
       <Acuerdos />
-      <Hablemos />
     </Pantallas>
   );
 }

@@ -7,7 +7,7 @@ import HeroCollage from "@/components/HeroCollage";
 import ExtraSection from "@/components/ExtraSection";
 import SocialIcons from "@/components/SocialIcons";
 import { person, img } from "@/content/site";
-import { HistoriaCards, Cifras, Reconocimientos, Medios, Acuerdos, BitacoraTeaser, Proyectos, Hablemos } from "./sections";
+import { HistoriaCards, Cifras, Reconocimientos, BitacoraTeaser, Proyectos, Hablemos } from "./sections";
 import s from "./o2.module.css";
 
 export const metadata: Metadata = {
@@ -48,9 +48,7 @@ export default function Inicio() {
       <HistoriaCards more />
       <Cifras />
       <Reconocimientos more />
-      <Acuerdos />
       <BitacoraTeaser />
-      <Medios />
       <Proyectos more />
       <ExtraSection className={s.extra} />
       <Hablemos />

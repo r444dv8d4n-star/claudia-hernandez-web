@@ -48,8 +48,8 @@ export const comisiones = [
 
 /** Cifras de su trabajo. Cada una sale de una fuente verificada (ver comentarios). */
 export const cifras = [
-  { n: 2, l: "veces presidenta del Concejo", note: "La primera mujer en lograrlo" },
-  { n: 3, l: "acuerdos municipales de su autoría", note: "Niñez, ExpoMujer y arte urbano" },
+  { n: 2, l: "veces presidenta del Concejo", note: "Un hecho histórico para Floridablanca" },
+  { n: 3, l: "acuerdos municipales de su autoría", note: "Niñez, mujeres y arte urbano" },
   { n: 2016, l: "año de su primer acuerdo", note: "La sesión de los niños en el Concejo" },
   { n: 12, l: "emprendimientos contados en sus crónicas", note: "Hecho en Floridablanca", plus: true },
 ];
@@ -62,7 +62,7 @@ export const reconocimientos: { year: string; t: string; d: string; src?: { labe
     // nombra presidenta del Concejo en marzo de 2019; Plan de Desarrollo 2024–2027: presidenta en 2026.
     year: "2019 · 2026",
     t: "Primera mujer en presidir el Concejo",
-    d: "En casi 200 años de historia ninguna mujer había llegado a esa silla. Ella lo hizo dos veces.",
+    d: "Ninguna mujer había llegado antes a esa silla. Ella lo hizo dos veces.",
     src: { label: "Ver su historia", href: "https://www.youtube.com/watch?v=KMQU6dFsE7s" },
   },
   {
@@ -114,7 +114,7 @@ export const medios: { outlet: string; date: string; t: string; d: string; href:
 ];
 
 export const frentes: { t: string; d: string }[] = [
-  { t: "Mujeres y emprendimiento", d: "ExpoMujer, la Comisión de la Mujer y la serie «Hecho en Floridablanca», donde presenta emprendedoras con nombre propio." },
+  { t: "Mujeres y emprendimiento", d: "Ferias para emprendedoras, la Comisión de la Mujer y la serie «Hecho en Floridablanca», donde presenta emprendedoras con nombre propio." },
   { t: "Educación y alimentación escolar", d: "Seguimiento a la educación y a la alimentación escolar en el municipio." },
   { t: "Cuidado y salud", d: "Pedagogía y prevención para que cada familia cuide de sí misma." },
   { t: "Cultura y territorio", d: "Orgullo por la Ciudad Dulce de Santander, sus tradiciones y su gente." },
@@ -178,7 +178,7 @@ export const chapters = [
   { n: "I", t: "Raíces", d: "Mamá de un abogado y una pediatra. Antes fue guardiana de una cárcel, ayudante de construcción y de aseo.", p: img.familia, pFull: img.ninos },
   { n: "II", t: "Derecho", d: "Estudiar derecho fue elegir una herramienta para que las personas sean escuchadas y sus voces cuenten.", p: img.blazer, pFull: img.visita },
   { n: "III", t: "Comunidad", d: "Con las Mujeres Imparables de Jardín de Limoncitos aprendió que el liderazgo nace en la calle, con la gente.", p: img.mujeres, pFull: galeria["evento-comunitario-parque"] },
-  { n: "IV", t: "Concejo", d: `Desde el Concejo (${person.period}) lleva esas voces a las decisiones locales. Primera mujer en presidirlo, dos veces.`, p: img.sesion, pFull: galeria["retrato-camisa-institucional-escritorio"] },
+  { n: "IV", t: "Concejo", d: `Desde el Concejo (${person.period}) lleva esas voces a las decisiones locales. Lo ha presidido dos veces.`, p: img.sesion, pFull: galeria["retrato-camisa-institucional-escritorio"] },
 ];
 
 /** Carrusel de Reconocimientos (inicio y Logros). Ninguna se repite en otra sección. */

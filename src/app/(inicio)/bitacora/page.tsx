@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { published, formatDate, bitacora } from "@/content/blog";
 import { person } from "@/content/site";
-import { Hablemos, PageHero, Pantallas } from "../sections";
+import { PageHero, Pantallas } from "../sections";
 import s from "../o2.module.css";
 
 export const metadata: Metadata = {
@@ -38,7 +38,6 @@ export default function Bitacora() {
           </div>
         )}
       </section>
-      <Hablemos />
     </Pantallas>
   );
 }
