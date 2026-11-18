@@ -5,6 +5,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import { MenuIcon } from "@/components/Icons";
 import SocialIcons, { navLinks } from "@/components/SocialIcons";
 import s from "@/app/(inicio)/o2.module.css";
+import u from "@/components/UneteRed.module.css";
 
 /** Enlace del menú: las páginas del sitio se abren en la misma pestaña. */
 function NavLink({ href, className, current, children }: { href: string; className?: string; current?: "page"; children: React.ReactNode }) {
@@ -15,7 +16,8 @@ function NavLink({ href, className, current, children }: { href: string; classNa
   );
 }
 
-export default function SiteHeader() {
+/** `red`: muestra el botón de la red de referidos (solo cuando está abierta). */
+export default function SiteHeader({ red = false }: { red?: boolean }) {
   const path = usePathname();
   const current = (href: string) => (path === href || path.startsWith(`${href}/`) ? "page" : undefined);
   const closeMenu = (e: React.MouseEvent<HTMLElement>) => e.currentTarget.closest("details")?.removeAttribute("open");
@@ -31,6 +33,7 @@ export default function SiteHeader() {
       <div className={s.tools}>
         <span className={s.hideM}><SocialIcons /></span>
         <ThemeToggle className={s.toggle} />
+        {red && <NavLink className={`${u.pillRed} ${s.hideM}`} href="/registro">Únete a la red</NavLink>}
         <NavLink className={`${s.pill} ${s.hideM}`} href="/#hablemos">Hablemos</NavLink>
         <details className={s.mMenu}>
           <summary aria-label="Abrir menú"><MenuIcon /></summary>
@@ -40,6 +43,7 @@ export default function SiteHeader() {
               <NavLink key={l.href} href={l.href} current={current(l.href)}>{l.label}</NavLink>
             ))}
             <NavLink href="/#hablemos">Hablemos</NavLink>
+            {red && <NavLink href="/registro">Únete a la red</NavLink>}
             <SocialIcons />
           </nav>
         </details>
