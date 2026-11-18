@@ -1,3 +1,4 @@
+import { galeria } from "@/content/galeria";
 export const TBC = "[POR CONFIRMAR]";
 
 export const person = {
@@ -16,17 +17,21 @@ export const person = {
   },
 };
 
+/**
+ * Fotos del sitio. Las que también están en la galería se toman de allí (antes había copias duplicadas).
+ * `pos` = dónde está la cara (x% y%): los recortes se centran en ese punto.
+ */
 export const img = {
-  retrato: { src: "/assets/img/retrato-concejal-placa.webp", w: 854, h: 569, alt: "Claudia Hernández, concejala, sonriendo en su puesto del Concejo de Floridablanca" },
-  blazer: { src: "/assets/img/retrato-camisa-blanca-jardin.webp", w: 854, h: 854, alt: "Claudia Hernández con camisa blanca institucional, de pie en un jardín" },
-  sesion: { src: "/assets/img/despacho-concejo-visita.webp", w: 1600, h: 1069, alt: "Claudia Hernández con tres personas en su despacho del Concejo de Floridablanca" },
-  consejo: { src: "/assets/img/hero-evento-comunidad.webp", w: 1600, h: 1069, alt: "Claudia Hernández, con blusa celeste, posando junto a una mujer y una niña en un evento comunitario al aire libre" },
-  mujeres: { src: "/assets/img/mujeres-encuentro-nocturno.webp", w: 1600, h: 1069, alt: "Grupo de mujeres y familias reunidas en un encuentro comunitario al aire libre, de noche" },
-  basilica: { src: "/assets/img/basilica-floridablanca-noche.webp", w: 1600, h: 1069, alt: "Claudia Hernández con un grupo de personas frente a la basílica de Floridablanca, de noche" },
-  visita: { src: "/assets/img/visita-hermana-religiosa.webp", w: 1600, h: 1068, alt: "Claudia Hernández compartiendo con una hermana religiosa de edad avanzada" },
-  feria: { src: "/assets/img/equipo-feria-jovenes.webp", w: 1600, h: 1070, alt: "Claudia Hernández con un grupo de jóvenes frente a una carpa en una feria" },
-  ninos: { src: "/assets/img/abrazo-nina-globo.webp", w: 1600, h: 1066, alt: "Claudia Hernández abrazando a una niña con un globo largo en un evento para niños" },
-  familia: { src: "/assets/img/paisaje-montanas.webp", w: 855, h: 1280, alt: "Claudia Hernández de pie, con un paisaje de montañas al fondo" },
+  retrato: galeria["retrato-concejal-placa"],
+  blazer: galeria["retrato-camisa-institucional-jardin"],
+  consejo: galeria["evento-comunitario-tarima"],
+  mujeres: galeria["encuentro-mujeres-noche"],
+  basilica: galeria["basilica-noche-horizontal"],
+  familia: galeria["retrato-camiseta-celeste-montana"],
+  sesion: { src: "/assets/img/despacho-concejo-visita.webp", w: 1600, h: 1069, alt: "Claudia Hernández con tres personas en su despacho del Concejo de Floridablanca", pos: "40% 25%" },
+  visita: { src: "/assets/img/visita-hermana-religiosa.webp", w: 1600, h: 1068, alt: "Claudia Hernández compartiendo con una hermana religiosa de edad avanzada", pos: "42% 22%" },
+  feria: { src: "/assets/img/equipo-feria-jovenes.webp", w: 1600, h: 1070, alt: "Claudia Hernández con un grupo de jóvenes frente a una carpa en una feria", pos: "42% 25%" },
+  ninos: { src: "/assets/img/abrazo-nina-globo.webp", w: 1600, h: 1066, alt: "Claudia Hernández abrazando a una niña con un globo largo en un evento para niños", pos: "55% 32%" },
 };
 
 /** true cuando el texto ya no tiene marcas [POR CONFIRMAR]: solo eso se muestra en el sitio. */
@@ -38,13 +43,13 @@ export const ig = (code: string) => `https://www.instagram.com/p/${code}/`;
 // Fuente: su publicación del 11-ene-2024 (C1-UurTpNFv).
 export const comisiones = [
   { name: "Comisión de Equidad de la Mujer", scope: "Presidenta desde enero de 2024" },
-  { name: "Comisión Primera · Plan y Bienes", scope: "Primera vicepresidenta en 2024. Presupuesto, plan de desarrollo y ordenamiento" },
+  { name: "Comisión Primera · Plan y Bienes", scope: "Primera vicepresidenta en 2024. Presupuesto, plan de desarrollo y ordenamiento" },
 ];
 
 /** Cifras de su trabajo. Cada una sale de una fuente verificada (ver comentarios). */
 export const cifras = [
-  { n: 2, l: "veces presidenta del Concejo", note: "La primera mujer en lograrlo" },
-  { n: 3, l: "acuerdos municipales de su autoría", note: "Niñez, ExpoMujer y arte urbano" },
+  { n: 2, l: "veces presidenta del Concejo", note: "Un hecho histórico para Floridablanca" },
+  { n: 3, l: "acuerdos municipales de su autoría", note: "Niñez, mujeres y arte urbano" },
   { n: 2016, l: "año de su primer acuerdo", note: "La sesión de los niños en el Concejo" },
   { n: 12, l: "emprendimientos contados en sus crónicas", note: "Hecho en Floridablanca", plus: true },
 ];
@@ -57,22 +62,20 @@ export const reconocimientos: { year: string; t: string; d: string; src?: { labe
     // nombra presidenta del Concejo en marzo de 2019; Plan de Desarrollo 2024–2027: presidenta en 2026.
     year: "2019 · 2026",
     t: "Primera mujer en presidir el Concejo",
-    d: "En casi 200 años de historia ninguna mujer había llegado a esa silla. Ella lo hizo dos veces.",
-    src: { label: "Ver su historia", href: "https://www.youtube.com/watch?v=KMQU6dFsE7s" },
+    d: "Ninguna mujer había llegado antes a esa silla. Ella lo hizo dos veces.",
+    src: { label: "Verla contarlo en video", href: "/historia#video" },
   },
   {
     // Fuente: su publicación del 10-jun-2025 (DKs83GPNESu).
     year: "2025",
     t: "ExpoMujer, referente nacional",
     d: "La feria que impulsó desde 2022 y volvió acuerdo municipal puso a Floridablanca como ejemplo en el país.",
-    src: { label: "Ver publicación", href: "https://www.instagram.com/p/DKs83GPNESu/" },
   },
   {
     // Fuentes: su publicación del 11-ene-2024 (C1-UurTpNFv) y el informe de gestión 2024 de Jhonatan Pinzón.
     year: "2024",
     t: "Presidenta de la Comisión de Equidad de la Mujer",
     d: "Reconoció a 18 mujeres rurales de las veredas del municipio. Ese año también fue ponente del Plan de Desarrollo 2024–2027.",
-    src: { label: "Ver publicación", href: "https://www.instagram.com/p/C1-UurTpNFv/" },
   },
 ];
 
@@ -109,7 +112,7 @@ export const medios: { outlet: string; date: string; t: string; d: string; href:
 ];
 
 export const frentes: { t: string; d: string }[] = [
-  { t: "Mujeres y emprendimiento", d: "ExpoMujer, la Comisión de la Mujer y la serie «Hecho en Floridablanca», donde presenta emprendedoras con nombre propio." },
+  { t: "Mujeres y emprendimiento", d: "Ferias para emprendedoras, la Comisión de la Mujer y la serie «Hecho en Floridablanca», donde presenta emprendedoras con nombre propio." },
   { t: "Educación y alimentación escolar", d: "Seguimiento a la educación y a la alimentación escolar en el municipio." },
   { t: "Cuidado y salud", d: "Pedagogía y prevención para que cada familia cuide de sí misma." },
   { t: "Cultura y territorio", d: "Orgullo por la Ciudad Dulce de Santander, sus tradiciones y su gente." },
@@ -160,27 +163,37 @@ export const timeline = [
 ];
 
 /** Emprendimientos que ha presentado en sus crónicas. Solo nombre y enlace a su publicación (sin datos de contacto). */
+const ef = (slug: string, w: number, h: number, pos = "50% 50%") => ({ src: `/assets/emprendedores/${slug}.webp`, w, h, pos });
 export const emprendedores = [
-  { n: "Fiore", who: "Catalina", d: "Bolsos y accesorios hechos a mano.", year: "2026", src: ig("Defl7TDNvZm") },
-  { n: "Alma Love", who: "Una creadora florideña", d: "Velas artesanales con esencias.", year: "2026", src: ig("Da1LFD5O-xB") },
-  { n: "personaliza.me", who: "Johanna Angarita", d: "Tazas, termos, agendas y álbumes personalizados.", year: "2026", src: ig("DfTNKnxOliq") },
-  { n: "Impresión 3D", who: "Heider y su novia", d: "Una pareja joven que emprende en equipo.", year: "2026", src: ig("DeAvwH-upqc") },
-  { n: "Heladería Pirineos", who: "Un negocio familiar", d: "Helados con la pujanza de Floridablanca.", year: "2026", src: ig("DWXg5rwjqlc") },
-  { n: "Arepas Mega Queso", who: "Barrio Helechales", d: "Arepas recién hechas y con mucho queso.", year: "2026", src: ig("DV9uO-VDomo") },
+  { n: "Fiore", who: "Catalina", d: "Bolsos y accesorios hechos a mano.", year: "2026", src: ig("Defl7TDNvZm"), foto: ef("fiore", 720, 405) },
+  { n: "Alma Love", who: "Una creadora florideña", d: "Velas artesanales con esencias.", year: "2026", src: ig("Da1LFD5O-xB"), foto: ef("alma-love", 720, 405) },
+  { n: "personaliza.me", who: "Johanna Angarita", d: "Tazas, termos, agendas y álbumes personalizados.", year: "2026", src: ig("DfTNKnxOliq"), foto: ef("personaliza-me", 720, 405) },
+  { n: "Impresión 3D", who: "Heider y su novia", d: "Una pareja joven que emprende en equipo.", year: "2026", src: ig("DeAvwH-upqc"), foto: ef("impresion-3d", 640, 360) },
+  { n: "Heladería Pirineos", who: "Un negocio familiar", d: "Helados con la pujanza de Floridablanca.", year: "2026", src: ig("DWXg5rwjqlc"), foto: ef("heladeria-pirineos", 640, 1136, "50% 55%") },
+  { n: "Arepas Mega Queso", who: "Barrio Helechales", d: "Arepas recién hechas y con mucho queso.", year: "2026", src: ig("DV9uO-VDomo"), foto: ef("arepas-mega-queso", 640, 568) },
 ];
 
 export const chapters = [
-  { n: "I", t: "Raíces", d: "Mamá de un abogado y una pediatra. Antes fue guardiana de una cárcel, ayudante de construcción y de aseo.", p: img.familia },
-  { n: "II", t: "Derecho", d: "Estudiar derecho fue elegir una herramienta para que las personas sean escuchadas y sus voces cuenten.", p: img.blazer },
-  { n: "III", t: "Comunidad", d: "Con las Mujeres Imparables de Jardín de Limoncitos aprendió que el liderazgo nace en la calle, con la gente.", p: img.mujeres },
-  { n: "IV", t: "Concejo", d: `Desde el Concejo (${person.period}) lleva esas voces a las decisiones locales. Primera mujer en presidirlo, dos veces.`, p: img.sesion },
+  { n: "I", t: "Raíces", d: "Mamá de un abogado y una pediatra. Antes fue guardiana de una cárcel, ayudante de construcción y de aseo.", p: img.familia, pFull: img.ninos },
+  { n: "II", t: "Derecho", d: "Estudiar derecho fue elegir una herramienta para que las personas sean escuchadas y sus voces cuenten.", p: img.blazer, pFull: img.visita },
+  { n: "III", t: "Comunidad", d: "Con las Mujeres Imparables de Jardín de Limoncitos aprendió que el liderazgo nace en la calle, con la gente.", p: img.mujeres, pFull: galeria["evento-comunitario-parque"] },
+  { n: "IV", t: "Concejo", d: `Desde el Concejo (${person.period}) lleva esas voces a las decisiones locales. Lo ha presidido dos veces.`, p: img.sesion, pFull: galeria["retrato-camisa-institucional-escritorio"] },
+];
+
+/** Carrusel de Reconocimientos (inicio y Logros). Ninguna se repite en otra sección. */
+export const slidesReconocimientos = [
+  galeria["abrazo-encuentro-mujeres"],
+  galeria["retrato-camisa-institucional-despacho"],
+  galeria["feria-calle-madre-e-hija"],
+  galeria["carnaval-microfono"],
+  img.feria,
 ];
 
 export const wall = [
-  { ...img.basilica, caption: "Frente a nuestra basílica, de noche" },
-  { ...img.ninos, caption: "Celebrando con los niños" },
-  { ...img.feria, caption: "Con jóvenes en una feria" },
-  { ...img.visita, caption: "De visita con una hermana religiosa" },
+  { ...galeria["carnaval-recorrido-horizontal"], caption: "En el recorrido del carnaval" },
+  { ...galeria["equipo-futsal-femenino"], caption: "Con el fútbol sala femenino" },
+  { ...galeria["basilica-verde-familias"], caption: "Con las familias, frente a la basílica" },
+  { ...galeria["halloween-globos"], caption: "Tarde de disfraces con los niños" },
 ];
 
 /** Episodio de Detrás del Poder con su historia (YouTube). */

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { galeria } from "@/content/galeria";
 import { Proyectos, HechoEnFloridablanca, Muro, Hablemos, PageHero, Pantallas } from "../sections";
 
 export const metadata: Metadata = {
@@ -10,9 +11,10 @@ export default function ProyectosPage() {
   return (
     <Pantallas>
       <PageHero
+        foto={galeria["reunion-comunitaria-escucha"]}
         eyebrow="Proyectos"
         title={<>Donde está el <em>trabajo</em>.</>}
-        lead="Cinco frentes que guían su labor en el Concejo y en los barrios de Floridablanca."
+        lead={"Cinco frentes que guían su labor en el Concejo y en los barrios de Floridablanca."}
       />
       <Proyectos />
       <HechoEnFloridablanca />

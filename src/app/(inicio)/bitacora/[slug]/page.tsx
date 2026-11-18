@@ -22,13 +22,13 @@ export default async function Entrada({ params }: PageProps<"/bitacora/[slug]">)
   if (!post) notFound();
   return (
     <>
-      <PageHero eyebrow={`${bitacora.name} · ${post.tag} · ${formatDate(post.date)}`} title={post.title} lead={post.excerpt} />
+      <PageHero eyebrow={`${bitacora.name} · ${post.tag} · ${formatDate(post.date)}`} title={post.title} lead={post.excerpt}
+        foto={post.foto ? { ...post.foto, alt: post.title } : undefined} />
       <section className={s.sec}>
         <article className={s.article}>
           {post.body.map((p, i) => <p key={i}>{p}</p>)}
         </article>
         <div className={s.ctas}>
-          {post.ig && <a className={s.more} href={post.ig} target="_blank" rel="noopener noreferrer">Ver la publicación original en Instagram <span aria-hidden="true">↗</span></a>}
           <Link className={s.more} href="/bitacora">Volver a la Bitácora</Link>
         </div>
       </section>

@@ -6,12 +6,11 @@ import { MenuIcon } from "@/components/Icons";
 import SocialIcons, { navLinks } from "@/components/SocialIcons";
 import s from "@/app/(inicio)/o2.module.css";
 
-/** Enlace del panel: abre en una pestaña nueva y lo avisa a lectores de pantalla. */
-function NewTabLink({ href, className, current, children }: { href: string; className?: string; current?: "page"; children: React.ReactNode }) {
+/** Enlace del menú: las páginas del sitio se abren en la misma pestaña. */
+function NavLink({ href, className, current, children }: { href: string; className?: string; current?: "page"; children: React.ReactNode }) {
   return (
-    <Link href={href} className={className} aria-current={current} target="_blank" rel="noopener noreferrer">
+    <Link href={href} className={className} aria-current={current}>
       {children}
-      <span className="sr"> (se abre en una pestaña nueva)</span>
     </Link>
   );
 }
@@ -26,21 +25,21 @@ export default function SiteHeader() {
       <Link href="/" className={s.logo}>Claudia <span>Hernández</span></Link>
       <nav aria-label="Principal" className={s.nav}>
         {navLinks.map((l) => (
-          <NewTabLink key={l.href} href={l.href} current={current(l.href)}>{l.label}</NewTabLink>
+          <NavLink key={l.href} href={l.href} current={current(l.href)}>{l.label}</NavLink>
         ))}
       </nav>
       <div className={s.tools}>
         <span className={s.hideM}><SocialIcons /></span>
         <ThemeToggle className={s.toggle} />
-        <NewTabLink className={`${s.pill} ${s.hideM}`} href="/#hablemos">Hablemos</NewTabLink>
+        <NavLink className={`${s.pill} ${s.hideM}`} href="/#hablemos">Hablemos</NavLink>
         <details className={s.mMenu}>
           <summary aria-label="Abrir menú"><MenuIcon /></summary>
           <nav aria-label="Menú móvil" className={s.mPanel} onClick={closeMenu}>
-            <NewTabLink href="/">Inicio</NewTabLink>
+            <NavLink href="/">Inicio</NavLink>
             {navLinks.map((l) => (
-              <NewTabLink key={l.href} href={l.href} current={current(l.href)}>{l.label}</NewTabLink>
+              <NavLink key={l.href} href={l.href} current={current(l.href)}>{l.label}</NavLink>
             ))}
-            <NewTabLink href="/#hablemos">Hablemos</NewTabLink>
+            <NavLink href="/#hablemos">Hablemos</NavLink>
             <SocialIcons />
           </nav>
         </details>

@@ -7,7 +7,7 @@ import HeroCollage from "@/components/HeroCollage";
 import ExtraSection from "@/components/ExtraSection";
 import SocialIcons from "@/components/SocialIcons";
 import { person, img } from "@/content/site";
-import { HistoriaCards, Cifras, Reconocimientos, Medios, Acuerdos, BitacoraTeaser, Proyectos, Hablemos } from "./sections";
+import { HistoriaCards, Cifras, Reconocimientos, BitacoraTeaser, Proyectos, Hablemos } from "./sections";
 import s from "./o2.module.css";
 
 export const metadata: Metadata = {
@@ -28,11 +28,11 @@ export default function Inicio() {
       {/* PORTADA: panel mostaza + foto */}
       <Spotlight className={s.hero}>
         <div className={s.heroImg}>
-          <Image src={img.consejo.src} alt={img.consejo.alt} width={img.consejo.w} height={img.consejo.h} priority sizes="(max-width:960px) 100vw, 50vw" />
+          <Image src={img.consejo.src} alt={img.consejo.alt} width={img.consejo.w} height={img.consejo.h} priority sizes="(max-width:960px) 100vw, 50vw" style={{ objectPosition: img.consejo.pos }} />
         </div>
         <HeroCollage cls={s} thumbs={collage} />
         <div className={s.heroCopy} id="prologo">
-          <p className={s.kicker}>{person.role} · {person.period}</p>
+          <p className={s.kicker}>{person.role.replace(/ (\S+)$/, " $1")}{" · "}{person.period}</p>
           <HeroName />
           <p className={s.tagline}>De aquí, como tú.</p>
           <p className={s.traits}>{["Florideña", "Mamá", "Abogada", "Líder social"].map((t, i) => (<span key={t} className={s.trait}>{i > 0 && <i aria-hidden="true"> · </i>}{t}</span>))}</p>
@@ -48,9 +48,7 @@ export default function Inicio() {
       <HistoriaCards more />
       <Cifras />
       <Reconocimientos more />
-      <Acuerdos />
       <BitacoraTeaser />
-      <Medios />
       <Proyectos more />
       <ExtraSection className={s.extra} />
       <Hablemos />

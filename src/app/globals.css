@@ -7,6 +7,9 @@ a{color:inherit}
 html:not([data-theme="dark"]) [data-when="dark"],html[data-theme="dark"] [data-when="light"]{display:none}
 [data-when]{display:inline-flex}
 html{color-scheme:light}html[data-theme="dark"]{color-scheme:dark}
+/* Cortes de línea cuidados: títulos equilibrados y párrafos sin una palabra suelta al final */
+h1,h2,h3,h4{text-wrap:balance}
+p,li,figcaption,blockquote,dd{text-wrap:pretty}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* Revelados compartidos (verticales / de opacidad, nunca laterales) */

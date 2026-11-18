@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { HistoriaCompleta, Hablemos, LineaDeTiempo, PageHero, Pantallas, Video } from "../sections";
+import { galeria } from "@/content/galeria";
+import { HistoriaCompleta, LineaDeTiempo, PageHero, Pantallas, Video } from "../sections";
 
 export const metadata: Metadata = {
   title: "Su historia",
@@ -10,14 +11,14 @@ export default function Historia() {
   return (
     <Pantallas>
       <PageHero
+        foto={galeria["basilica-noche-horizontal"]}
         eyebrow="Historia"
         title={<>Una historia que empieza en <em>casa</em>.</>}
-        lead="Mamá, abogada y líder social. Cuatro capítulos que explican cómo llegó al Concejo de Floridablanca y por qué trabaja como trabaja."
+        lead="Cuatro capítulos que explican cómo llegó al Concejo de Floridablanca y por qué trabaja como trabaja."
       />
       <Video />
       <LineaDeTiempo />
       <HistoriaCompleta />
-      <Hablemos />
     </Pantallas>
   );
 }

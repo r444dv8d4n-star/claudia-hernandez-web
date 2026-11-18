@@ -8,7 +8,6 @@ export const navLinks = [
   { href: "/historia", label: "Historia" },
   { href: "/logros", label: "Logros" },
   { href: "/proyectos", label: "Proyectos" },
-  { href: "/blog", label: "Blog" },
   ...(published.length > 0 ? [{ href: "/bitacora", label: "Bitácora" }] : []),
 ];
 

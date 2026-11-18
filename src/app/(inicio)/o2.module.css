@@ -98,6 +98,20 @@
 .pageHero p{max-width:60ch;font-size:1.12rem}
 .pageHero .eyebrow{color:var(--ink);opacity:.8}
 @media(min-width:960px){.pageHero{padding:100px max(24px,6vw) 60px}}
+.phCopy{display:grid;gap:14px}
+/* portada con foto: panel mostaza + foto que se funde con el mostaza (como el inicio) */
+.pageHeroFoto{padding:0;gap:0;overflow:hidden;position:relative}
+.pageHeroFoto .phCopy{padding:36px 16px 44px;position:relative;z-index:1}
+.phImg{position:relative;height:46svh;min-height:260px}
+.phImg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.phImg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,var(--must) 100%)}
+@media(min-width:960px){
+  .pageHeroFoto{grid-template-columns:1.05fr 1fr;align-items:stretch;min-height:calc(100svh - 72px)}
+  .pageHeroFoto .phCopy{order:-1;align-content:center;padding:60px max(24px,5vw) 60px max(24px,6vw)}
+  .pageHeroFoto h1{font-size:clamp(2.6rem,min(5vw,10svh),4.8rem)}
+  .phImg{height:auto;min-height:0}
+  .phImg::after{background:linear-gradient(90deg,var(--must) 0%,transparent 28%)}
+}
 
 /* historia (tarjetas) */
 .chGrid{display:grid;gap:20px}
@@ -289,6 +303,16 @@
    En computador cada sección del inicio ocupa una pantalla (menos el menú) y el scroll
    avanza de una sección completa a la siguiente. En celular solo ayuda a encajar, sin forzar. */
 .snap{--hdr:72px}
+/* Páginas del menú: el scroll pasa de una sección completa a la siguiente ("portview").
+   En el inicio no se aplica (allí el scroll es libre). En celular solo ayuda a encajar. */
+:global(html):has(.snapOn){scroll-snap-type:y proximity;scroll-padding-top:64px}
+.snapOn > *{scroll-snap-align:start}
+:global(html):has(.snapOn) .footer{scroll-snap-align:end}
+@media(min-width:960px) and (min-height:600px){
+  :global(html):has(.snapOn){scroll-snap-type:y mandatory;scroll-padding-top:72px}
+  .snapOn > *{scroll-snap-stop:always}
+}
+@media (prefers-reduced-motion:reduce){:global(html):has(.snapOn){scroll-snap-type:y proximity}}
 @media(min-width:960px) and (min-height:600px){
   :global(html):has(.snap) .header{height:72px;padding-block:0}
   .snap > *{min-height:calc(100svh - var(--hdr));box-sizing:border-box}
@@ -380,10 +404,11 @@
 
 /* ===== pie de página ===== */
 .footer{background:var(--ink);color:var(--cream);padding:56px 16px 28px;display:grid;gap:36px}
-.fBrand{display:grid;gap:12px;max-width:38ch}
+.fBrand{display:grid;gap:12px;max-width:46ch}
 .fBrand .logo{color:var(--cream);font-size:1.5rem}
 .fBrand .logo span{color:var(--must)}
 .fBrand p{opacity:.8}
+.fLines span{display:block}
 .fCols{display:grid;gap:28px;grid-template-columns:1fr 1fr}
 .fCol{display:grid;gap:8px;align-content:start}
 .fCol h3{font-family:var(--f-body),sans-serif!important;font-size:.8rem!important;letter-spacing:.14em;text-transform:uppercase;color:var(--must)}
@@ -506,11 +531,15 @@
 /* ===== tarjetas en fila: cada renglón (título, texto, enlace) se alinea entre tarjetas con subgrid ===== */
 @media(min-width:960px){
   .lawGrid{row-gap:0}
-  .law{grid-row:span 5;grid-template-rows:subgrid;row-gap:8px}
+  .law{grid-row:span 4;grid-template-rows:subgrid;row-gap:8px}
   .snap .law{row-gap:6px}
   .bitList{row-gap:0}
   .bitList > li{display:grid;grid-row:span 3;grid-template-rows:subgrid}
   .entry{grid-row:span 3;grid-template-rows:subgrid;row-gap:8px}
+  .entry:has(.entryPic){grid-row:span 4}
+  .bitList > li:has(.entryPic){grid-row:span 4}
+
+  .entries > li{display:grid;grid-row:span 4;grid-template-rows:subgrid}
   .pressList{row-gap:0}
   .pressList > li{display:grid;grid-row:span 5;grid-template-rows:subgrid}
   .pressItem{grid-row:span 5;grid-template-rows:subgrid;row-gap:6px;height:auto}
@@ -598,3 +627,65 @@
 .postImg{position:relative;display:block;aspect-ratio:16/9;border-radius:24px;overflow:hidden;background:var(--mustSoft);box-shadow:0 30px 60px -36px var(--shadow)}
 .postCover figcaption{font-size:.85rem;color:var(--muted)}
 .postSrc{font-size:.9rem;color:var(--muted);max-width:70ch}
+
+/* Páginas del menú con pantallas: en computadores bajos o angostos, la foto de Reconocimientos
+   baja de alto para que la sección quepa completa en su pantalla (mismo estilo). */
+@media(min-width:960px) and (min-height:600px) and (max-height:720px),(min-width:960px) and (min-height:600px) and (max-width:1199px){
+  .snapOn .awards .slides{min-height:0}
+  .snapOn .awards .awardList.awardList{gap:8px}
+  .snapOn .awards .awardList .award{padding:10px 18px}
+  .snapOn .awards .awardList .award h3{font-size:1.05rem;min-height:0}
+  .snapOn .awards .awardList .award p{font-size:.85rem;line-height:1.3}
+  .snapOn .entries.entries{gap:10px}
+  .snapOn .entries .entry{padding:14px 20px;gap:4px}
+  .snapOn .entries .entry h3{font-size:1.15rem}
+  .snapOn .entries .entry p{font-size:.88rem;line-height:1.35}
+}
+
+/* Portadas con foto dentro de las páginas por pantallas: sin el relleno de la portada de solo texto */
+.snap > .pageHeroFoto{padding:0;align-content:stretch}
+@media(min-width:960px){.snap > .pageHeroFoto h1{font-size:clamp(2.6rem,min(5vw,10svh),4.8rem);max-width:16ch}}
+
+/* ===== Cifras alineadas: números con la misma base y renglones parejos ===== */
+.big{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1}
+@media(min-width:960px){
+  .numGrid{grid-template-rows:auto auto auto;row-gap:0}
+  .n{grid-row:span 3;grid-template-rows:subgrid;align-content:start}
+  .n strong{align-self:start}
+}
+
+/* ===== Tarjetas con foto (Bitácora y Hecho en Floridablanca) ===== */
+.entryPic{display:block;margin:-24px -24px 6px;aspect-ratio:16/10;overflow:hidden;border-radius:14px 20px 0 0}
+.entryPic img,.makerPic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.entry:hover .entryPic img,.maker:hover .makerPic img{transform:scale(1.04)}
+.maker{align-content:start;overflow:hidden}
+.makerPic{margin:-22px -22px 8px;aspect-ratio:16/10;overflow:hidden;background:var(--mustSoft)}
+@media(min-width:700px){.makerGrid{grid-auto-rows:auto}}
+@media(min-width:1100px){
+  .makerGrid{row-gap:18px}
+  .makerGrid > .maker{grid-row:span 4;grid-template-rows:subgrid;row-gap:6px}
+}
+.snapOn .makerPic{margin:-16px -18px 6px;aspect-ratio:16/8}
+.snapOn .entryPic{margin:-14px -20px 4px;aspect-ratio:16/8}
+@media(max-height:760px) and (min-width:960px){.snapOn .makerPic,.snapOn .entryPic{aspect-ratio:16/6}}
+
+/* ===== Franja con frase: rompe la secuencia de tarjetas ===== */
+.franja{background:var(--purple);color:var(--cream);display:grid;place-items:center;text-align:center}
+.franjaMust{background:var(--must);color:var(--ink)}
+.franjaFig{margin:0 auto;width:100%;max-width:960px;display:grid;gap:22px;justify-items:center}
+.franja > *{grid-column:1 / -1}
+.franjaFig blockquote{margin:0;font-family:var(--f-display),serif;font-style:italic;font-weight:700;font-size:clamp(2rem,5.4vw,4.4rem);line-height:1.1;text-wrap:balance}
+.franjaFig figcaption{font-size:.9rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--must)}
+.franjaMust .franjaFig figcaption{color:var(--ink);opacity:.75}
+.franjaFig::before{content:"";width:64px;height:5px;border-radius:3px;background:var(--must)}
+
+/* ===== Botón flotante de WhatsApp ===== */
+.waFloat{position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:10px;padding:12px 18px 12px 14px;border-radius:999px;background:#25D366;color:#0b2e17;font-weight:800;text-decoration:none;box-shadow:0 14px 30px -12px #0b2e1799;transition:transform .2s}
+.waFloat:hover{transform:translateY(-2px)}
+.waFloat svg{width:26px;height:26px}
+@media(max-width:600px){.waFloat span{display:none}.waFloat{padding:14px}}
+.bitHome .entryPic{aspect-ratio:16/7}
+@media(max-height:800px) and (min-width:960px){.bitHome .entryPic{aspect-ratio:16/5}}
+@media(min-width:960px) and (max-height:900px){.snapOn .makerPic{aspect-ratio:3/1}.snapOn .makers .secHead p:not(.eyebrow){display:none}}
+@media(min-width:960px) and (max-height:900px){.snapOn .makerPic{aspect-ratio:4/1}}
+@media(min-width:1100px){.entries{grid-template-columns:repeat(3,1fr)}}

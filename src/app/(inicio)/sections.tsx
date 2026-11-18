@@ -5,10 +5,9 @@ import ContactForm from "@/components/ContactForm";
 import { socialIcon } from "@/components/Icons";
 import { SHOW_CONTACT_FORM } from "@/config/features";
 import Counter from "@/components/Counter";
-import { chapters, comisiones, reconocimientos, medios, frentes, wall, redes, acuerdosListos, video, cifras, timeline, emprendedores } from "@/content/site";
-import { galeria } from "@/content/galeria";
+import { chapters, slidesReconocimientos, comisiones, reconocimientos, medios, frentes, wall, redes, acuerdosListos, video, cifras, timeline, emprendedores } from "@/content/site";
 import AwardSlides from "@/components/AwardSlides";
-import { published, formatDate, bitacora } from "@/content/blog";
+import { published, formatDate, bitacora, type Post } from "@/content/blog";
 import s from "./o2.module.css";
 
 type Head = { eyebrow: string; title: string; lead?: string; id?: string };
@@ -36,7 +35,7 @@ export function HistoriaCards({ more = false }: { more?: boolean }) {
         {chapters.map((c, i) => (
           <Reveal as="article" key={c.n} className={s.chapter} delay={i * 90}>
             <div className={s.chPic}>
-              <Image src={c.p.src} alt={c.p.alt} width={c.p.w} height={c.p.h} sizes="(max-width:960px) 92vw, 24vw" loading="lazy" />
+              <Image src={c.p.src} alt={c.p.alt} width={c.p.w} height={c.p.h} sizes="(max-width:960px) 92vw, 24vw" loading="lazy" style={{ objectPosition: c.p.pos }} />
               <span className={s.chNum} aria-hidden="true">{c.n}</span>
             </div>
             <div className={s.chBody}>
@@ -59,7 +58,7 @@ export function HistoriaCompleta() {
       {chapters.map((c, i) => (
         <section key={c.n} className={`${s.sec} ${s.storyRow}`} aria-label={`Capítulo ${c.n}: ${c.t}`}>
           <Reveal className={s.chPic} variant="clip">
-            <Image src={c.p.src} alt={c.p.alt} width={c.p.w} height={c.p.h} sizes="(max-width:960px) 92vw, 44vw" loading={i === 0 ? "eager" : "lazy"} />
+            <Image src={c.pFull.src} alt={c.pFull.alt} width={c.pFull.w} height={c.pFull.h} sizes="(max-width:960px) 92vw, 44vw" loading={i === 0 ? "eager" : "lazy"} style={{ objectPosition: c.pFull.pos }} />
           </Reveal>
           <div className={s.storyTxt}>
             <Reveal><p className={s.chLabel}>Capítulo {c.n}</p></Reveal>
@@ -138,7 +137,7 @@ export function Reconocimientos({ more = false }: { more?: boolean }) {
         <AwardSlides
           title="El mérito es de Floridablanca."
           
-          slides={(["reunion-comunitaria-escucha", "evento-comunitario-tarima", "retrato-concejal-placa", "encuentro-mujeres-noche", "retrato-camisa-institucional-despacho", "abrazo-encuentro-mujeres"] as const).map((k) => ({ ...galeria[k], pos: k.startsWith("retrato") ? "50% 22%" : k === "evento-comunitario-tarima" ? "60% 30%" : "50% 35%" }))}
+          slides={slidesReconocimientos}
         />
       </Reveal>
       <ol className={s.awardList}>
@@ -148,7 +147,7 @@ export function Reconocimientos({ more = false }: { more?: boolean }) {
             <div className={s.awardBody}>
               <h3>{r.t}</h3>
               <p>{r.d}</p>
-              {r.src && <a className={s.awardSrc} href={r.src.href} target="_blank" rel="noopener noreferrer">{r.src.label} <span aria-hidden="true">→</span></a>}
+              {r.src && <Link className={s.awardSrc} href={r.src.href}>{r.src.label} <span aria-hidden="true">→</span></Link>}
             </div>
           </Reveal>
         ))}
@@ -172,7 +171,6 @@ export function Acuerdos() {
             <p className={s.lawN}>{a.n} · {a.rol}</p>
             <h3>{a.t}</h3>
             <p>{a.d}</p>
-            <a className={s.lawSrc} href={a.src} target="_blank" rel="noopener noreferrer">Ver publicación <span aria-hidden="true">↗</span></a>
           </Reveal>
         ))}
       </ol>
@@ -219,6 +217,34 @@ export function LineaDeTiempo() {
   );
 }
 
+/** Tarjeta de una entrada de la Bitácora, con la portada de su publicación. */
+export function EntryCard({ p }: { p: Post }) {
+  return (
+    <Link className={s.entry} href={`/bitacora/${p.slug}`}>
+      {p.foto && (
+        <span className={s.entryPic}>
+          <Image src={p.foto.src} alt="" width={p.foto.w} height={p.foto.h} sizes="(max-width:960px) 92vw, 30vw" loading="lazy" style={{ objectPosition: p.foto.pos }} />
+        </span>
+      )}
+      <span className={s.eM}>{p.tag} · {formatDate(p.date)}</span>
+      <h3>{p.title}</h3>
+      <p>{p.excerpt}</p>
+    </Link>
+  );
+}
+
+/** Franja de color con una frase suya en grande: rompe la secuencia de tarjetas. */
+export function Franja({ quote, by = "Claudia Hernández", tone = "purple" }: { quote: string; by?: string; tone?: "purple" | "must" }) {
+  return (
+    <section className={`${s.sec} ${s.franja} ${tone === "must" ? s.franjaMust : ""}`} aria-label="Frase de Claudia Hernández">
+      <Reveal as="figure" className={s.franjaFig}>
+        <blockquote>“{quote}”</blockquote>
+        <figcaption>{by}</figcaption>
+      </Reveal>
+    </section>
+  );
+}
+
 /** Adelanto de La Bitácora de Claudia (inicio). */
 export function BitacoraTeaser() {
   if (published.length === 0) return null;
@@ -228,11 +254,7 @@ export function BitacoraTeaser() {
       <ul className={s.bitList}>
         {published.slice(0, 3).map((p, i) => (
           <Reveal as="li" key={p.slug} delay={i * 100}>
-            <Link className={s.entry} href={`/bitacora/${p.slug}`}>
-              <span className={s.eM}>{p.tag} · {formatDate(p.date)}</span>
-              <h3>{p.title}</h3>
-              <p>{p.excerpt}</p>
-            </Link>
+            <EntryCard p={p} />
           </Reveal>
         ))}
       </ul>
@@ -250,10 +272,12 @@ export function HechoEnFloridablanca() {
       <ul className={s.makerGrid}>
         {emprendedores.map((e, i) => (
           <Reveal as="li" key={e.n} className={s.maker} delay={i * 70}>
+            <div className={s.makerPic}>
+              <Image src={e.foto.src} alt={`${e.n}: ${e.d}`} width={e.foto.w} height={e.foto.h} sizes="(max-width:700px) 92vw, (max-width:1100px) 46vw, 30vw" loading="lazy" style={{ objectPosition: e.foto.pos }} />
+            </div>
             <h3>{e.n}</h3>
             <p className={s.makerWho}>{e.who}</p>
             <p>{e.d}</p>
-            <a href={e.src} target="_blank" rel="noopener noreferrer">Ver la crónica <span aria-hidden="true">↗</span></a>
           </Reveal>
         ))}
       </ul>
@@ -286,7 +310,7 @@ export function Muro() {
       <div className={s.wallGrid}>
         {wall.map((p, i) => (
           <figure key={p.src} className={s.shot}>
-            <Image src={p.src} alt={p.alt} width={p.w} height={p.h} sizes={i === 0 ? "(max-width:960px) 92vw, 50vw" : "(max-width:960px) 92vw, 25vw"} loading="lazy" />
+            <Image src={p.src} alt={p.alt} width={p.w} height={p.h} sizes={i === 0 ? "(max-width:960px) 92vw, 50vw" : "(max-width:960px) 92vw, 25vw"} loading="lazy" style={{ objectPosition: p.pos }} />
             <figcaption>{p.caption}</figcaption>
           </figure>
         ))}
@@ -301,7 +325,7 @@ export function Hablemos() {
       <div className={s.cText}>
         <Reveal><p className={s.eyebrow}>Hablemos</p></Reveal>
         <Reveal delay={80}><h2>Tu voz también cuenta en esta historia.</h2></Reveal>
-        <Reveal delay={160}><p>Escríbele sobre tu barrio, tu emprendimiento o una idea para Floridablanca.</p></Reveal>
+        <Reveal delay={160}><p>Escríbele sobre tu barrio, tu emprendimiento o una idea para{" "}Floridablanca.</p></Reveal>
         <Reveal delay={240} as="figure" className={s.quote}>
           <blockquote>“La fuerza de Floridablanca está en su gente y en nuestra unión.”</blockquote>
           <figcaption>Claudia Hernández</figcaption>
@@ -330,15 +354,26 @@ export function Hablemos() {
 
 /** Envoltura de "inicio por pantallas": cada hijo directo ocupa una pantalla en computador. */
 export function Pantallas({ children }: { children: React.ReactNode }) {
-  return <div className={s.snap}>{children}</div>;
+  // snapOn: en las páginas del menú el scroll salta de una sección completa a la siguiente.
+  return <div className={`${s.snap} ${s.snapOn}`}>{children}</div>;
 }
 
-export function PageHero({ eyebrow, title, lead }: { eyebrow: string; title: React.ReactNode; lead: string }) {
+type Foto = { src: string; w: number; h: number; alt: string; pos?: string };
+
+/** Portada de cada página. Con `foto`, el texto va en el panel mostaza y la foto a la derecha (arriba en celular). */
+export function PageHero({ eyebrow, title, lead, foto, fotoPos }: { eyebrow: string; title: React.ReactNode; lead: string; foto?: Foto; fotoPos?: string }) {
   return (
-    <section className={s.pageHero}>
-      <p className={s.eyebrow}>{eyebrow}</p>
-      <h1>{title}</h1>
-      <p>{lead}</p>
+    <section className={`${s.pageHero} ${foto ? s.pageHeroFoto : ""}`}>
+      {foto && (
+        <div className={s.phImg}>
+          <Image src={foto.src} alt={foto.alt} width={foto.w} height={foto.h} priority sizes="(max-width:960px) 100vw, 50vw" style={{ objectPosition: fotoPos ?? foto.pos ?? "50% 30%" }} />
+        </div>
+      )}
+      <div className={s.phCopy}>
+        <p className={s.eyebrow}>{eyebrow}</p>
+        <h1>{title}</h1>
+        <p>{lead}</p>
+      </div>
     </section>
   );
 }
