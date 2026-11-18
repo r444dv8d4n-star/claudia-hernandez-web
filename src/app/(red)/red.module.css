@@ -97,3 +97,41 @@
 @media(max-width:400px){.cifras dd{font-size:1.6rem}}
 .botonPeligro{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:12px;border:1.5px solid #FF9C8A88;background:transparent;color:var(--error);font:inherit;font-weight:700;cursor:pointer}
 .botonPeligro:hover{background:#FF9C8A1f}
+
+/* ===== Panel de administradores (/admin) ===== */
+.centro:has(.ancho){max-width:1120px}
+.marca:has(~ .centro .ancho){max-width:1120px}
+.ancho{display:grid;gap:16px}
+.adminNav{display:flex;flex-wrap:wrap;gap:8px}
+.adminNav a[aria-current="page"]{border-color:var(--must);color:var(--must)}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:0}
+@media(min-width:760px){.kpis{grid-template-columns:repeat(4,1fr)}}
+.kpis div{background:#160A22;border-radius:14px;padding:14px;display:grid;gap:2px}
+.kpis dt{font-size:.85rem;color:var(--muted);font-weight:600}
+.kpis dd{margin:0;font-size:2.1rem;font-weight:800;line-height:1.1}
+.kpis span{font-size:.8rem;color:var(--muted)}
+.dos{display:grid;gap:16px}
+@media(min-width:900px){.dos{grid-template-columns:1fr 1fr}}
+.grafica{width:100%;height:auto;display:block}
+.grafica .barra2{fill:var(--must)}
+.grafica .barra2:hover,.grafica g:focus-visible .barra2{fill:#F6D27E}
+.grafica g:focus-visible{outline:none}
+.grafica text{fill:var(--muted);font-size:11px;font-family:var(--f-red),sans-serif}
+.grafica .eje{stroke:#ffffff33;stroke-width:1}
+.grafica .guia{stroke:#ffffff14;stroke-width:1}
+.grafica .burbuja{fill:#E3A92B55;stroke:var(--must);stroke-width:2}
+.grafica .ciudad{fill:var(--text);font-size:13px;font-weight:700}
+.tabla{width:100%;border-collapse:collapse;font-size:.92rem}
+.tabla th{text-align:left;color:var(--muted);font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;padding:8px 10px;border-bottom:1px solid var(--line)}
+.tabla td{padding:9px 10px;border-bottom:1px solid #ffffff10;vertical-align:top}
+.tabla td.num,.tabla th.num{text-align:right;font-variant-numeric:tabular-nums}
+.tablaWrap{overflow-x:auto;margin:0 -4px}
+.buscador{display:grid;grid-template-columns:1fr auto;gap:8px}
+.buscador input{min-width:0;font:inherit;font-size:1rem;color:var(--text);background:#160A22;border:1.5px solid #ffffff2e;border-radius:12px;padding:10px 14px;min-height:46px}
+.arbol,.arbol ul{list-style:none;margin:0;padding:0}
+.arbol ul{margin-left:14px;padding-left:14px;border-left:2px solid #E3A92B44}
+.arbol li{margin:4px 0}
+.arbol summary{cursor:pointer}
+.arbol .nodo{display:inline-flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.arbol .nodo small{color:var(--muted)}
+.arbol .cuenta{font-size:.78rem;font-weight:700;color:var(--ink);background:var(--must);border-radius:99px;padding:1px 8px}
