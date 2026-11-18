@@ -9,7 +9,28 @@ export const RED = {
   politicaVersion: "2026-11-borrador",
   /** Edad mínima para registrarse. */
   edadMinima: 18,
+  /** Mensaje que se comparte por WhatsApp junto al enlace. */
+  mensajeInvitacion: "Te invito a unirte a la red de Claudia Hernández en Floridablanca. Regístrate con mi enlace:",
 };
+
+/** Puntos (POR CONFIRMAR): por cada invitado directo y por cada invitado de ellos. */
+export const PUNTOS = { directo: 10, segundoNivel: 2 };
+
+/** Niveles por puntos (POR CONFIRMAR), de menor a mayor. */
+export const NIVELES = [
+  { nombre: "Semilla", desde: 0 },
+  { nombre: "Vecina/o", desde: 50 },
+  { nombre: "Líder de barrio", desde: 150 },
+  { nombre: "Embajador/a", desde: 400 },
+] as const;
+
+export function calcularNivel(directos: number, segundo: number) {
+  const puntos = directos * PUNTOS.directo + segundo * PUNTOS.segundoNivel;
+  const i = NIVELES.findLastIndex((n) => puntos >= n.desde);
+  const siguiente = NIVELES[i + 1];
+  return { puntos, nivel: NIVELES[i].nombre, siguiente: siguiente?.nombre, faltan: siguiente ? siguiente.desde - puntos : 0,
+    avance: siguiente ? (puntos - NIVELES[i].desde) / (siguiente.desde - NIVELES[i].desde) : 1 };
+}
 
 /** Municipios del área metropolitana. "Otro" deja escribirlo a mano. */
 export const municipios = ["Floridablanca", "Bucaramanga", "Girón", "Piedecuesta", "Otro"] as const;

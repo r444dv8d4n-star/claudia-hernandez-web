@@ -36,7 +36,7 @@ export async function entrar(prev: EstadoLogin, fd: FormData): Promise<EstadoLog
     correo = data.correo;
   }
 
-  const sb = await supabaseSesion();
+  const sb = await supabaseSesion({ escribir: true });
   const { error } = await sb.auth.signInWithPassword({ email: correo, password: contrasena });
   if (error) {
     await anotarIntento("login", usuario);
@@ -48,7 +48,7 @@ export async function entrar(prev: EstadoLogin, fd: FormData): Promise<EstadoLog
 }
 
 export async function salir() {
-  const sb = await supabaseSesion();
+  const sb = await supabaseSesion({ escribir: true });
   await sb.auth.signOut();
   redirect("/login");
 }

@@ -13,7 +13,7 @@ export async function cambiarClave(prev: EstadoClave, fd: FormData): Promise<Est
   if (!/[A-Za-zÀ-ÿ]/.test(clave) || !/\d/.test(clave)) return { n, error: "Usa letras y números en tu contraseña." };
   if (clave !== repetir) return { n, error: "Las dos contraseñas no coinciden." };
 
-  const yo = await usuarioActual();
+  const yo = await usuarioActual({ escribir: true });
   if (!yo) return { n, error: "El enlace venció. Pide uno nuevo desde «¿Olvidaste tu contraseña?»." };
   const { error } = await yo.sb.auth.updateUser({ password: clave });
   if (error) return { n, error: "No pudimos cambiar la contraseña. Intenta de nuevo." };

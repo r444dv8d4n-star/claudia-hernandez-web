@@ -45,7 +45,8 @@ export function edad(fecha: string, hoy = new Date()) {
   return e;
 }
 
-export function validarRegistro(d: DatosRegistro): Errores {
+/** Valida los datos personales (registro y «Mi perfil»). */
+export function validarDatos(d: DatosRegistro): Errores {
   const e: Errores = {};
   const palabras = d.nombre.split(" ").filter((p) => p.length > 1);
   if (palabras.length < 2) e.nombre = "Escribe tu nombre y tu apellido.";
@@ -64,6 +65,11 @@ export function validarRegistro(d: DatosRegistro): Errores {
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.correo)) e.correo = "Escribe un correo válido, por ejemplo tu@correo.com.";
+  return e;
+}
+
+export function validarRegistro(d: DatosRegistro): Errores {
+  const e = validarDatos(d);
   if (d.codigo && !/^[A-Z2-9]{6}$/.test(d.codigo)) e.codigo = "El código tiene 6 letras y números. Revísalo.";
 
   if (d.contrasena.length < 8) e.contrasena = "La contraseña debe tener al menos 8 caracteres.";

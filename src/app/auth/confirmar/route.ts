@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
   const destino = sig.startsWith("/") && !sig.startsWith("//") ? sig : "/mi-red";
 
   if (code) {
-    const sb = await supabaseSesion();
+    const sb = await supabaseSesion({ escribir: true });
     const { error } = await sb.auth.exchangeCodeForSession(code);
     if (!error) return NextResponse.redirect(new URL(destino, url.origin));
   }
