@@ -54,3 +54,8 @@
 .exito{text-align:center;display:grid;gap:14px;justify-items:center}
 .exito h1{font-size:1.9rem}
 .codigoGrande{font-size:2.2rem;font-weight:800;letter-spacing:.18em;color:var(--must);background:#160A22;border:1.5px dashed #E3A92B88;border-radius:14px;padding:10px 22px}
+.enlaceBoton{justify-self:start;background:none;border:0;padding:4px 0;font:inherit;font-size:.92rem;font-weight:700;color:var(--must);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.enlaceDer{justify-self:end;font-size:.92rem;font-weight:600;color:var(--must)}
+.aviso{border-radius:12px;padding:12px 14px;background:#7DDBA31f;border:1px solid #7DDBA366;color:var(--text);font-weight:600}
+.botonSec{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:12px;border:1.5px solid #ffffff3a;background:transparent;color:var(--text);font:inherit;font-weight:700;cursor:pointer;text-decoration:none}
+.botonSec:hover{border-color:var(--must);color:var(--must)}
