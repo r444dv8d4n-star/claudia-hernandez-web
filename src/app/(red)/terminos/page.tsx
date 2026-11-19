@@ -36,7 +36,6 @@ export default function Terminos() {
         <p>El responsable del tratamiento de tus datos es:</p>
         <dl className={s.ficha}>
           <dt>Nombre</dt><dd>{R.nombre}</dd>
-          <dt>Identificación</dt><dd>{R.identificacion}</dd>
           <dt>Dirección</dt><dd>{R.direccion}</dd>
           <dt>Correo</dt><dd>{R.correo}</dd>
           <dt>Teléfono</dt><dd>{R.telefono}</dd>

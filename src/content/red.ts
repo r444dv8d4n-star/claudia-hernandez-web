@@ -11,7 +11,7 @@ export const RED = {
   /** Texto del botón para unirse (encabezado y portada). */
   boton: "Soy de aquí",
   /** Versión de la política de datos que acepta quien se registra. Cambiarla cuando cambie /terminos. */
-  politicaVersion: "2026-11-borrador",
+  politicaVersion: "2026-11-v1",
   /** Edad mínima para registrarse. */
   edadMinima: 18,
   /** Mensaje que se comparte por WhatsApp junto al enlace. */
@@ -19,15 +19,14 @@ export const RED = {
 };
 
 /**
- * Responsable del tratamiento de los datos (Ley 1581 de 2012). TODO POR CONFIRMAR con el equipo de Claudia.
- * Mientras algún dato diga POR CONFIRMAR, /terminos muestra el aviso de borrador.
+ * Responsable del tratamiento de los datos (Ley 1581 de 2012). Datos confirmados por el equipo de Claudia.
+ * Si algún dato vuelve a decir POR CONFIRMAR, /terminos muestra el aviso de borrador.
  */
 export const RESPONSABLE = {
-  nombre: "[POR CONFIRMAR: nombre de la persona o de la campaña]",
-  identificacion: "[POR CONFIRMAR: cédula o NIT]",
-  direccion: "[POR CONFIRMAR: dirección física]",
-  correo: "[POR CONFIRMAR: correo para datos personales]",
-  telefono: "[POR CONFIRMAR: teléfono]",
+  nombre: "Claudia Hernández",
+  direccion: "Floridablanca, Santander",
+  correo: "crojasardila@gmail.com",
+  telefono: "318 218 2743",
   /** Hasta cuándo se guardan los datos (aprobado por el equipo: un año o más). */
   conservacion: "hasta un (1) año después de terminado el proceso electoral para el que se creó la red",
 };
