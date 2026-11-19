@@ -557,8 +557,10 @@
     .shot{animation:parallax linear both;animation-timeline:view();animation-range:entry 0% cover 60%}
   }
 
-  /* Historia: cada capítulo queda pegado y el siguiente lo cubre (pantalla completa) */
-  @media (min-height:640px){
+  /* Historia: cada capítulo queda pegado y el siguiente lo cubre (pantalla completa).
+     Solo en computador: en celular la foto y los dos párrafos no caben en una pantalla
+     y el capítulo siguiente tapaba el final del texto. */
+  @media (min-width:960px) and (min-height:640px){
     .storyRow{position:sticky;top:var(--hdr,72px);min-height:calc(100svh - var(--hdr,72px));align-content:center;background:var(--bg);border-top:1px solid var(--line);box-shadow:0 -28px 50px -34px var(--shadow)}
   }
 
