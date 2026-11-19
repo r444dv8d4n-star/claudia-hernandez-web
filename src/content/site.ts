@@ -183,7 +183,7 @@ export const chapters = [
     d: "Mamá de un abogado y una pediatra. Trabajó en una cárcel, en construcción y en aseo.",
     largo: [
       "Claudia es mamá de un abogado y de una pediatra. Antes de llegar a la política trabajó como guardiana de una cárcel, como ayudante de construcción y en el aseo.",
-      "Ella misma lo cuenta en el podcast «Detrás del Poder»: conoce de primera mano lo que cuesta sacar adelante una familia en Floridablanca, y desde ahí entiende su trabajo.",
+      "No llegó a la política desde un escritorio, sino desde el trabajo duro. Por eso entiende, sin que nadie se lo explique, a las familias que cada día sacan adelante a Floridablanca.",
     ],
     p: img.familia, pFull: img.ninos,
   },

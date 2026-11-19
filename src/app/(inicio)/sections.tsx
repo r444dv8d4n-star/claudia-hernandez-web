@@ -7,6 +7,7 @@ import { SHOW_CONTACT_FORM } from "@/config/features";
 import Counter from "@/components/Counter";
 import { chapters, slidesReconocimientos, comisiones, reconocimientos, medios, frentes, wall, redes, acuerdosListos, video, cifras, timeline, emprendedores } from "@/content/site";
 import AwardSlides from "@/components/AwardSlides";
+import VideoYoutube from "@/components/VideoYoutube";
 import { published, formatDate, bitacora, type Post } from "@/content/blog";
 import s from "./o2.module.css";
 
@@ -77,14 +78,9 @@ export function Video() {
     <section id="video" className={`${s.sec} ${s.videoSec}`} aria-labelledby="video-title">
       <SecHead eyebrow="En video" title="La puerta que abrió, 200 años después." id="video-title"
         lead="Fue guardiana de una cárcel, ayudante de construcción y trabajadora de aseo antes de presidir el Concejo. Ella misma lo cuenta en Detrás del Poder." />
-      <div className={s.videoFrame}>
-        <iframe
-          src={`https://www.youtube-nocookie.com/embed/${video.id}`}
-          title={video.title}
-          loading="lazy"
-          allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
+      <div className={s.videoWrap}>
+        <VideoYoutube id={video.id} titulo={video.title} href={video.href} portada="/assets/video/detras-del-poder.webp"
+          cls={{ frame: s.videoFrame, play: s.videoPlay, link: s.videoLink }} />
       </div>
     </section>
   );
