@@ -7,8 +7,10 @@ import { EntryCard, PageHero, Pantallas } from "../sections";
 import s from "../o2.module.css";
 
 export const metadata: Metadata = {
-  title: "La Bitácora de Claudia",
-  description: "Escuchar también es gobernar: historias, voces y tradiciones de Floridablanca contadas por Claudia Hernández.",
+  title: "La Bitácora de Claudia: historias de Floridablanca",
+  description: "Historias, voces, tradiciones y emprendedores de Floridablanca contados por Claudia Hernández: Hecho en Floridablanca, Ciudad Dulce, cultura y voces de la gente.",
+  alternates: { canonical: "/bitacora" },
+  openGraph: { title: "La Bitácora de Claudia: historias de Floridablanca", description: "Historias, voces, tradiciones y emprendedores de Floridablanca contados por Claudia Hernández: Hecho en Floridablanca, Ciudad Dulce, cultura y voces de la gente.", url: "/bitacora" },
 };
 
 export default function Bitacora() {

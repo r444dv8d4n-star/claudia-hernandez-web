@@ -3,8 +3,10 @@ import { galeria } from "@/content/galeria";
 import { Reconocimientos, Medios, Comisiones, Acuerdos, Franja, PageHero, Pantallas } from "../sections";
 
 export const metadata: Metadata = {
-  title: "Logros",
-  description: "Reconocimientos, prensa y comisiones de Claudia Hernández en el Concejo de Floridablanca.",
+  title: "Logros en el Concejo de Floridablanca",
+  description: "Acuerdos municipales de Claudia Hernández (ExpoMujer, la sesión de los niños en el Concejo, Festival de Arte Urbano), reconocimientos, comisiones y notas de prensa.",
+  alternates: { canonical: "/logros" },
+  openGraph: { title: "Logros en el Concejo de Floridablanca", description: "Acuerdos municipales de Claudia Hernández (ExpoMujer, la sesión de los niños en el Concejo, Festival de Arte Urbano), reconocimientos, comisiones y notas de prensa.", url: "/logros" },
 };
 
 export default function Logros() {

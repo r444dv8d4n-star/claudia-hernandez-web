@@ -14,7 +14,16 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/bitacora/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const post = published.find((p) => p.slug === slug);
-  return post ? { title: `${post.title} · ${bitacora.name}`, description: post.excerpt } : {};
+  if (!post) return {};
+  return {
+    title: `${post.title} · ${bitacora.name}`,
+    description: post.excerpt,
+    alternates: { canonical: `/bitacora/${post.slug}` },
+    openGraph: {
+      type: "article", title: post.title, description: post.excerpt, url: `/bitacora/${post.slug}`, publishedTime: post.date,
+      ...(post.foto ? { images: [{ url: post.foto.src, width: post.foto.w, height: post.foto.h, alt: post.title }] } : {}),
+    },
+  };
 }
 
 export default function Entrada({ params }: PageProps<"/bitacora/[slug]">) {
@@ -30,8 +39,17 @@ async function Contenido({ params }: { params: PageProps<"/bitacora/[slug]">["pa
   const { slug } = await params;
   const post = published.find((p) => p.slug === slug);
   if (!post) notFound();
+  // Ficha para Google (artículo con autora, fecha y foto).
+  const ficha = {
+    "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title, description: post.excerpt,
+    datePublished: post.date, inLanguage: "es-CO", articleSection: post.tag,
+    author: { "@type": "Person", name: "Claudia Hernández", jobTitle: "Concejala de Floridablanca" },
+    ...(post.foto ? { image: `https://claudia-hernandez-web.vercel.app${post.foto.src}` } : {}),
+    mainEntityOfPage: `https://claudia-hernandez-web.vercel.app/bitacora/${post.slug}`,
+  };
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ficha).replace(/</g, "\\u003c") }} />
       <PageHero eyebrow={`${bitacora.name} · ${post.tag} · ${formatDate(post.date)}`} title={post.title} lead={post.excerpt}
         foto={post.foto ? { ...post.foto, alt: post.title } : undefined} />
       <section className={s.sec}>

@@ -3,8 +3,10 @@ import { galeria } from "@/content/galeria";
 import { Franja, HistoriaCompleta, LineaDeTiempo, PageHero, Pantallas, Video } from "../sections";
 
 export const metadata: Metadata = {
-  title: "Su historia",
-  description: "La historia de Claudia Hernández en cuatro capítulos: raíces, derecho, comunidad y Concejo de Floridablanca.",
+  title: "Su historia: de los barrios al Concejo",
+  description: "La historia de Claudia Hernández, concejala de Floridablanca: mamá, abogada y líder social, primera mujer en presidir el Concejo. Su vida contada en el podcast Detrás del Poder.",
+  alternates: { canonical: "/historia" },
+  openGraph: { title: "Su historia: de los barrios al Concejo", description: "La historia de Claudia Hernández, concejala de Floridablanca: mamá, abogada y líder social, primera mujer en presidir el Concejo. Su vida contada en el podcast Detrás del Poder.", url: "/historia" },
 };
 
 export default function Historia() {

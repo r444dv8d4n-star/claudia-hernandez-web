@@ -15,7 +15,9 @@ import s from "./o2.module.css";
 
 export const metadata: Metadata = {
   title: { absolute: "Claudia Hernández · Concejala de Floridablanca" },
-  description: "Claudia Hernández, concejala de Floridablanca (2024–2027): una historia de familia, derecho y trabajo comunitario.",
+  description: "Claudia Hernández, concejala de Floridablanca (2024–2027) y primera mujer en presidir su Concejo. ExpoMujer, Mujeres Imparables, emprendedores y barrios de Floridablanca, Santander.",
+  alternates: { canonical: "/" },
+  openGraph: { title: "Claudia Hernández · Concejala de Floridablanca", description: "Claudia Hernández, concejala de Floridablanca (2024–2027) y primera mujer en presidir su Concejo. ExpoMujer, Mujeres Imparables, emprendedores y barrios de Floridablanca, Santander.", url: "/" },
 };
 
 // Miniaturas del collage de entrada (fotos nuevas subidas a main por el equipo).

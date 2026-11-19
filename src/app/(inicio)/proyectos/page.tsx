@@ -3,8 +3,10 @@ import { galeria } from "@/content/galeria";
 import { Proyectos, Franja, HechoEnFloridablanca, Muro, Hablemos, PageHero, Pantallas } from "../sections";
 
 export const metadata: Metadata = {
-  title: "Proyectos",
-  description: "Frentes de trabajo de Claudia Hernández: mujeres y emprendimiento, educación, salud, cultura y barrios de Floridablanca.",
+  title: "Proyectos: mujeres, emprendimiento y barrios",
+  description: "Frentes de trabajo de Claudia Hernández en Floridablanca: mujeres y emprendimiento, educación, salud, cultura y barrios. Emprendedores de «Hecho en Floridablanca».",
+  alternates: { canonical: "/proyectos" },
+  openGraph: { title: "Proyectos: mujeres, emprendimiento y barrios", description: "Frentes de trabajo de Claudia Hernández en Floridablanca: mujeres y emprendimiento, educación, salud, cultura y barrios. Emprendedores de «Hecho en Floridablanca».", url: "/proyectos" },
 };
 
 export default function ProyectosPage() {
