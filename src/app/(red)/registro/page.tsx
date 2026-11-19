@@ -6,7 +6,7 @@ import s from "../red.module.css";
 export const metadata: Metadata = {
   title: "Crear cuenta",
   // Lo que se ve al compartir un enlace de invitación por WhatsApp (la imagen sale de opengraph-image.tsx).
-  openGraph: { title: "Te invito a Amigos de Claudia", description: "Vecinas, vecinos y amigos que se organizan por Floridablanca. Súmate con mi enlace." },
+  openGraph: { title: "Soy de aquí, como tú: te invito a la red de Claudia", description: "Vecinas, vecinos y amigos que se organizan por Floridablanca. Únete con mi enlace." },
 };
 
 export default function Registro() {

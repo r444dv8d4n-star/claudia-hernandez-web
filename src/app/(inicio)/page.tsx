@@ -6,7 +6,7 @@ import HeroName from "@/components/HeroName";
 import HeroCollage from "@/components/HeroCollage";
 import ExtraSection from "@/components/ExtraSection";
 import UneteRed from "@/components/UneteRed";
-import { redAbierta } from "@/content/red";
+import { RED, redAbierta } from "@/content/red";
 import LinkMedido from "@/components/LinkMedido";
 import SocialIcons from "@/components/SocialIcons";
 import { person, img } from "@/content/site";
@@ -46,7 +46,7 @@ export default function Inicio() {
             {/* Con la red abierta, la acción principal es sumarse; la historia pasa a segundo botón. */}
             {redAbierta ? (
               <>
-                <LinkMedido evento="clic_sumate_portada" className={s.btn} href="/registro">Súmate a Amigos de Claudia <span aria-hidden="true">→</span></LinkMedido>
+                <LinkMedido evento="clic_sumate_portada" className={s.btn} href="/registro">{RED.boton} <span aria-hidden="true">→</span></LinkMedido>
                 <Link className={s.btnGhost} href="/historia#video"><span aria-hidden="true">▶</span> Conoce su historia</Link>
               </>
             ) : (

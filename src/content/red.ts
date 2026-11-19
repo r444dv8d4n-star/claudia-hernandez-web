@@ -6,14 +6,16 @@
 export const redAbierta = process.env.RED_ABIERTA === "si";
 
 export const RED = {
-  /** Nombre de la red (POR CONFIRMAR). */
-  nombre: "Amigos de Claudia",
+  /** Nombre de la red: su frase de campaña. */
+  nombre: "De aquí, como tú",
+  /** Texto del botón para unirse (encabezado y portada). */
+  boton: "Soy de aquí",
   /** Versión de la política de datos que acepta quien se registra. Cambiarla cuando cambie /terminos. */
   politicaVersion: "2026-11-borrador",
   /** Edad mínima para registrarse. */
   edadMinima: 18,
   /** Mensaje que se comparte por WhatsApp junto al enlace. */
-  mensajeInvitacion: "Te invito a unirte a la red de Claudia Hernández en Floridablanca. Regístrate con mi enlace:",
+  mensajeInvitacion: "Soy de aquí, como tú. Te invito a unirte a la red de Claudia Hernández en Floridablanca. Regístrate con mi enlace:",
 };
 
 /**

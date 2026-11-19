@@ -7,6 +7,7 @@ import SocialIcons, { navLinks } from "@/components/SocialIcons";
 import s from "@/app/(inicio)/o2.module.css";
 import u from "@/components/UneteRed.module.css";
 import LinkMedido from "@/components/LinkMedido";
+import { RED } from "@/content/red";
 
 /** Enlace del menú: las páginas del sitio se abren en la misma pestaña. */
 function NavLink({ href, className, current, children }: { href: string; className?: string; current?: "page"; children: React.ReactNode }) {
@@ -34,7 +35,7 @@ export default function SiteHeader({ red = false }: { red?: boolean }) {
       <div className={s.tools}>
         <span className={s.hideM}><SocialIcons /></span>
         <ThemeToggle className={s.toggle} />
-        {red && <LinkMedido evento="clic_sumate_encabezado" className={`${u.pillRed} ${s.hideM}`} href="/registro">Súmate</LinkMedido>}
+        {red && <LinkMedido evento="clic_sumate_encabezado" className={`${u.pillRed} ${s.hideM}`} href="/registro">{RED.boton}</LinkMedido>}
         <NavLink className={`${s.pill} ${s.hideM}`} href="/#hablemos">Hablemos</NavLink>
         <details className={s.mMenu}>
           <summary aria-label="Abrir menú"><MenuIcon /></summary>
@@ -44,7 +45,7 @@ export default function SiteHeader({ red = false }: { red?: boolean }) {
               <NavLink key={l.href} href={l.href} current={current(l.href)}>{l.label}</NavLink>
             ))}
             <NavLink href="/#hablemos">Hablemos</NavLink>
-            {red && <LinkMedido evento="clic_sumate_encabezado" href="/registro">Súmate</LinkMedido>}
+            {red && <LinkMedido evento="clic_sumate_encabezado" href="/registro">{RED.boton}</LinkMedido>}
             <SocialIcons />
           </nav>
         </details>

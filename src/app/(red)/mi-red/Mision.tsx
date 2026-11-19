@@ -5,9 +5,9 @@ import s from "../red.module.css";
 
 /** Mensajes listos para compartir, según a quién se invita. */
 const MENSAJES = [
-  { a: "A mi familia", t: "Familia, me uní a Amigos de Claudia, la red de Claudia Hernández por Floridablanca. Súmense con mi enlace:" },
-  { a: "A mis amigos", t: "¡Hola! Estoy en Amigos de Claudia, vecinos que nos organizamos por Floridablanca. Te invito, es fácil:" },
-  { a: "A mis vecinos", t: "Vecinos, los invito a sumarse a Amigos de Claudia para trabajar juntos por nuestro barrio y por Floridablanca:" },
+  { a: "A mi familia", t: "Familia, me uní a «De aquí, como tú», la red de Claudia Hernández por Floridablanca. Súmense con mi enlace:" },
+  { a: "A mis amigos", t: "¡Hola! Estoy en «De aquí, como tú», vecinos que nos organizamos por Floridablanca. Te invito, es fácil:" },
+  { a: "A mis vecinos", t: "Vecinos, los invito a sumarse a «De aquí, como tú» para trabajar juntos por nuestro barrio y por Floridablanca:" },
 ];
 
 /** «Tu primera misión»: invitar a 3 personas, con mensajes de WhatsApp listos. */

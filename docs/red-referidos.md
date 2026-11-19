@@ -1,4 +1,4 @@
-# Red de referidos «Amigos de Claudia»
+# Red de referidos «De aquí, como tú»
 
 Cada persona se registra, recibe su propio enlace para invitar a otras y así crece la red.
 Está construida con **Supabase** (base de datos, cuentas y seguridad) y las páginas del sitio en **Vercel**.

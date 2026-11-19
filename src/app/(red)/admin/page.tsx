@@ -33,7 +33,7 @@ async function Panel() {
   const ev = (emb ?? {}) as Record<string, number>;
   const n = (...k: string[]) => k.reduce((a, x) => a + (ev[x] ?? 0), 0);
   const embudo = [
-    { t: "Tocaron «Súmate»", v: n("clic_sumate_encabezado", "clic_sumate_portada", "clic_sumate_seccion", "clic_sumate_pie") },
+    { t: "Tocaron «Soy de aquí»", v: n("clic_sumate_encabezado", "clic_sumate_portada", "clic_sumate_seccion", "clic_sumate_pie") },
     { t: "Abrieron el registro", v: n("registro_visto") },
     { t: "Pasaron al paso 2", v: n("registro_paso2") },
     { t: "Terminaron el registro", v: n("registro_completo") },
