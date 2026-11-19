@@ -16,11 +16,11 @@ export default function Logros() {
         title={<>Hechos que se pueden <em>contar</em>.</>}
         lead="Lo que ha impulsado desde el Concejo de Floridablanca, con sus fuentes. Esta página crece a medida que se confirman nuevos resultados."
       />
-      <Reconocimientos />
-      <Franja quote="Las mujeres lideran, transforman y dejan huella." />
       <Medios />
       <Comisiones />
       <Acuerdos />
+      <Franja quote="Las mujeres lideran, transforman y dejan huella." />
+      <Reconocimientos />
     </Pantallas>
   );
 }

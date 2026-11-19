@@ -23,7 +23,7 @@
 :global(html[data-theme="dark"]) .pasos h3{color:#FFFDF6}
 :global(html[data-theme="dark"]) .pasos p{color:#e9dfcf}
 
-/* Botón «Únete a la red» del encabezado, junto a «Hablemos»: el amarillo de Claudia. */
+/* Botón «Súmate» del encabezado, junto a «Hablemos»: el amarillo de Claudia. */
 .pillRed{display:none;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#F7CD1E;color:#2B2118;font-weight:800;text-decoration:none;white-space:nowrap;border:2px solid #2B2118;transition:transform .2s,background .2s}
 .pillRed:hover{background:#FFD93D;transform:translateY(-1px)}
 @media(min-width:960px){.pillRed{display:inline-flex}}

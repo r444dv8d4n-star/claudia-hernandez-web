@@ -173,11 +173,47 @@ export const emprendedores = [
   { n: "Arepas Mega Queso", who: "Barrio Helechales", d: "Arepas recién hechas y con mucho queso.", year: "2026", src: ig("DV9uO-VDomo"), foto: ef("arepas-mega-queso", 640, 568) },
 ];
 
+/**
+ * Los cuatro capítulos. `d` = versión corta (inicio, 3 renglones); `largo` = dos párrafos (página Historia).
+ * Fuentes: podcast «Detrás del Poder» (2026), sus publicaciones de Instagram, Vanguardia (2019) y el Plan de Desarrollo 2024–2027.
+ */
 export const chapters = [
-  { n: "I", t: "Raíces", d: "Mamá de un abogado y una pediatra. Antes fue guardiana de una cárcel, ayudante de construcción y de aseo.", p: img.familia, pFull: img.ninos },
-  { n: "II", t: "Derecho", d: "Estudiar derecho fue elegir una herramienta para que las personas sean escuchadas y sus voces cuenten.", p: img.blazer, pFull: img.visita },
-  { n: "III", t: "Comunidad", d: "Con las Mujeres Imparables de Jardín de Limoncitos aprendió que el liderazgo nace en la calle, con la gente.", p: img.mujeres, pFull: galeria["evento-comunitario-parque"] },
-  { n: "IV", t: "Concejo", d: `Desde el Concejo (${person.period}) lleva esas voces a las decisiones locales. Lo ha presidido dos veces.`, p: img.sesion, pFull: galeria["retrato-camisa-institucional-escritorio"] },
+  {
+    n: "I", t: "Raíces",
+    d: "Mamá de un abogado y una pediatra. Trabajó en una cárcel, en construcción y en aseo.",
+    largo: [
+      "Claudia es mamá de un abogado y de una pediatra. Antes de llegar a la política trabajó como guardiana de una cárcel, como ayudante de construcción y en el aseo.",
+      "Ella misma lo cuenta en el podcast «Detrás del Poder»: conoce de primera mano lo que cuesta sacar adelante una familia en Floridablanca, y desde ahí entiende su trabajo.",
+    ],
+    p: img.familia, pFull: img.ninos,
+  },
+  {
+    n: "II", t: "Derecho",
+    d: "Estudió derecho para que la gente de Floridablanca sea escuchada y su voz cuente.",
+    largo: [
+      "Estudiar derecho fue elegir una herramienta para que las personas sean escuchadas y sus voces cuenten.",
+      "Como abogada fue ponente del Plan de Desarrollo 2024–2027 y ha escrito acuerdos municipales: la sesión anual de los niños en el Concejo (2016), ExpoMujer (2024) y el Festival de Arte Urbano Gráfico.",
+    ],
+    p: img.blazer, pFull: img.visita,
+  },
+  {
+    n: "III", t: "Comunidad",
+    d: "Con las Mujeres Imparables aprendió que el liderazgo nace en la calle, con la gente.",
+    largo: [
+      "Con las Mujeres Imparables de Jardín de Limoncitos aprendió que el liderazgo nace en la calle, con la gente.",
+      "Desde el Consejo Consultivo de Mujeres empezó a trabajar la idea de ExpoMujer (2022). Desde 2024 presenta cada martes un emprendimiento en «Hecho en Floridablanca» y en 2025 abrió La Bitácora de Claudia para escuchar a los barrios.",
+    ],
+    p: img.mujeres, pFull: galeria["evento-comunitario-parque"],
+  },
+  {
+    n: "IV", t: "Concejo",
+    d: `Lleva al Concejo (${person.period}) las voces de los barrios. Lo ha presidido dos veces.`,
+    largo: [
+      "Fue la primera mujer en presidir el Concejo de Floridablanca, y lo ha hecho dos veces. En 2023 volvió a la corporación con el voto de 1.134 florideños.",
+      `Desde 2024 preside la Comisión de Equidad de la Mujer, donde reconoció a 18 mujeres rurales de las veredas. En este periodo (${person.period}) lleva al Concejo las voces de los barrios.`,
+    ],
+    p: img.sesion, pFull: galeria["retrato-camisa-institucional-escritorio"],
+  },
 ];
 
 /** Carrusel de Reconocimientos (inicio y Logros). Ninguna se repite en otra sección. */

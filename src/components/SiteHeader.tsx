@@ -33,7 +33,7 @@ export default function SiteHeader({ red = false }: { red?: boolean }) {
       <div className={s.tools}>
         <span className={s.hideM}><SocialIcons /></span>
         <ThemeToggle className={s.toggle} />
-        {red && <NavLink className={`${u.pillRed} ${s.hideM}`} href="/registro">Únete a la red</NavLink>}
+        {red && <NavLink className={`${u.pillRed} ${s.hideM}`} href="/registro">Súmate</NavLink>}
         <NavLink className={`${s.pill} ${s.hideM}`} href="/#hablemos">Hablemos</NavLink>
         <details className={s.mMenu}>
           <summary aria-label="Abrir menú"><MenuIcon /></summary>
@@ -43,7 +43,7 @@ export default function SiteHeader({ red = false }: { red?: boolean }) {
               <NavLink key={l.href} href={l.href} current={current(l.href)}>{l.label}</NavLink>
             ))}
             <NavLink href="/#hablemos">Hablemos</NavLink>
-            {red && <NavLink href="/registro">Únete a la red</NavLink>}
+            {red && <NavLink href="/registro">Súmate</NavLink>}
             <SocialIcons />
           </nav>
         </details>

@@ -10,13 +10,13 @@ import AwardSlides from "@/components/AwardSlides";
 import { published, formatDate, bitacora, type Post } from "@/content/blog";
 import s from "./o2.module.css";
 
-type Head = { eyebrow: string; title: string; lead?: string; id?: string };
+type Head = { eyebrow: string; title: string; lead?: string; id?: string; href?: string };
 
-function SecHead({ eyebrow, title, lead, id }: Head) {
+function SecHead({ eyebrow, title, lead, id, href }: Head) {
   return (
     <div className={s.secHead}>
       <Reveal><p className={s.eyebrow}>{eyebrow}</p></Reveal>
-      <Reveal delay={80}><h2 id={id}>{title}</h2></Reveal>
+      <Reveal delay={80}><h2 id={id}>{href ? <Link href={href} className={s.titleLink}>{title}</Link> : title}</h2></Reveal>
       {lead && <Reveal delay={140}><p>{lead}</p></Reveal>}
     </div>
   );
@@ -63,7 +63,7 @@ export function HistoriaCompleta() {
           <div className={s.storyTxt}>
             <Reveal><p className={s.chLabel}>Capítulo {c.n}</p></Reveal>
             <Reveal delay={80}><h2>{c.t}</h2></Reveal>
-            <Reveal delay={160}><p>{c.d}</p></Reveal>
+            {c.largo.map((parr, k) => <Reveal key={k} delay={160 + k * 60}><p>{parr}</p></Reveal>)}
           </div>
         </section>
       ))}
@@ -132,7 +132,7 @@ export function Medios() {
 export function Reconocimientos({ more = false }: { more?: boolean }) {
   return (
     <section id="reconocimientos" className={`${s.sec} ${s.awards}`} aria-labelledby="logros-title">
-      <SecHead eyebrow="Reconocimientos" title="Hechos, no solo palabras." id="logros-title" />
+      <SecHead eyebrow="Reconocimientos" title="Hechos, no solo palabras." id="logros-title" href={more ? "/logros" : undefined} />
       <Reveal variant="clip" className={s.slidesWrap}>
         <AwardSlides
           title="El mérito es de Floridablanca."
