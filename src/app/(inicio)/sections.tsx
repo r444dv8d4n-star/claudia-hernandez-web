@@ -5,10 +5,10 @@ import ContactForm from "@/components/ContactForm";
 import { socialIcon } from "@/components/Icons";
 import { SHOW_CONTACT_FORM } from "@/config/features";
 import Counter from "@/components/Counter";
-import { chapters, slidesReconocimientos, comisiones, reconocimientos, medios, frentes, wall, redes, acuerdosListos, video, cifras, timeline, emprendedores } from "@/content/site";
+import { chapters, slidesReconocimientos, comisiones, reconocimientos, medios, frentes, wall, redes, acuerdosListos, video, cifras, timeline } from "@/content/site";
 import AwardSlides from "@/components/AwardSlides";
 import VideoYoutube from "@/components/VideoYoutube";
-import { published, formatDate, bitacora, type Post } from "@/content/blog";
+import { published, formatDate, bitacora, HECHO, slugTema, type Post } from "@/content/blog";
 import s from "./o2.module.css";
 
 type Head = { eyebrow: string; title: string; lead?: string; id?: string; href?: string };
@@ -259,24 +259,22 @@ export function BitacoraTeaser() {
   );
 }
 
-/** Emprendimientos presentados en sus crónicas (página Proyectos). */
+/** Hecho en Floridablanca (página Proyectos): adelanto de las 3 crónicas más recientes; todas están en la Bitácora. */
 export function HechoEnFloridablanca() {
+  const ultimas = published.filter((p) => p.tag === HECHO).slice(0, 3);
+  if (!ultimas.length) return null;
   return (
     <section className={`${s.sec} ${s.makers}`} aria-labelledby="hecho-title">
-      <SecHead eyebrow="Hecho en Floridablanca" title="Emprendedores con nombre propio." id="hecho-title"
-        lead="Desde 2024 presenta en sus redes a quienes sacan adelante a Floridablanca con sus manos. Estas son algunas de sus crónicas." />
-      <ul className={s.makerGrid}>
-        {emprendedores.map((e, i) => (
-          <Reveal as="li" key={e.n} className={s.maker} delay={i * 70}>
-            <div className={s.makerPic}>
-              <Image src={e.foto.src} alt={`${e.n}: ${e.d}`} width={e.foto.w} height={e.foto.h} sizes="(max-width:700px) 92vw, (max-width:1100px) 46vw, 30vw" loading="lazy" style={{ objectPosition: e.foto.pos }} />
-            </div>
-            <h3>{e.n}</h3>
-            <p className={s.makerWho}>{e.who}</p>
-            <p>{e.d}</p>
+      <SecHead eyebrow={HECHO} title="Emprendedores con nombre propio." id="hecho-title"
+        lead="Desde 2024 presenta en sus redes a quienes sacan adelante a Floridablanca con sus manos. Cada crónica tiene su página en la Bitácora." />
+      <ul className={s.hechoGrid}>
+        {ultimas.map((p, i) => (
+          <Reveal as="li" key={p.slug} delay={i * 90}>
+            <EntryCard p={p} />
           </Reveal>
         ))}
       </ul>
+      <More href={`/bitacora?tema=${slugTema(HECHO)}`}>Ver todos los emprendedores en la Bitácora</More>
     </section>
   );
 }

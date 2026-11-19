@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { published, bitacora } from "@/content/blog";
+import { Suspense } from "react";
+import BitacoraLista from "./BitacoraLista";
+import { published, bitacora, temas, slugTema } from "@/content/blog";
 import { person } from "@/content/site";
 import { EntryCard, PageHero, Pantallas } from "../sections";
 import s from "../o2.module.css";
@@ -19,13 +21,13 @@ export default function Bitacora() {
       />
       <section className={s.sec} aria-label="Entradas de la Bitácora">
         {published.length > 0 ? (
-          <ul className={s.entries}>
-            {published.map((p) => (
-              <li key={p.slug}>
-                <EntryCard p={p} />
-              </li>
-            ))}
-          </ul>
+          // Los filtros leen la URL (?tema=), por eso van dentro de Suspense; mientras tanto se ven todas.
+          <Suspense fallback={<ul className={s.entries}>{published.map((p) => <li key={p.slug}><EntryCard p={p} /></li>)}</ul>}>
+            <BitacoraLista
+              temas={temas.map((t) => ({ slug: slugTema(t), nombre: t, n: published.filter((p) => p.tag === t).length }))}
+              items={published.map((p) => ({ id: p.slug, tema: slugTema(p.tag), node: <EntryCard p={p} /> }))}
+            />
+          </Suspense>
         ) : (
           <div className={s.empty}>
             <h2>Muy pronto, las primeras páginas.</h2>

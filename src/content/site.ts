@@ -162,16 +162,6 @@ export const timeline = [
   { y: "2026", t: "Su historia, contada", d: "Cierra su segunda presidencia del Concejo y cuenta su vida en el podcast Detrás del Poder." },
 ];
 
-/** Emprendimientos que ha presentado en sus crónicas. Solo nombre y enlace a su publicación (sin datos de contacto). */
-const ef = (slug: string, w: number, h: number, pos = "50% 50%") => ({ src: `/assets/emprendedores/${slug}.webp`, w, h, pos });
-export const emprendedores = [
-  { n: "Fiore", who: "Catalina", d: "Bolsos y accesorios hechos a mano.", year: "2026", src: ig("Defl7TDNvZm"), foto: ef("fiore", 720, 405) },
-  { n: "Alma Love", who: "Una creadora florideña", d: "Velas artesanales con esencias.", year: "2026", src: ig("Da1LFD5O-xB"), foto: ef("alma-love", 720, 405) },
-  { n: "personaliza.me", who: "Johanna Angarita", d: "Tazas, termos, agendas y álbumes personalizados.", year: "2026", src: ig("DfTNKnxOliq"), foto: ef("personaliza-me", 720, 405) },
-  { n: "Impresión 3D", who: "Heider y su novia", d: "Una pareja joven que emprende en equipo.", year: "2026", src: ig("DeAvwH-upqc"), foto: ef("impresion-3d", 640, 360) },
-  { n: "Heladería Pirineos", who: "Un negocio familiar", d: "Helados con la pujanza de Floridablanca.", year: "2026", src: ig("DWXg5rwjqlc"), foto: ef("heladeria-pirineos", 640, 1136, "50% 55%") },
-  { n: "Arepas Mega Queso", who: "Barrio Helechales", d: "Arepas recién hechas y con mucho queso.", year: "2026", src: ig("DV9uO-VDomo"), foto: ef("arepas-mega-queso", 640, 568) },
-];
 
 /**
  * Los cuatro capítulos. `d` = versión corta (inicio, 3 renglones); `largo` = dos párrafos (página Historia).
