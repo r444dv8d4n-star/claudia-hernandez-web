@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { published, formatDate, bitacora } from "@/content/blog";
 import { PageHero } from "../../sections";
+import PublicacionInstagram from "@/components/PublicacionInstagram";
 import s from "../../o2.module.css";
 
 // Con Cache Components hay que devolver al menos un parámetro. Si no hubiera entradas se usa uno que responde 404.
@@ -56,6 +57,14 @@ async function Contenido({ params }: { params: PageProps<"/bitacora/[slug]">["pa
         <article className={s.article}>
           {post.body.map((p, i) => <p key={i}>{p}</p>)}
         </article>
+        {post.ig && (
+          <div className={s.igSec}>
+            <h2>Así lo contó Claudia</h2>
+            <p>Las fotos, el video y su texto completo, tal como los publicó.</p>
+            <PublicacionInstagram url={post.ig} titulo={post.title} portada={post.foto}
+              cls={{ caja: s.igCaja, boton: s.igBoton, frame: s.igFrame, link: s.videoLink }} />
+          </div>
+        )}
         <div className={s.ctas}>
           <Link className={s.more} href="/bitacora">Volver a la Bitácora</Link>
         </div>
