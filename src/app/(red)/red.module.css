@@ -158,3 +158,26 @@
 .fechaListas select[aria-invalid="true"]{border-color:var(--error)}
 /* Letra de ayuda más legible */
 .ayuda{font-size:.92rem}
+
+/* ===== Registro en 2 pasos ===== */
+.pasos{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-8px 0 18px;font-size:.9rem;font-weight:700;color:var(--muted)}
+.pasos span{padding-top:8px;border-top:4px solid #2B211822}
+.pasos .pasoActivo{color:var(--ink);border-top-color:var(--must)}
+.pasos .pasoHecho{color:var(--ink);border-top-color:#C29400}
+.form[hidden]{display:none!important}
+
+/* ===== Tu primera misión ===== */
+.mision{border:2px solid var(--must)}
+.misionPuntos{display:flex;gap:10px;margin:4px 0 10px}
+.misionPuntos span{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:2px dashed #2B211855;font-weight:800;color:var(--muted)}
+.misionPuntos .misionHecho{background:var(--must);border:2px solid var(--ink);color:var(--ink)}
+.misionBotones{display:grid;gap:8px;margin-top:10px}
+@media(min-width:560px){.misionBotones{grid-template-columns:repeat(3,1fr)}}
+
+/* ===== Embudo (panel de administradores) ===== */
+.embudo{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:8px}
+.embudo li{display:grid;grid-template-columns:minmax(0,15rem) 1fr 3.5rem;gap:12px;align-items:center;font-size:.95rem}
+.embudo strong{text-align:right;font-variant-numeric:tabular-nums;font-size:1.1rem}
+.embudoBarra{height:14px;border-radius:99px;background:#2B211812;overflow:hidden}
+.embudoBarra i{display:block;height:100%;border-radius:99px;background:#C29400}
+@media(max-width:560px){.embudo li{grid-template-columns:1fr 3rem}.embudoBarra{grid-column:1 / -1;order:3}}

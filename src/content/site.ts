@@ -50,8 +50,8 @@ export const comisiones = [
 export const cifras = [
   { n: 2, l: "veces presidenta del Concejo", note: "Un hecho histórico para Floridablanca" },
   { n: 3, l: "acuerdos municipales de su autoría", note: "Niñez, mujeres y arte urbano" },
-  { n: 2016, l: "año de su primer acuerdo", note: "La sesión de los niños en el Concejo" },
-  { n: 12, l: "emprendimientos contados en sus crónicas", note: "Hecho en Floridablanca", plus: true },
+  { n: 1134, l: "florideños votaron por ella", note: "Elecciones al Concejo de 2023" },
+  { n: 18, l: "mujeres rurales reconocidas", note: "Desde la Comisión de la Mujer, 2024" },
 ];
 
 /** Logros verificados en fuentes públicas. Agregar aquí los nuevos, del más reciente al más antiguo. */
@@ -159,7 +159,7 @@ export const timeline = [
   { y: "2024", t: "Hecho en Floridablanca", d: "Cada martes, un emprendimiento local contado en sus redes." },
   { y: "2025", t: "La Bitácora de Claudia", d: "Un espacio para escuchar: «escuchar también es gobernar»." },
   { y: "Dic. 2025", t: "Segunda presidencia del Concejo", d: "«Las mujeres lideran, transforman y dejan huella.»" },
-  { y: "2026", t: "Su historia, contada", d: "Presidenta del Concejo, crónicas de emprendedores y el podcast Detrás del Poder." },
+  { y: "2026", t: "Su historia, contada", d: "Cierra su segunda presidencia del Concejo y cuenta su vida en el podcast Detrás del Poder." },
 ];
 
 /** Emprendimientos que ha presentado en sus crónicas. Solo nombre y enlace a su publicación (sin datos de contacto). */

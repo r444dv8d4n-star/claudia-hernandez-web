@@ -2,6 +2,7 @@ import Link from "next/link";
 import SocialIcons, { navLinks } from "@/components/SocialIcons";
 import { person } from "@/content/site";
 import { RED, redAbierta } from "@/content/red";
+import LinkMedido from "@/components/LinkMedido";
 import s from "@/app/(inicio)/o2.module.css";
 
 export default function SiteFooter() {
@@ -22,7 +23,7 @@ export default function SiteFooter() {
           <Link href="/">Inicio</Link>
           {navLinks.map((l) => <Link key={l.href} href={l.href}>{l.label}</Link>)}
           <Link href="/#hablemos">Hablemos</Link>
-          {redAbierta && <Link href="/registro">{RED.nombre}</Link>}
+          {redAbierta && <LinkMedido evento="clic_sumate_pie" href="/registro">{RED.nombre}</LinkMedido>}
           {redAbierta && <Link href="/login">Iniciar sesión</Link>}
         </div>
         <div className={s.fCol}>

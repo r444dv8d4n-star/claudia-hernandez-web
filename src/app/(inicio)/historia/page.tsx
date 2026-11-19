@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { galeria } from "@/content/galeria";
-import { HistoriaCompleta, LineaDeTiempo, PageHero, Pantallas, Video } from "../sections";
+import { Franja, HistoriaCompleta, LineaDeTiempo, PageHero, Pantallas, Video } from "../sections";
 
 export const metadata: Metadata = {
   title: "Su historia",
@@ -18,6 +18,7 @@ export default function Historia() {
       />
       <Video />
       <LineaDeTiempo />
+      <Franja tone="must" quote="Lo que se escribe no se borra… se transforma." />
       <HistoriaCompleta />
     </Pantallas>
   );

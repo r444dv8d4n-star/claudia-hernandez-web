@@ -28,8 +28,20 @@ export default function Admin() {
 
 async function Panel() {
   const yo = await exigirAdmin();
-  const { data } = await yo.sb.rpc("admin_resumen");
+  const [{ data }, { data: emb }] = await Promise.all([yo.sb.rpc("admin_resumen"), yo.sb.rpc("admin_embudo")]);
   const r = data as Resumen;
+  const ev = (emb ?? {}) as Record<string, number>;
+  const n = (...k: string[]) => k.reduce((a, x) => a + (ev[x] ?? 0), 0);
+  const embudo = [
+    { t: "Tocaron «Súmate»", v: n("clic_sumate_encabezado", "clic_sumate_portada", "clic_sumate_seccion", "clic_sumate_pie") },
+    { t: "Abrieron el registro", v: n("registro_visto") },
+    { t: "Pasaron al paso 2", v: n("registro_paso2") },
+    { t: "Terminaron el registro", v: n("registro_completo") },
+    { t: "Compartieron por WhatsApp", v: n("compartir_whatsapp", "mision_whatsapp") },
+    { t: "Copiaron su enlace", v: n("copiar_enlace") },
+    { t: "Vieron el video de su historia", v: n("video_play") },
+  ];
+  const tope = Math.max(1, ...embudo.map((x) => x.v));
   const conInvitacion = r.total ? Math.round((r.invitados / r.total) * 100) : 0;
 
   return (
@@ -49,6 +61,20 @@ async function Panel() {
           <div><dt>Últimos 7 días</dt><dd>{r.semana}</dd><span>registros nuevos</span></div>
           <div><dt>Llegaron invitados</dt><dd>{conInvitacion}%</dd><span>{r.eliminados} cuenta{r.eliminados === 1 ? "" : "s"} eliminada{r.eliminados === 1 ? "" : "s"}</span></div>
         </dl>
+      </section>
+
+      <section className={s.tarjeta} aria-labelledby="t-embudo">
+        <h2 id="t-embudo" className={s.h2}>Cómo llega la gente · últimos 30 días</h2>
+        <ul className={s.embudo}>
+          {embudo.map((x) => (
+            <li key={x.t}>
+              <span>{x.t}</span>
+              <span className={s.embudoBarra} aria-hidden="true"><i style={{ width: `${Math.max(x.v ? 3 : 0, (x.v / tope) * 100)}%` }} /></span>
+              <strong>{x.v}</strong>
+            </li>
+          ))}
+        </ul>
+        <p className={s.ayuda}>Conteo anónimo: sin cookies, sin IP y sin saber quién es cada persona.</p>
       </section>
 
       <section className={s.tarjeta} aria-labelledby="t-crec">

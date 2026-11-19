@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { galeria } from "@/content/galeria";
-import { Proyectos, HechoEnFloridablanca, Muro, Hablemos, PageHero, Pantallas } from "../sections";
+import { Proyectos, Franja, HechoEnFloridablanca, Muro, Hablemos, PageHero, Pantallas } from "../sections";
 
 export const metadata: Metadata = {
   title: "Proyectos",
@@ -18,6 +18,7 @@ export default function ProyectosPage() {
       />
       <Proyectos />
       <HechoEnFloridablanca />
+      <Franja tone="must" quote="Contar estas historias… también es endulzar el alma." />
       <Muro />
       <Hablemos />
     </Pantallas>

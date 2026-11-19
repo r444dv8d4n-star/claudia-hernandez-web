@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { medir } from "@/lib/red/medir";
 
 type Props = { id: string; titulo: string; href: string; portada: string; cls: { frame: string; play: string; link: string } };
 
@@ -22,7 +23,7 @@ export default function VideoYoutube({ id, titulo, href, portada, cls }: Props) 
             allowFullScreen
           />
         ) : (
-          <button type="button" className={cls.play} onClick={() => setJugando(true)} aria-label={`Ver el video: ${titulo}`}>
+          <button type="button" className={cls.play} onClick={() => { setJugando(true); medir("video_play"); }} aria-label={`Ver el video: ${titulo}`}>
             <Image src={portada} alt="" fill sizes="(max-width:960px) 92vw, 60vw" style={{ objectFit: "cover" }} />
             <span aria-hidden="true">▶</span>
           </button>

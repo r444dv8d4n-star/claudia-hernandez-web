@@ -61,8 +61,39 @@ function FechaNacimiento({ v, e }: { v: Valores; e: Errs }) {
 }
 
 /** Datos personales: los mismos en el registro y en «Mi perfil». */
-export function CamposPersona({ v, e }: { v: Valores; e: Errs }) {
+export function CamposPersona({ v, e, parte = "todo" }: { v: Valores; e: Errs; parte?: "todo" | "contacto" | "lugar" }) {
   const [municipio, setMunicipio] = useState(v.municipio || "Floridablanca");
+  const contacto = (
+    <>
+      <Campo v={v} e={e} name="nombre" label="Nombres y apellidos" placeholder="Como aparece en tu cédula" autoComplete="name" ayuda="Escríbelos completos, los dos nombres y los dos apellidos." />
+      <div className={s.fila}>
+        <Campo v={v} e={e} name="telefono" label="Celular" placeholder="3001234567" type="tel" inputMode="numeric" autoComplete="tel-national" maxLength={13} />
+        <Campo v={v} e={e} name="correo" label="Correo" type="email" placeholder="tu@correo.com" autoComplete="email" inputMode="email" />
+      </div>
+      <FechaNacimiento v={v} e={e} />
+    </>
+  );
+  const lugar = (
+    <>
+      <Campo v={v} e={e} name="documento" label="Número de documento" placeholder="1098765432" inputMode="numeric" autoComplete="off" maxLength={12} />
+      <div className={s.fila}>
+        <div className={s.campo}>
+          <label htmlFor="municipio">Municipio</label>
+          <select id="municipio" name="municipio" value={municipio} onChange={(ev) => setMunicipio(ev.target.value)} aria-invalid={e.municipio ? true : undefined}>
+            {municipios.map((m) => <option key={m}>{m}</option>)}
+          </select>
+          {e.municipio && <span className={s.err}>{e.municipio}</span>}
+        </div>
+        {municipio === "Otro"
+          ? <Campo v={v} e={e} name="municipioOtro" label="¿Cuál municipio?" placeholder="Escribe tu municipio" />
+          : <Campo v={v} e={e} name="barrio" label="Barrio" placeholder="Empieza a escribir" list={municipio === "Floridablanca" ? "barrios" : undefined} autoComplete="off" opcional />}
+      </div>
+      <datalist id="barrios">{barriosFloridablanca.map((b) => <option key={b} value={b} />)}</datalist>
+      <Campo v={v} e={e} name="direccion" label="Dirección" placeholder="Ej.: Calle 5 # 8-20" autoComplete="street-address" ayuda="Escríbela como la conoces." />
+    </>
+  );
+  if (parte === "contacto") return contacto;
+  if (parte === "lugar") return lugar;
   return (
     <>
       <Campo v={v} e={e} name="nombre" label="Nombres y apellidos" placeholder="Como aparece en tu cédula" autoComplete="name" ayuda="Escríbelos completos, los dos nombres y los dos apellidos." />

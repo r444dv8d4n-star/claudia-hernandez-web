@@ -4,6 +4,7 @@
  * (enlace en `ig`); las frases entre comillas son textuales.
  *
  * Para publicar una nueva: agrega un objeto arriba con la fecha AAAA-MM-DD y los párrafos en `body`.
+ * Ritmo sugerido: una entrada por semana, a partir de sus publicaciones (sin inventar datos; las citas van textuales).
  */
 export type Post = {
   slug: string;
@@ -27,6 +28,71 @@ export const bitacora = {
 };
 
 export const posts: Post[] = [
+  {
+    slug: "luis-angel-torrado-festival-vallenato",
+    title: "Luis Ángel Torrado, orgullo florideño en el vallenato",
+    tag: "Orgullo florideño",
+    date: "2026-11-18",
+    excerpt: "El estudiante de Música de la UIS quedó entre los primeros lugares del Festival Vallenato en Nobsa, Boyacá.",
+    body: [
+      "Luis Ángel Torrado, estudiante de Licenciatura en Música de la UIS en Floridablanca, logró figurar entre los primeros lugares del Festival Vallenato en Nobsa, Boyacá.",
+      "Claudia lo felicitó a él y a toda su familia: «Una vez más, Luis Ángel Torrado nos hace orgullosos de ser florideños.»",
+    ],
+    ig: "https://www.instagram.com/p/Df3JNMXzMKI/",
+    foto: foto("luis-angel-torrado-festival-vallenato", 720, 405, "50% 30%"),
+  },
+  {
+    slug: "consejo-municipal-de-juventudes",
+    title: "Los jóvenes también construyen municipio",
+    tag: "Juventud",
+    date: "2026-11-08",
+    excerpt: "En el Consejo Municipal de Juventudes hubo propuestas para la convivencia, la calidad de vida y el medio ambiente.",
+    body: [
+      "En una nueva sesión del Consejo Municipal de Juventudes, Claudia escuchó propuestas de los jóvenes para la convivencia, la calidad de vida y el medio ambiente, y les agradeció sus aportes.",
+      "«¡La participación juvenil es fundamental para construir municipio!»",
+    ],
+    ig: "https://www.instagram.com/p/DffaOSxG4-V/",
+    foto: foto("consejo-municipal-de-juventudes", 640, 639, "65% 32%"),
+  },
+  {
+    slug: "emprendedores-ferias-dulce-de-corazon",
+    title: "209 años: los emprendedores en las Ferias Dulce de Corazón",
+    tag: "Ciudad Dulce",
+    date: "2026-11-08",
+    excerpt: "Para el cumpleaños de Floridablanca, Claudia invitó a recorrer el Parque Principal y conocer a sus emprendedores.",
+    body: [
+      "En las Ferias y Fiestas Dulce de Corazón, por los 209 años de Floridablanca, Claudia invitó a recorrer el Parque Principal, donde estaban el talento y el esfuerzo de los emprendedores del municipio.",
+      "«¡Ven, siéntelos y llévate un pedacito de Floridablanca!»",
+    ],
+    ig: "https://www.instagram.com/p/Dff4Q1bDkR0/",
+    foto: foto("emprendedores-ferias-dulce-de-corazon", 640, 640, "50% 60%"),
+  },
+  {
+    slug: "mujeres-imparables-jardin-de-limoncitos",
+    title: "Una tarde con las Mujeres Imparables",
+    tag: "Mujeres",
+    date: "2026-10-30",
+    excerpt: "El grupo de Jardín de Limoncitos con el que Claudia aprendió que el liderazgo nace en la calle.",
+    body: [
+      "Claudia volvió a encontrarse con el grupo de las Mujeres Imparables del barrio Jardín de Limoncitos: risas, buenas conversaciones y mucha energía positiva.",
+      "«¡Qué grupo tan espectacular!»",
+    ],
+    ig: "https://www.instagram.com/p/DfI67MOjuc0/",
+    foto: foto("mujeres-imparables-jardin-de-limoncitos", 640, 639, "55% 50%"),
+  },
+  {
+    slug: "la-cumbre-tarde-de-matachines",
+    title: "En La Cumbre, una tarde con traje de matachín",
+    tag: "Tradiciones",
+    date: "2026-10-23",
+    excerpt: "Una tarde de disfraces con el grupo Ritmo y Sabor, dedicada a la memoria de Nubia.",
+    body: [
+      "En La Cumbre, Claudia compartió una tarde de disfraces con las chicas del grupo Ritmo y Sabor. Para rendirle homenaje a lo nuestro se vistió con el auténtico traje de matachín y bailó con ellas.",
+      "La tarde tuvo una dedicatoria especial para Nubia: «Cada sonrisa, cada baile y cada momento fue un homenaje en su honor y a la huella hermosa que dejó en nosotros.»",
+    ],
+    ig: "https://www.instagram.com/p/De3DgJpOXGY/",
+    foto: foto("la-cumbre-tarde-de-matachines", 720, 1280, "45% 28%"),
+  },
   {
     slug: "pioneras-del-dulce-florideno",
     title: "Las pioneras del dulce florideño",

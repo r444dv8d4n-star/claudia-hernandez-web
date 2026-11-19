@@ -130,6 +130,7 @@ export default function Terminos() {
       <section id="p10">
         <h2>10. Seguridad</h2>
         <p>Toda la comunicación viaja cifrada (HTTPS). La base de datos aplica seguridad por filas: cada persona solo puede leer lo que le corresponde. Las contraseñas se guardan cifradas, las llaves secretas nunca están en el código público y limitamos los intentos de inicio de sesión.</p>
+        <p>Para mejorar el sitio contamos, de forma anónima, algunas acciones (por ejemplo, cuántas veces se toca «Súmate» o se comparte por WhatsApp). Ese conteo no usa cookies ni guarda tu IP ni nada que te identifique.</p>
       </section>
 
       <section id="p11">

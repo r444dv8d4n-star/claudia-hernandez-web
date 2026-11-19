@@ -185,7 +185,7 @@ export function Cifras() {
       <div className={s.numGrid}>
         {cifras.map((c, i) => (
           <Reveal key={c.l} className={s.n} delay={i * 100}>
-            {c.n > 999 ? <span className={s.big}>{c.n}</span> : <span className={s.big}>{c.plus ? "+" : ""}<Counter to={c.n} /></span>}
+            {c.n > 999 ? <span className={s.big}>{c.n.toLocaleString("es-CO", { useGrouping: "always" })}</span> : <span className={s.big}><Counter to={c.n} /></span>}
             <strong>{c.l}</strong>
             <span className={s.nNote}>{c.note}</span>
           </Reveal>
@@ -315,17 +315,19 @@ export function Muro() {
   );
 }
 
-export function Hablemos() {
+export function Hablemos({ frase = true }: { frase?: boolean }) {
   return (
     <section id="hablemos" className={`${s.sec} ${s.contact}`}>
       <div className={s.cText}>
         <Reveal><p className={s.eyebrow}>Hablemos</p></Reveal>
         <Reveal delay={80}><h2>Tu voz también cuenta en esta historia.</h2></Reveal>
         <Reveal delay={160}><p>Escríbele sobre tu barrio, tu emprendimiento o una idea para{" "}Floridablanca.</p></Reveal>
-        <Reveal delay={240} as="figure" className={s.quote}>
-          <blockquote>“La fuerza de Floridablanca está en su gente y en nuestra unión.”</blockquote>
-          <figcaption>Claudia Hernández</figcaption>
-        </Reveal>
+        {frase && (
+          <Reveal delay={240} as="figure" className={s.quote}>
+            <blockquote>“La fuerza de Floridablanca está en su gente y en nuestra unión.”</blockquote>
+            <figcaption>Claudia Hernández</figcaption>
+          </Reveal>
+        )}
       </div>
       {SHOW_CONTACT_FORM ? (
         <Reveal className={s.formWrap}><ContactForm cls={s} /></Reveal>
