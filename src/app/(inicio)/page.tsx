@@ -5,14 +5,19 @@ import Spotlight from "@/components/Spotlight";
 import HeroName from "@/components/HeroName";
 import HeroCollage from "@/components/HeroCollage";
 import ExtraSection from "@/components/ExtraSection";
+import UneteRed from "@/components/UneteRed";
+import { RED, redAbierta } from "@/content/red";
+import LinkMedido from "@/components/LinkMedido";
 import SocialIcons from "@/components/SocialIcons";
 import { person, img } from "@/content/site";
-import { HistoriaCards, Cifras, Reconocimientos, BitacoraTeaser, Proyectos, Hablemos } from "./sections";
+import { HistoriaCards, Cifras, Franja, Reconocimientos, BitacoraTeaser, Proyectos, Hablemos } from "./sections";
 import s from "./o2.module.css";
 
 export const metadata: Metadata = {
   title: { absolute: "Claudia Hernández · Concejala de Floridablanca" },
-  description: "Claudia Hernández, concejala de Floridablanca (2024–2027): una historia de familia, derecho y trabajo comunitario.",
+  description: "Claudia Hernández, concejala de Floridablanca (2024–2027) y primera mujer en presidir su Concejo. ExpoMujer, Mujeres Imparables, emprendedores y barrios de Floridablanca, Santander.",
+  alternates: { canonical: "/" },
+  openGraph: { title: "Claudia Hernández · Concejala de Floridablanca", description: "Claudia Hernández, concejala de Floridablanca (2024–2027) y primera mujer en presidir su Concejo. ExpoMujer, Mujeres Imparables, emprendedores y barrios de Floridablanca, Santander.", url: "/" },
 };
 
 // Miniaturas del collage de entrada (fotos nuevas subidas a main por el equipo).
@@ -24,7 +29,7 @@ export default function Inicio() {
     <>
 
       {/* Inicio por pantallas: cada sección ocupa una pantalla y el scroll pasa de una a otra */}
-      <div className={s.snap}>
+      <div className={`${s.snap} ${s.snapOn}`}>
       {/* PORTADA: panel mostaza + foto */}
       <Spotlight className={s.hero}>
         <div className={s.heroImg}>
@@ -38,8 +43,18 @@ export default function Inicio() {
           <p className={s.traits}>{["Florideña", "Mamá", "Abogada", "Líder social"].map((t, i) => (<span key={t} className={s.trait}>{i > 0 && <i aria-hidden="true"> · </i>}{t}</span>))}</p>
           <p className={s.lead}>Primera mujer en presidir el Concejo de Floridablanca.</p>
           <div className={s.ctas}>
-            <Link className={s.btn} href="/historia#video"><span aria-hidden="true">▶</span> Conoce su historia</Link>
-            <Link className={s.btnGhost} href="/logros">Mira su trabajo <span aria-hidden="true">→</span></Link>
+            {/* Con la red abierta, la acción principal es sumarse; la historia pasa a segundo botón. */}
+            {redAbierta ? (
+              <>
+                <LinkMedido evento="clic_sumate_portada" className={s.btn} href="/registro">{RED.boton} <span aria-hidden="true">→</span></LinkMedido>
+                <Link className={s.btnGhost} href="/historia#video"><span aria-hidden="true">▶</span> Conoce su historia</Link>
+              </>
+            ) : (
+              <>
+                <Link className={s.btn} href="/historia#video"><span aria-hidden="true">▶</span> Conoce su historia</Link>
+                <Link className={s.btnGhost} href="/logros">Mira su trabajo <span aria-hidden="true">→</span></Link>
+              </>
+            )}
           </div>
           <div className={s.heroSoc}><span>También en</span><SocialIcons /></div>
         </div>
@@ -47,11 +62,13 @@ export default function Inicio() {
 
       <HistoriaCards more />
       <Cifras />
+      <Franja quote="La fuerza de Floridablanca está en su gente y en nuestra unión." />
       <Reconocimientos more />
       <BitacoraTeaser />
       <Proyectos more />
       <ExtraSection className={s.extra} />
-      <Hablemos />
+      <UneteRed />
+      <Hablemos frase={false} />
       </div>
     </>
   );

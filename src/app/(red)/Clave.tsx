@@ -4,14 +4,15 @@ import { useState } from "react";
 import s from "./red.module.css";
 
 /** Campo de contraseña con el botón del ojo para verla. */
-export default function Clave({ id = "contrasena", autoComplete, error, ayuda }: { id?: string; autoComplete: string; error?: string; ayuda?: string }) {
+export default function Clave({ id = "contrasena", autoComplete, error, ayuda, valor, alCambiar }: { id?: string; autoComplete: string; error?: string; ayuda?: string; valor?: string; alCambiar?: (v: string) => void }) {
   const [ver, setVer] = useState(false);
   const desc = [error && `${id}-err`, ayuda && `${id}-ayuda`].filter(Boolean).join(" ") || undefined;
   return (
     <>
       <div className={s.clave}>
         <input id={id} name={id} type={ver ? "text" : "password"} autoComplete={autoComplete} required
-          aria-invalid={error ? true : undefined} aria-describedby={desc} />
+          aria-invalid={error ? true : undefined} aria-describedby={desc}
+          {...(alCambiar ? { value: valor ?? "", onChange: (ev: React.ChangeEvent<HTMLInputElement>) => alCambiar(ev.target.value) } : {})} />
         <button type="button" className={s.ojo} onClick={() => setVer((x) => !x)} aria-label={ver ? "Ocultar contraseña" : "Ver contraseña"} aria-pressed={ver}>
           {ver ? (
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

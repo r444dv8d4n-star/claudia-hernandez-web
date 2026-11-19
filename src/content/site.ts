@@ -50,8 +50,8 @@ export const comisiones = [
 export const cifras = [
   { n: 2, l: "veces presidenta del Concejo", note: "Un hecho histórico para Floridablanca" },
   { n: 3, l: "acuerdos municipales de su autoría", note: "Niñez, mujeres y arte urbano" },
-  { n: 2016, l: "año de su primer acuerdo", note: "La sesión de los niños en el Concejo" },
-  { n: 12, l: "emprendimientos contados en sus crónicas", note: "Hecho en Floridablanca", plus: true },
+  { n: 1134, l: "florideños votaron por ella", note: "Elecciones al Concejo de 2023" },
+  { n: 18, l: "mujeres rurales reconocidas", note: "Desde la Comisión de la Mujer, 2024" },
 ];
 
 /** Logros verificados en fuentes públicas. Agregar aquí los nuevos, del más reciente al más antiguo. */
@@ -159,25 +159,51 @@ export const timeline = [
   { y: "2024", t: "Hecho en Floridablanca", d: "Cada martes, un emprendimiento local contado en sus redes." },
   { y: "2025", t: "La Bitácora de Claudia", d: "Un espacio para escuchar: «escuchar también es gobernar»." },
   { y: "Dic. 2025", t: "Segunda presidencia del Concejo", d: "«Las mujeres lideran, transforman y dejan huella.»" },
-  { y: "2026", t: "Su historia, contada", d: "Presidenta del Concejo, crónicas de emprendedores y el podcast Detrás del Poder." },
+  { y: "2026", t: "Su historia, contada", d: "Cierra su segunda presidencia del Concejo y cuenta su vida en el podcast Detrás del Poder." },
 ];
 
-/** Emprendimientos que ha presentado en sus crónicas. Solo nombre y enlace a su publicación (sin datos de contacto). */
-const ef = (slug: string, w: number, h: number, pos = "50% 50%") => ({ src: `/assets/emprendedores/${slug}.webp`, w, h, pos });
-export const emprendedores = [
-  { n: "Fiore", who: "Catalina", d: "Bolsos y accesorios hechos a mano.", year: "2026", src: ig("Defl7TDNvZm"), foto: ef("fiore", 720, 405) },
-  { n: "Alma Love", who: "Una creadora florideña", d: "Velas artesanales con esencias.", year: "2026", src: ig("Da1LFD5O-xB"), foto: ef("alma-love", 720, 405) },
-  { n: "personaliza.me", who: "Johanna Angarita", d: "Tazas, termos, agendas y álbumes personalizados.", year: "2026", src: ig("DfTNKnxOliq"), foto: ef("personaliza-me", 720, 405) },
-  { n: "Impresión 3D", who: "Heider y su novia", d: "Una pareja joven que emprende en equipo.", year: "2026", src: ig("DeAvwH-upqc"), foto: ef("impresion-3d", 640, 360) },
-  { n: "Heladería Pirineos", who: "Un negocio familiar", d: "Helados con la pujanza de Floridablanca.", year: "2026", src: ig("DWXg5rwjqlc"), foto: ef("heladeria-pirineos", 640, 1136, "50% 55%") },
-  { n: "Arepas Mega Queso", who: "Barrio Helechales", d: "Arepas recién hechas y con mucho queso.", year: "2026", src: ig("DV9uO-VDomo"), foto: ef("arepas-mega-queso", 640, 568) },
-];
 
+/**
+ * Los cuatro capítulos. `d` = versión corta (inicio, 3 renglones); `largo` = dos párrafos (página Historia).
+ * Fuentes: podcast «Detrás del Poder» (2026), sus publicaciones de Instagram, Vanguardia (2019) y el Plan de Desarrollo 2024–2027.
+ */
 export const chapters = [
-  { n: "I", t: "Raíces", d: "Mamá de un abogado y una pediatra. Antes fue guardiana de una cárcel, ayudante de construcción y de aseo.", p: img.familia, pFull: img.ninos },
-  { n: "II", t: "Derecho", d: "Estudiar derecho fue elegir una herramienta para que las personas sean escuchadas y sus voces cuenten.", p: img.blazer, pFull: img.visita },
-  { n: "III", t: "Comunidad", d: "Con las Mujeres Imparables de Jardín de Limoncitos aprendió que el liderazgo nace en la calle, con la gente.", p: img.mujeres, pFull: galeria["evento-comunitario-parque"] },
-  { n: "IV", t: "Concejo", d: `Desde el Concejo (${person.period}) lleva esas voces a las decisiones locales. Lo ha presidido dos veces.`, p: img.sesion, pFull: galeria["retrato-camisa-institucional-escritorio"] },
+  {
+    n: "I", t: "Raíces",
+    d: "Mamá de un abogado y una pediatra. Trabajó en una cárcel, en construcción y en aseo.",
+    largo: [
+      "Claudia es mamá de un abogado y de una pediatra. Antes de llegar a la política trabajó como guardiana de una cárcel, como ayudante de construcción y en el aseo.",
+      "No llegó a la política desde un escritorio, sino desde el trabajo duro. Por eso entiende, sin que nadie se lo explique, a las familias que cada día sacan adelante a Floridablanca.",
+    ],
+    p: img.familia, pFull: img.ninos,
+  },
+  {
+    n: "II", t: "Derecho",
+    d: "Estudió derecho para que la gente de Floridablanca sea escuchada y su voz cuente.",
+    largo: [
+      "Estudiar derecho fue elegir una herramienta para que las personas sean escuchadas y sus voces cuenten.",
+      "Como abogada fue ponente del Plan de Desarrollo 2024–2027 y ha escrito acuerdos municipales: la sesión anual de los niños en el Concejo (2016), ExpoMujer (2024) y el Festival de Arte Urbano Gráfico.",
+    ],
+    p: img.blazer, pFull: img.visita,
+  },
+  {
+    n: "III", t: "Comunidad",
+    d: "Con las Mujeres Imparables aprendió que el liderazgo nace en la calle, con la gente.",
+    largo: [
+      "Con las Mujeres Imparables de Jardín de Limoncitos aprendió que el liderazgo nace en la calle, con la gente.",
+      "Desde el Consejo Consultivo de Mujeres empezó a trabajar la idea de ExpoMujer (2022). Desde 2024 presenta cada martes un emprendimiento en «Hecho en Floridablanca» y en 2025 abrió La Bitácora de Claudia para escuchar a los barrios.",
+    ],
+    p: img.mujeres, pFull: galeria["evento-comunitario-parque"],
+  },
+  {
+    n: "IV", t: "Concejo",
+    d: `Lleva al Concejo (${person.period}) las voces de los barrios. Lo ha presidido dos veces.`,
+    largo: [
+      "Fue la primera mujer en presidir el Concejo de Floridablanca, y lo ha hecho dos veces. En 2023 volvió a la corporación con el voto de 1.134 florideños.",
+      `Desde 2024 preside la Comisión de Equidad de la Mujer, donde reconoció a 18 mujeres rurales de las veredas. En este periodo (${person.period}) lleva al Concejo las voces de los barrios.`,
+    ],
+    p: img.sesion, pFull: galeria["retrato-camisa-institucional-escritorio"],
+  },
 ];
 
 /** Carrusel de Reconocimientos (inicio y Logros). Ninguna se repite en otra sección. */

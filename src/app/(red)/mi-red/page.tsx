@@ -7,6 +7,7 @@ import { origen } from "@/lib/red/origen";
 import { calcularNivel, NIVELES, PUNTOS } from "@/content/red";
 import { salir } from "../login/actions";
 import Compartir from "./Compartir";
+import Mision from "./Mision";
 import s from "../red.module.css";
 
 export const metadata: Metadata = { title: "Mi red" };
@@ -50,6 +51,8 @@ async function Panel() {
         <p className={s.sub}>Comparte tu enlace: cada persona que se registre con él suma a tu red.</p>
         <Compartir enlace={enlace} codigo={r.codigo} />
       </section>
+
+      {r.directos < 3 && <Mision directos={r.directos} enlace={enlace} />}
 
       <section className={s.tarjeta} aria-labelledby="cifras-red">
         <h2 id="cifras-red" className={s.h2}>Tu red en números</h2>

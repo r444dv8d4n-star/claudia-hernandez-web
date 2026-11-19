@@ -5,18 +5,19 @@ import ContactForm from "@/components/ContactForm";
 import { socialIcon } from "@/components/Icons";
 import { SHOW_CONTACT_FORM } from "@/config/features";
 import Counter from "@/components/Counter";
-import { chapters, slidesReconocimientos, comisiones, reconocimientos, medios, frentes, wall, redes, acuerdosListos, video, cifras, timeline, emprendedores } from "@/content/site";
+import { chapters, slidesReconocimientos, comisiones, reconocimientos, medios, frentes, wall, redes, acuerdosListos, video, cifras, timeline } from "@/content/site";
 import AwardSlides from "@/components/AwardSlides";
-import { published, formatDate, bitacora, type Post } from "@/content/blog";
+import VideoYoutube from "@/components/VideoYoutube";
+import { published, formatDate, bitacora, HECHO, slugTema, type Post } from "@/content/blog";
 import s from "./o2.module.css";
 
-type Head = { eyebrow: string; title: string; lead?: string; id?: string };
+type Head = { eyebrow: string; title: string; lead?: string; id?: string; href?: string };
 
-function SecHead({ eyebrow, title, lead, id }: Head) {
+function SecHead({ eyebrow, title, lead, id, href }: Head) {
   return (
     <div className={s.secHead}>
       <Reveal><p className={s.eyebrow}>{eyebrow}</p></Reveal>
-      <Reveal delay={80}><h2 id={id}>{title}</h2></Reveal>
+      <Reveal delay={80}><h2 id={id}>{href ? <Link href={href} className={s.titleLink}>{title}</Link> : title}</h2></Reveal>
       {lead && <Reveal delay={140}><p>{lead}</p></Reveal>}
     </div>
   );
@@ -63,7 +64,7 @@ export function HistoriaCompleta() {
           <div className={s.storyTxt}>
             <Reveal><p className={s.chLabel}>Capítulo {c.n}</p></Reveal>
             <Reveal delay={80}><h2>{c.t}</h2></Reveal>
-            <Reveal delay={160}><p>{c.d}</p></Reveal>
+            {c.largo.map((parr, k) => <Reveal key={k} delay={160 + k * 60}><p>{parr}</p></Reveal>)}
           </div>
         </section>
       ))}
@@ -77,14 +78,9 @@ export function Video() {
     <section id="video" className={`${s.sec} ${s.videoSec}`} aria-labelledby="video-title">
       <SecHead eyebrow="En video" title="La puerta que abrió, 200 años después." id="video-title"
         lead="Fue guardiana de una cárcel, ayudante de construcción y trabajadora de aseo antes de presidir el Concejo. Ella misma lo cuenta en Detrás del Poder." />
-      <div className={s.videoFrame}>
-        <iframe
-          src={`https://www.youtube-nocookie.com/embed/${video.id}`}
-          title={video.title}
-          loading="lazy"
-          allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
+      <div className={s.videoWrap}>
+        <VideoYoutube id={video.id} titulo={video.title} href={video.href} portada="/assets/video/detras-del-poder.webp"
+          cls={{ frame: s.videoFrame, play: s.videoPlay, link: s.videoLink }} />
       </div>
     </section>
   );
@@ -132,7 +128,7 @@ export function Medios() {
 export function Reconocimientos({ more = false }: { more?: boolean }) {
   return (
     <section id="reconocimientos" className={`${s.sec} ${s.awards}`} aria-labelledby="logros-title">
-      <SecHead eyebrow="Reconocimientos" title="Hechos, no solo palabras." id="logros-title" />
+      <SecHead eyebrow="Reconocimientos" title="Hechos, no solo palabras." id="logros-title" href={more ? "/logros" : undefined} />
       <Reveal variant="clip" className={s.slidesWrap}>
         <AwardSlides
           title="El mérito es de Floridablanca."
@@ -189,7 +185,7 @@ export function Cifras() {
       <div className={s.numGrid}>
         {cifras.map((c, i) => (
           <Reveal key={c.l} className={s.n} delay={i * 100}>
-            {c.n > 999 ? <span className={s.big}>{c.n}</span> : <span className={s.big}>{c.plus ? "+" : ""}<Counter to={c.n} /></span>}
+            {c.n > 999 ? <span className={s.big}>{c.n.toLocaleString("es-CO", { useGrouping: "always" })}</span> : <span className={s.big}><Counter to={c.n} /></span>}
             <strong>{c.l}</strong>
             <span className={s.nNote}>{c.note}</span>
           </Reveal>
@@ -263,24 +259,22 @@ export function BitacoraTeaser() {
   );
 }
 
-/** Emprendimientos presentados en sus crónicas (página Proyectos). */
+/** Hecho en Floridablanca (página Proyectos): adelanto de las 3 crónicas más recientes; todas están en la Bitácora. */
 export function HechoEnFloridablanca() {
+  const ultimas = published.filter((p) => p.tag === HECHO).slice(0, 3);
+  if (!ultimas.length) return null;
   return (
     <section className={`${s.sec} ${s.makers}`} aria-labelledby="hecho-title">
-      <SecHead eyebrow="Hecho en Floridablanca" title="Emprendedores con nombre propio." id="hecho-title"
-        lead="Desde 2024 presenta en sus redes a quienes sacan adelante a Floridablanca con sus manos. Estas son algunas de sus crónicas." />
-      <ul className={s.makerGrid}>
-        {emprendedores.map((e, i) => (
-          <Reveal as="li" key={e.n} className={s.maker} delay={i * 70}>
-            <div className={s.makerPic}>
-              <Image src={e.foto.src} alt={`${e.n}: ${e.d}`} width={e.foto.w} height={e.foto.h} sizes="(max-width:700px) 92vw, (max-width:1100px) 46vw, 30vw" loading="lazy" style={{ objectPosition: e.foto.pos }} />
-            </div>
-            <h3>{e.n}</h3>
-            <p className={s.makerWho}>{e.who}</p>
-            <p>{e.d}</p>
+      <SecHead eyebrow={HECHO} title="Emprendedores con nombre propio." id="hecho-title"
+        lead="Desde 2024 presenta en sus redes a quienes sacan adelante a Floridablanca con sus manos. Cada crónica tiene su página en la Bitácora." />
+      <ul className={s.hechoGrid}>
+        {ultimas.map((p, i) => (
+          <Reveal as="li" key={p.slug} delay={i * 90}>
+            <EntryCard p={p} />
           </Reveal>
         ))}
       </ul>
+      <More href={`/bitacora?tema=${slugTema(HECHO)}`}>Ver todos los emprendedores en la Bitácora</More>
     </section>
   );
 }
@@ -319,17 +313,19 @@ export function Muro() {
   );
 }
 
-export function Hablemos() {
+export function Hablemos({ frase = true }: { frase?: boolean }) {
   return (
     <section id="hablemos" className={`${s.sec} ${s.contact}`}>
       <div className={s.cText}>
         <Reveal><p className={s.eyebrow}>Hablemos</p></Reveal>
         <Reveal delay={80}><h2>Tu voz también cuenta en esta historia.</h2></Reveal>
         <Reveal delay={160}><p>Escríbele sobre tu barrio, tu emprendimiento o una idea para{" "}Floridablanca.</p></Reveal>
-        <Reveal delay={240} as="figure" className={s.quote}>
-          <blockquote>“La fuerza de Floridablanca está en su gente y en nuestra unión.”</blockquote>
-          <figcaption>Claudia Hernández</figcaption>
-        </Reveal>
+        {frase && (
+          <Reveal delay={240} as="figure" className={s.quote}>
+            <blockquote>“La fuerza de Floridablanca está en su gente y en nuestra unión.”</blockquote>
+            <figcaption>Claudia Hernández</figcaption>
+          </Reveal>
+        )}
       </div>
       {SHOW_CONTACT_FORM ? (
         <Reveal className={s.formWrap}><ContactForm cls={s} /></Reveal>
@@ -353,9 +349,10 @@ export function Hablemos() {
 }
 
 /** Envoltura de "inicio por pantallas": cada hijo directo ocupa una pantalla en computador. */
-export function Pantallas({ children }: { children: React.ReactNode }) {
+export function Pantallas({ children, saltar = true }: { children: React.ReactNode; saltar?: boolean }) {
   // snapOn: en las páginas del menú el scroll salta de una sección completa a la siguiente.
-  return <div className={`${s.snap} ${s.snapOn}`}>{children}</div>;
+  // saltar=false: mismo diseño por pantallas, pero con scroll libre (páginas largas de leer).
+  return <div className={saltar ? `${s.snap} ${s.snapOn}` : s.snap}>{children}</div>;
 }
 
 type Foto = { src: string; w: number; h: number; alt: string; pos?: string };

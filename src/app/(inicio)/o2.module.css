@@ -1,6 +1,6 @@
-/* ===== Paleta: más mostaza que morado. El morado queda como acento y color de texto. ===== */
+/* ===== Paleta de su Instagram: amarillo de su foto de perfil + morado de «Florideña». ===== */
 .root{
-  --must:#E3A92B;--mustDeep:#C98A12;--mustSoft:#F6DFA5;--cream:#FBF4E6;--ink:#2A1240;--purple:#5B2A8C;--violet:#7A4BC2;
+  --must:#F7CD1E;--mustDeep:#8C6A00;--mustSoft:#FFF0B3;--cream:#FBF4E6;--ink:#2A1240;--purple:#5E33A0;--rosa:#EE62BE;--rosaDeep:#B0207A;--naranja:#F2A65A;--violet:#7A55C2;
   --bg:var(--cream);--surface:#fff;--text:var(--ink);--muted:#2a1240c7;--line:#2a124022;--accent:var(--purple);--shadow:#2a124040;
   background:var(--bg);color:var(--text);font-family:var(--f-body),system-ui,sans-serif;font-size:1.0625rem;line-height:1.65;overflow-x:clip;min-height:100svh
 }
@@ -15,7 +15,7 @@
 /* ===== encabezado ===== */
 .header{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .logo{font-family:var(--f-display),serif;font-weight:700;text-decoration:none;font-size:1.2rem;color:var(--text);white-space:nowrap}
-.logo span{color:var(--mustDeep);font-style:italic}
+.logo span{color:var(--purple);font-style:italic}
 :global(html[data-theme="dark"]) .logo span{color:var(--must)}
 .nav{display:none;gap:22px;align-items:center}
 .nav a{text-decoration:none;font-size:.95rem;font-weight:600;color:var(--text)}
@@ -52,7 +52,7 @@
 .heroImg::before{content:none}
 .heroImg img{-webkit-mask-image:linear-gradient(180deg,#000 78%,transparent 99%);mask-image:linear-gradient(180deg,#000 78%,transparent 99%)}
 /* fundido suave hacia el mostaza (curva en varios pasos para que no se vea la raya) */
-.heroImg::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,#e3a92b00 0%,#e3a92b00 55%,#e3a92b40 68%,#e3a92b99 82%,#e3a92be6 94%,var(--must) 100%)}
+.heroImg::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,#F7CD1E00 0%,#F7CD1E00 55%,#F7CD1E40 68%,#F7CD1E99 82%,#F7CD1Ee6 94%,var(--must) 100%)}
 .collage{position:absolute;inset:0;z-index:3;pointer-events:none}
 .scrim{position:absolute;inset:0;background:linear-gradient(180deg,#2a1240aa,#2a1240dd)}
 .base{position:absolute;inset:0;background:var(--ink)}
@@ -75,7 +75,7 @@
 .heroSoc .icons a{color:var(--ink);border-color:#2a124055}
 .heroSoc .icons a:hover{background:var(--ink);color:var(--must)}
 @media(min-width:960px){
-  .heroImg::after{inset:0 0 0 -2px;background:linear-gradient(90deg,var(--must) 0%,#e3a92bf2 8%,#e3a92bd0 16%,#e3a92b99 26%,#e3a92b5c 36%,#e3a92b2e 46%,#e3a92b0f 56%,#e3a92b00 66%)}
+  .heroImg::after{inset:0 0 0 -2px;background:linear-gradient(90deg,var(--must) 0%,#F7CD1Ef2 8%,#F7CD1Ed0 16%,#F7CD1E99 26%,#F7CD1E5c 36%,#F7CD1E2e 46%,#F7CD1E0f 56%,#F7CD1E00 66%)}
   /* la foto trae una franja oscura/blanca en su borde izquierdo: se difumina contra el fondo mostaza */
   .heroImg img{-webkit-mask-image:linear-gradient(90deg,transparent 0,transparent 3%,#000 26%);mask-image:linear-gradient(90deg,transparent 0,transparent 3%,#000 26%)}
   .hero{grid-template-columns:1.05fr 1fr;min-height:calc(100svh - 66px)}
@@ -190,7 +190,7 @@
 .timeline{background:var(--bg)}
 .tGrid{list-style:none;margin:0;padding:0 0 0 22px;display:grid;gap:18px;border-left:3px solid var(--must)}
 .tItem{position:relative;display:grid;gap:4px;align-content:start}
-.tItem::before{content:"";position:absolute;left:-31px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--must);box-shadow:0 0 0 5px #e3a92b33}
+.tItem::before{content:"";position:absolute;left:-31px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--must);box-shadow:0 0 0 5px #F7CD1E33}
 .tYear{justify-self:start;font-weight:800;font-size:.85rem;letter-spacing:.06em;padding:3px 10px;border-radius:999px;background:var(--ink);color:var(--must)}
 :global(html[data-theme="dark"]) .tYear{background:var(--must);color:var(--ink)}
 .tItem h3{font-size:1.2rem}
@@ -220,7 +220,7 @@
 @media(min-width:1100px){.makerGrid{grid-template-columns:repeat(3,1fr);gap:18px}}
 
 /* reconocimientos: el bloque morado (acento) */
-.awards{background:radial-gradient(900px circle at 85% 0%,#7a4bc255,transparent 60%),var(--ink);color:var(--cream)}
+.awards{background:radial-gradient(900px circle at 85% 0%,#7A55C255,transparent 60%),var(--ink);color:var(--cream)}
 .awards .eyebrow{color:var(--must)}
 .awards .secHead p:not(.eyebrow){color:#fbf4e6cc}
 .awards .more{color:var(--cream)}
@@ -229,14 +229,14 @@
 .award h3{font-size:1.45rem;margin-bottom:6px}
 .award p{opacity:.9}
 .awardYear{font-family:var(--f-display),serif;font-style:italic;font-weight:700;font-size:2.4rem;line-height:1;color:var(--must)}
-.awardSrc{display:inline-block;margin-top:12px;color:var(--must);font-weight:700;text-decoration:none;border-bottom:2px solid #e3a92b66}
+.awardSrc{display:inline-block;margin-top:12px;color:var(--must);font-weight:700;text-decoration:none;border-bottom:2px solid #F7CD1E66}
 .awardSrc:hover{border-color:var(--must)}
 @media(min-width:960px){.awardList{grid-template-columns:1fr 1fr;gap:24px}.award{grid-template-columns:auto 1fr;padding:34px;gap:26px}.awardYear{font-size:3.2rem}}
 
 /* acuerdos */
 .tl{list-style:none;margin:0;padding:0 0 0 26px;border-left:2px solid var(--must);display:grid;gap:40px}
 .tl li{position:relative;display:grid;gap:6px}
-.tl li::before{content:"";position:absolute;left:-35px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--must);box-shadow:0 0 0 6px #e3a92b33}
+.tl li::before{content:"";position:absolute;left:-35px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--must);box-shadow:0 0 0 6px #F7CD1E33}
 .tlYear{color:var(--mustDeep);font-weight:700;letter-spacing:.08em}
 .tl h3{font-size:1.5rem}
 .tlN{color:var(--muted);font-size:.9rem}
@@ -308,12 +308,12 @@
 :global(html):has(.snapOn){scroll-snap-type:y proximity;scroll-padding-top:64px}
 .snapOn > *{scroll-snap-align:start}
 :global(html):has(.snapOn) .footer{scroll-snap-align:end}
-@media(min-width:960px) and (min-height:600px){
+@media(min-width:960px) and (min-height:480px){
   :global(html):has(.snapOn){scroll-snap-type:y mandatory;scroll-padding-top:72px}
   .snapOn > *{scroll-snap-stop:always}
 }
 @media (prefers-reduced-motion:reduce){:global(html):has(.snapOn){scroll-snap-type:y proximity}}
-@media(min-width:960px) and (min-height:600px){
+@media(min-width:960px) and (min-height:480px){
   :global(html):has(.snap) .header{height:72px;padding-block:0}
   .snap > *{min-height:calc(100svh - var(--hdr));box-sizing:border-box}
   .snap > .hero{height:calc(100svh - var(--hdr));min-height:0}
@@ -371,7 +371,7 @@
   .snap .empty{justify-self:start}
 }
 /* computadores angostos: reconocimientos apila título y logros; la prensa muestra solo lo esencial */
-@media(min-width:960px) and (min-height:600px) and (max-width:1199px){
+@media(min-width:960px) and (min-height:480px) and (max-width:1199px){
   .snap .award{padding:18px 18px;gap:6px}
   .snap .award p{font-size:.92rem;line-height:1.45}
   .snap .awardYear{font-size:1.8rem}
@@ -379,7 +379,7 @@
   .snap .pressItem{padding:18px 20px}
 }
 /* secciones con muchas tarjetas: versión compacta en pantallas angostas o bajas */
-@media(min-width:960px) and (min-height:600px){
+@media(min-width:960px) and (min-height:480px){
   .snap .lawGrid{gap:16px}
   .snap .law{padding:20px 22px;gap:6px}
   .snap .lawYear{font-size:clamp(1.8rem,5svh,2.6rem)}
@@ -387,7 +387,7 @@
   .snap .maker{padding:16px 18px;gap:4px}
   .snap .maker h3{font-size:1.15rem}
 }
-@media(min-width:960px) and (min-height:600px) and (max-height:720px),(min-width:960px) and (min-height:600px) and (max-width:1199px){
+@media(min-width:960px) and (min-height:480px) and (max-height:720px),(min-width:960px) and (min-height:480px) and (max-width:1199px){
   .snap .secHead p:not(.eyebrow){font-size:.98rem}
   .snap .laws .secHead p:not(.eyebrow),.snap .makers .secHead p:not(.eyebrow){display:none}
   .snap .law p:not(.lawN){font-size:.9rem;line-height:1.4}
@@ -397,7 +397,7 @@
   .snap .tItem{padding:10px 14px}
 }
 /* pantallas bajas o angostas: las fotos de la historia bajan un poco más para no cortar el texto */
-@media(min-width:960px) and (min-height:600px) and (max-height:720px),(min-width:960px) and (min-height:600px) and (max-width:1200px){
+@media(min-width:960px) and (min-height:480px) and (max-height:720px),(min-width:960px) and (min-height:480px) and (max-width:1200px){
   .snap .chPic img{height:clamp(110px,20svh,300px)}
   .snap .pressItem{padding:18px 20px;gap:4px}
 }
@@ -428,18 +428,18 @@
 .roleChips li:nth-child(odd){background:var(--ink)}
 @keyframes chipIn{from{opacity:0;transform:translateY(10px) scale(.9)}to{opacity:1;transform:none}}
 @media(min-width:960px){.hero h1{font-size:clamp(2.6rem,min(4.6vw,8.6svh),4.6rem)}}
-@media(min-width:960px) and (min-height:600px){.snap .hero h1{font-size:clamp(2.6rem,min(4.6vw,8.6svh),4.6rem)}.snap .hero .lead{font-size:1.05rem}}
+@media(min-width:960px) and (min-height:480px){.snap .hero h1{font-size:clamp(2.6rem,min(4.6vw,8.6svh),4.6rem)}.snap .hero .lead{font-size:1.05rem}}
 @media(prefers-reduced-motion:reduce){.roleChips li,.tagline::after{animation:none}}
 
 /* ===== reconocimientos: foto con ella resaltada ===== */
-.awardPhoto{position:relative;margin:0;border-radius:26px;overflow:hidden;border:3px solid var(--must);box-shadow:0 26px 50px -28px #000,0 0 0 6px #e3a92b22}
+.awardPhoto{position:relative;margin:0;border-radius:26px;overflow:hidden;border:3px solid var(--must);box-shadow:0 26px 50px -28px #000,0 0 0 6px #F7CD1E22}
 .awardPhoto img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:60% 30%;filter:saturate(1.08) brightness(1.04)}
 /* ella queda iluminada; el resto de la escena se oscurece suavemente */
 .awardPhoto::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 30% 40% at 62% 36%,transparent 0%,transparent 55%,#150a2488 100%),radial-gradient(ellipse 30% 36% at 62% 34%,#fff0c755,transparent 70%)}
 .awardPhoto figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;display:grid;gap:2px;padding:42px 20px 16px;background:linear-gradient(180deg,transparent,#150a24e6 55%);color:var(--cream)}
 .awardPhoto figcaption strong{font-family:var(--f-display),serif;font-size:clamp(1.15rem,3.2vw,1.5rem);line-height:1.15;color:var(--must)}
 .awardPhoto figcaption span{font-size:.95rem;opacity:.95}
-@media(min-width:960px) and (min-height:600px){
+@media(min-width:960px) and (min-height:480px){
   .snap .awards{grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:clamp(32px,4vw,64px);row-gap:clamp(12px,2.4svh,22px);align-items:center}
   .snap .awards .secHead{grid-column:1;grid-row:1}
   .snap .awards .awardPhoto{grid-column:1;grid-row:2}
@@ -448,7 +448,7 @@
   .snap .awards .awardList{grid-column:2;grid-row:1 / span 3;grid-template-columns:1fr;gap:clamp(10px,2svh,18px)}
   .snap .awards .award{grid-template-columns:auto 1fr;gap:18px;align-items:center}
 }
-@media(min-width:960px) and (min-height:600px){.snap .awards .awardPhoto{margin-top:12px}.snap .awards .awardPhoto img{height:clamp(220px,42svh,420px)}}
+@media(min-width:960px) and (min-height:480px){.snap .awards .awardPhoto{margin-top:12px}.snap .awards .awardPhoto img{height:clamp(220px,42svh,420px)}}
 
 .firstBadge{margin:0;font-weight:700;font-size:.95rem;color:var(--ink);display:inline-block;padding:8px 14px;border-radius:12px;background:#fbf4e6cc;border:1px solid #2a124033;justify-self:start}
 @media(min-width:960px){.hero h1,.snap .hero h1{font-size:clamp(3rem,min(6vw,11svh),5.6rem)}}
@@ -467,7 +467,7 @@
 .dots i{width:22px;height:4px;border-radius:4px;background:#fbf4e688;transition:background .3s,width .3s}
 .dots i.on{background:var(--must);width:34px}
 @media(prefers-reduced-motion:reduce){.slide{transition:none;transform:none}}
-@media(min-width:960px) and (min-height:600px){.snap .awards .slidesWrap{grid-column:1;grid-row:2;margin-top:8px}.snap .awards .slides{height:clamp(300px,58svh,520px)}.snap .awards .frame{aspect-ratio:auto}}
+@media(min-width:960px) and (min-height:480px){.snap .awards .slidesWrap{grid-column:1;grid-row:2;margin-top:8px}.snap .awards .slides{height:clamp(300px,58svh,520px)}.snap .awards .frame{aspect-ratio:auto}}
 
 /* ===== reconocimientos: tarjetas compactas; el año aparece con el fondo al pasar el mouse ===== */
 .awards .awardList{gap:14px}
@@ -475,7 +475,7 @@
 .awards .award::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,var(--must),#f2c35a);transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.7,0,.2,1)}
 .awards .awardBody{display:grid;gap:4px}
 .awards .award h3{font-size:1.1rem;line-height:1.22;margin:0}
-.awards .award p{font-size:.88rem;line-height:1.45;margin:0;opacity:.82;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.awards .award p{font-size:.88rem;line-height:1.45;margin:0;opacity:.82}
 .awards .awardSrc{margin-top:8px;font-size:.88rem;justify-self:start}
 .awards .awardYear{order:-1;display:flex;gap:6px;font-family:var(--f-body),sans-serif;font-style:normal;font-size:.78rem;letter-spacing:.14em;margin-bottom:6px;color:var(--must)}
 .awards .awardYear b{font-weight:700}
@@ -490,7 +490,7 @@
   .awards .award:hover h3,.awards .award:focus-within h3,.awards .award:hover p,.awards .award:focus-within p{color:var(--ink);opacity:1}
   .awards .award:hover .awardSrc,.awards .award:focus-within .awardSrc{color:var(--ink);border-color:var(--ink)}
 }
-@media(min-width:960px) and (min-height:600px){.snap .awards .award{display:flex;padding:20px 22px;gap:0}.snap .awards .awardList{gap:clamp(10px,1.8svh,16px)}}
+@media(min-width:960px) and (min-height:480px){.snap .awards .award{display:flex;padding:20px 22px;gap:0}.snap .awards .awardList{gap:clamp(10px,1.8svh,16px)}}
 @media(prefers-reduced-motion:reduce){.awards .award,.awards .award::before,.awards .awardYear{transition:none}}
 .hero h1 :global(.nm-mask){display:inline-block;overflow:hidden;vertical-align:top;padding:0 .01em;line-height:1.12;margin-bottom:-.12em;padding-bottom:.12em}
 .hero h1 :global(.nm-ch){display:inline-block;will-change:transform}
@@ -513,7 +513,7 @@
   .awards .awardSrc{margin-top:auto;padding-top:10px}
   .awards .more{grid-column:1;grid-row:3;justify-self:start}
 }
-@media(min-width:960px) and (min-height:600px){
+@media(min-width:960px) and (min-height:480px){
   .snap .awards{grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:stretch;align-content:center}
   .snap .awards .secHead{grid-column:1 / -1;grid-row:1}
   .snap .awards .slidesWrap{grid-column:1;grid-row:2;margin-top:0}
@@ -630,7 +630,7 @@
 
 /* Páginas del menú con pantallas: en computadores bajos o angostos, la foto de Reconocimientos
    baja de alto para que la sección quepa completa en su pantalla (mismo estilo). */
-@media(min-width:960px) and (min-height:600px) and (max-height:720px),(min-width:960px) and (min-height:600px) and (max-width:1199px){
+@media(min-width:960px) and (min-height:480px) and (max-height:720px),(min-width:960px) and (min-height:480px) and (max-width:1199px){
   .snapOn .awards .slides{min-height:0}
   .snapOn .awards .awardList.awardList{gap:8px}
   .snapOn .awards .awardList .award{padding:10px 18px}
@@ -689,3 +689,80 @@
 @media(min-width:960px) and (max-height:900px){.snapOn .makerPic{aspect-ratio:3/1}.snapOn .makers .secHead p:not(.eyebrow){display:none}}
 @media(min-width:960px) and (max-height:900px){.snapOn .makerPic{aspect-ratio:4/1}}
 @media(min-width:1100px){.entries{grid-template-columns:repeat(3,1fr)}}
+
+/* ===== Portview: dónde sí y dónde no =====
+   Solo en computador (pantalla ancha y alta): Inicio, Historia, Logros y Proyectos saltan de pantalla en pantalla.
+   En celular y en pantallas bajas casi ninguna sección cabe completa, así que el scroll es normal. */
+@media (max-width:959px),(max-height:479px){:global(html):has(.snapOn){scroll-snap-type:none}}
+/* Inicio · Bitácora: que quepa en una pantalla (texto de cada entrada en máximo 3 líneas). */
+
+@media(min-width:960px) and (max-height:800px){.snap .bitHome .secHead p:not(.eyebrow){display:none}}
+/* Título que lleva a otra página (inicio → Logros) */
+.titleLink{color:inherit;text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 3px no-repeat;transition:background-size .3s}
+.titleLink:hover,.titleLink:focus-visible{background-size:100% 3px}
+/* Capítulos del inicio: el texto siempre ocupa 3 renglones, para que las cuatro tarjetas queden parejas. */
+.chapter{container-type:inline-size}
+.chBody p:last-child,.snap .chBody p:last-child{font-size:clamp(.84rem,calc(5.88cqi - 2.12px),1.01rem);line-height:1.5;min-height:calc(3lh)}
+@media(max-width:959px){.chBody p:last-child,.snap .chBody p:last-child{font-size:1.05rem}}
+.chBody p:last-child{text-wrap:wrap}
+@media(min-width:1700px){.chBody p:last-child,.snap .chBody p:last-child{font-size:1.2rem}}
+/* Video a prueba de fallos: portada con ▶ y enlace a YouTube debajo */
+.videoWrap{display:grid;gap:10px;justify-items:center;width:100%}
+.videoPlay{position:absolute;inset:0;border:0;padding:0;margin:0;cursor:pointer;background:#000;display:grid;place-items:center}
+.videoPlay span{position:relative;z-index:1;display:grid;place-items:center;width:84px;height:84px;border-radius:50%;background:var(--must);color:var(--ink);font-size:2rem;padding-left:6px;box-shadow:0 12px 30px -8px #000a;transition:transform .2s}
+.videoPlay:hover span,.videoPlay:focus-visible span{transform:scale(1.08)}
+.videoLink{font-size:.92rem;font-weight:600;color:inherit;opacity:.85}
+
+/* ===== Portview en pantallas bajas (portátil con la barra del navegador: ~500–640 px de alto) =====
+   Se compacta (títulos, espacios y fotos) para que cada sección quepa completa; no se corta ningún texto. */
+@media(min-width:960px) and (min-height:480px) and (max-height:660px){
+  .snap > .sec{padding-block:clamp(14px,3svh,28px)}
+  .snap .secHead{gap:4px}
+  .snap .sec h2{font-size:clamp(1.5rem,5.6svh,2.3rem)}
+  .snap .secHead p:not(.eyebrow){display:none}
+  /* Bitácora del inicio: foto, tema y título (el resumen completo está en la Bitácora) */
+  .snap .bitHome .entryPic{aspect-ratio:16/4.2}
+  .snap .bitHome .entry p{display:none}
+  .snap .bitHome .entry{padding:12px 18px;gap:4px}
+  .snap .bitHome .entry h3{font-size:1.05rem}
+  /* Frentes de trabajo */
+  .snap .projects2 .pcard{padding:12px 16px;gap:2px}
+  .snap .projects2 .pcard h3{font-size:1.05rem}
+  .snap .projects2 .pcard p{font-size:.84rem;line-height:1.35}
+  .snap .projects2 .pGrid{gap:10px}
+  /* Emprendedores */
+  .snap .makerGrid{gap:10px}
+  .snap .maker{padding:10px 14px;gap:2px}
+  .snapOn .makerPic{aspect-ratio:6/1;margin:-10px -14px 4px}
+  .snap .maker h3{font-size:1rem}
+  .snap .maker p:not(.makerWho){font-size:.82rem;line-height:1.3}
+  /* Línea de tiempo */
+  .snap .tItem{padding:8px 12px}
+  .snap .tItem p{font-size:.8rem;line-height:1.3}
+  .snap .tItem h3{font-size:.95rem}
+}
+
+/* ===== Bitácora: filtros por tema ===== */
+.filtros{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.filtros button{font:inherit;font-size:.92rem;font-weight:700;padding:8px 14px;border-radius:999px;border:1.5px solid #2a124033;background:var(--surface);color:var(--text);cursor:pointer;min-height:40px}
+.filtros button span{font-weight:600;opacity:.6;margin-left:4px}
+.filtros button[aria-pressed="true"]{background:var(--ink);color:var(--must);border-color:var(--ink)}
+:global(html[data-theme="dark"]) .filtros button[aria-pressed="true"]{background:var(--must);color:var(--ink)}
+/* ===== Proyectos: adelanto de Hecho en Floridablanca con fotos grandes ===== */
+.hechoGrid{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+@media(min-width:760px){.hechoGrid{grid-template-columns:repeat(3,1fr)}}
+.hechoGrid .entryPic{aspect-ratio:4/3}
+@media(min-width:960px) and (max-height:820px){.snap .hechoGrid .entryPic{aspect-ratio:16/10}}
+@media(min-width:960px) and (max-height:660px){.snap .hechoGrid .entryPic{aspect-ratio:16/8}.snap .hechoGrid .entry p{display:none}}
+/* Tarjetas del adelanto en Proyectos: foto arriba y texto abajo (sin la rejilla compartida de la Bitácora) */
+.hechoGrid .entry,.snap .hechoGrid .entry{grid-row:auto;grid-template-rows:none;display:grid;align-content:start;padding:24px;gap:8px;height:100%}
+.hechoGrid .entryPic,.snapOn .hechoGrid .entryPic{margin:-24px -24px 6px}
+@media(min-width:960px) and (max-height:660px){.snap .hechoGrid .entry{padding:16px 18px;gap:4px}.snapOn .hechoGrid .entryPic{margin:-16px -18px 4px}}
+@media(min-width:960px) and (min-height:661px) and (max-height:820px){.snap .hechoGrid .entryPic{aspect-ratio:16/7}.snap .makers .secHead p:not(.eyebrow){display:none}}
+@media(min-width:960px) and (min-height:661px) and (max-height:820px){.snap .makers h2{font-size:clamp(1.8rem,5.4svh,2.5rem)}.snap .hechoGrid .entryPic{aspect-ratio:16/6.2}.snap .hechoGrid .entry{padding:18px 20px;gap:6px}.snapOn .hechoGrid .entryPic{margin:-18px -20px 4px}}
+
+/* ===== Sello de la Bitácora: rosa y naranja, como sus portadas en Instagram ===== */
+.entry{border-left-color:var(--rosa)}
+.entry .eM{color:var(--rosaDeep);font-weight:600}
+:global(html[data-theme="dark"]) .entry .eM{color:#F7A6DA}
+.filtros button[aria-pressed="true"]{background:var(--rosaDeep);color:#fff;border-color:var(--rosaDeep)}
