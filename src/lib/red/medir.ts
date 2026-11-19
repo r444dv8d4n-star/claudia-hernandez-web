@@ -2,7 +2,7 @@
 export const EVENTOS = [
   "clic_sumate_encabezado", "clic_sumate_portada", "clic_sumate_seccion", "clic_sumate_pie",
   "registro_visto", "registro_paso2", "registro_completo",
-  "compartir_whatsapp", "copiar_enlace", "mision_whatsapp", "video_play",
+  "compartir_whatsapp", "copiar_enlace", "mision_whatsapp", "video_play", "bitacora_ver_publicacion",
 ] as const;
 export type Evento = (typeof EVENTOS)[number];
 

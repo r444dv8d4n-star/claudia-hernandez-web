@@ -557,8 +557,10 @@
     .shot{animation:parallax linear both;animation-timeline:view();animation-range:entry 0% cover 60%}
   }
 
-  /* Historia: cada capítulo queda pegado y el siguiente lo cubre (pantalla completa) */
-  @media (min-height:640px){
+  /* Historia: cada capítulo queda pegado y el siguiente lo cubre (pantalla completa).
+     Solo en computador: en celular la foto y los dos párrafos no caben en una pantalla
+     y el capítulo siguiente tapaba el final del texto. */
+  @media (min-width:960px) and (min-height:640px){
     .storyRow{position:sticky;top:var(--hdr,72px);min-height:calc(100svh - var(--hdr,72px));align-content:center;background:var(--bg);border-top:1px solid var(--line);box-shadow:0 -28px 50px -34px var(--shadow)}
   }
 
@@ -766,3 +768,15 @@
 .entry .eM{color:var(--rosaDeep);font-weight:600}
 :global(html[data-theme="dark"]) .entry .eM{color:#F7A6DA}
 .filtros button[aria-pressed="true"]{background:var(--rosaDeep);color:#fff;border-color:var(--rosaDeep)}
+
+/* Bitácora: la publicación original (fotos, video y texto completo) dentro de la entrada */
+.igSec{display:grid;gap:10px;max-width:540px;margin-top:clamp(28px,5vw,48px)}
+.igSec h2{font-size:clamp(1.4rem,4vw,1.8rem)}
+.igSec > p{color:var(--muted)}
+.igCaja{display:grid;gap:10px;justify-items:center;width:100%;margin-top:6px}
+.igBoton{position:relative;width:100%;aspect-ratio:4/5;border:0;padding:0;margin:0;cursor:pointer;border-radius:22px;overflow:hidden;background:var(--ink);display:grid;place-items:center;box-shadow:0 24px 50px -30px var(--shadow)}
+.igBoton::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#2a124000 45%,#2a1240d9)}
+.igBoton span{position:relative;z-index:1;display:grid;place-items:center;width:84px;height:84px;border-radius:50%;background:var(--must);color:var(--ink);font-size:2rem;padding-left:6px;box-shadow:0 12px 30px -8px #000a;transition:transform .2s}
+.igBoton strong{position:absolute;z-index:1;left:16px;right:16px;bottom:18px;color:#fff;font-size:1.05rem;text-align:center}
+.igBoton:hover span,.igBoton:focus-visible span{transform:scale(1.08)}
+.igFrame{width:100%;border:0;border-radius:14px;background:#fff}

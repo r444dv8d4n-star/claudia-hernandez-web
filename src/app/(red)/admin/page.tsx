@@ -40,6 +40,7 @@ async function Panel() {
     { t: "Compartieron por WhatsApp", v: n("compartir_whatsapp", "mision_whatsapp") },
     { t: "Copiaron su enlace", v: n("copiar_enlace") },
     { t: "Vieron el video de su historia", v: n("video_play") },
+    { t: "Abrieron una publicación en la Bitácora", v: n("bitacora_ver_publicacion") },
   ];
   const tope = Math.max(1, ...embudo.map((x) => x.v));
   const conInvitacion = r.total ? Math.round((r.invitados / r.total) * 100) : 0;
