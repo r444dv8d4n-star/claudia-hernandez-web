@@ -1,6 +1,7 @@
 "use server";
 
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { supabaseSesion } from "@/lib/supabase/server";
 import { leerRegistro, validarRegistro, type Errores } from "@/lib/red/validar";
 import { RED } from "@/content/red";
 
@@ -8,6 +9,8 @@ export type EstadoRegistro = {
   /** Cambia en cada envío para volver a pintar el formulario con los valores. */
   n: number;
   ok?: boolean;
+  /** Quedó con la sesión abierta (entra directo a su red). */
+  entro?: boolean;
   codigo?: string;
   nombre?: string;
   error?: string;
@@ -89,5 +92,9 @@ export async function registrar(prev: EstadoRegistro, fd: FormData): Promise<Est
     return fallo({ error: "No pudimos crear tu cuenta. Intenta de nuevo en unos minutos." });
   }
 
-  return { n, ok: true, codigo: String(codigo), nombre: d.nombre.split(" ")[0] };
+  // Entra de una vez: no tiene que volver a escribir su celular y su contraseña.
+  const sesion = await supabaseSesion({ escribir: true });
+  const { error: errEntrar } = await sesion.auth.signInWithPassword({ email: d.correo, password: d.contrasena });
+
+  return { n, ok: true, entro: !errEntrar, codigo: String(codigo), nombre: d.nombre.split(" ")[0] };
 }

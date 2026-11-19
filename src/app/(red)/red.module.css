@@ -148,3 +148,13 @@
 .ficha{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:8px 0;background:var(--suave);border-radius:14px;padding:14px}
 .ficha dt{color:var(--muted);font-weight:600}
 .ficha dd{margin:0}
+
+/* ===== Fecha de nacimiento en tres listas ===== */
+.fecha{border:0;margin:0;padding:0;display:grid;gap:6px;min-width:0}
+.fecha legend{font-weight:600;font-size:.95rem;padding:0;margin-bottom:6px}
+.fechaListas{display:grid;grid-template-columns:.8fr 1.4fr 1fr;gap:8px}
+.fechaListas select{width:100%;font:inherit;font-size:1rem;color:var(--text);background:var(--campo);border:1.5px solid var(--borde);border-radius:12px;padding:12px 8px;min-height:48px}
+.fechaListas select:focus{outline:none;border-color:var(--acento);box-shadow:0 0 0 3px #5B2A8C33}
+.fechaListas select[aria-invalid="true"]{border-color:var(--error)}
+/* Letra de ayuda más legible */
+.ayuda{font-size:.92rem}

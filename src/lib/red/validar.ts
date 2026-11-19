@@ -57,10 +57,13 @@ export function validarDatos(d: DatosRegistro): Errores {
   if (d.direccion.length < 4) e.direccion = "Escribe tu dirección.";
   if (d.municipio.length < 3) e.municipio = "Elige tu municipio.";
 
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(d.fechaNacimiento)) e.fechaNacimiento = "Escribe tu fecha de nacimiento.";
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(d.fechaNacimiento)) e.fechaNacimiento = "Elige el día, el mes y el año en que naciste.";
   else {
     const anios = edad(d.fechaNacimiento);
-    if (Number.isNaN(anios) || anios > 110) e.fechaNacimiento = "Revisa la fecha de nacimiento.";
+    const [a, m, dd] = d.fechaNacimiento.split("-").map(Number);
+    const existe = new Date(Date.UTC(a, m - 1, dd)).getUTCDate() === dd;
+    if (!existe) e.fechaNacimiento = "Esa fecha no existe. Revisa el día y el mes.";
+    else if (Number.isNaN(anios) || anios > 110) e.fechaNacimiento = "Revisa la fecha de nacimiento.";
     else if (anios < RED.edadMinima) e.fechaNacimiento = `Debes ser mayor de ${RED.edadMinima} años para registrarte.`;
   }
 

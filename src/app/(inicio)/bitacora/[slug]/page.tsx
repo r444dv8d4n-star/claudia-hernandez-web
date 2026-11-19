@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { published, formatDate, bitacora } from "@/content/blog";
@@ -16,7 +17,16 @@ export async function generateMetadata({ params }: PageProps<"/bitacora/[slug]">
   return post ? { title: `${post.title} · ${bitacora.name}`, description: post.excerpt } : {};
 }
 
-export default async function Entrada({ params }: PageProps<"/bitacora/[slug]">) {
+export default function Entrada({ params }: PageProps<"/bitacora/[slug]">) {
+  // Los datos de la URL se leen dentro de <Suspense> (requisito de Next 16 para navegar al instante).
+  return (
+    <Suspense fallback={<section className={s.sec} aria-busy="true" />}>
+      <Contenido params={params} />
+    </Suspense>
+  );
+}
+
+async function Contenido({ params }: { params: PageProps<"/bitacora/[slug]">["params"] }) {
   const { slug } = await params;
   const post = published.find((p) => p.slug === slug);
   if (!post) notFound();
