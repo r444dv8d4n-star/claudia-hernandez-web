@@ -28,15 +28,15 @@ export const RESPONSABLE = {
   direccion: "[POR CONFIRMAR: dirección física]",
   correo: "[POR CONFIRMAR: correo para datos personales]",
   telefono: "[POR CONFIRMAR: teléfono]",
-  /** Hasta cuándo se guardan los datos (POR CONFIRMAR). */
-  conservacion: "hasta seis (6) meses después de terminado el proceso electoral para el que se creó la red [POR CONFIRMAR]",
+  /** Hasta cuándo se guardan los datos (aprobado por el equipo: un año o más). */
+  conservacion: "hasta un (1) año después de terminado el proceso electoral para el que se creó la red",
 };
 export const esBorrador = () => Object.values(RESPONSABLE).some((v) => v.includes("POR CONFIRMAR"));
 
-/** Puntos (POR CONFIRMAR): por cada invitado directo y por cada invitado de ellos. */
+/** Puntos (aprobados por el equipo): por cada invitado directo y por cada invitado de ellos. */
 export const PUNTOS = { directo: 10, segundoNivel: 2 };
 
-/** Niveles por puntos (POR CONFIRMAR), de menor a mayor. */
+/** Niveles por puntos (aprobados por el equipo), de menor a mayor. */
 export const NIVELES = [
   { nombre: "Semilla", desde: 0 },
   { nombre: "Vecina/o", desde: 50 },
