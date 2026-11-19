@@ -1,6 +1,6 @@
-/* ===== Paleta: más mostaza que morado. El morado queda como acento y color de texto. ===== */
+/* ===== Paleta de su Instagram: amarillo de su foto de perfil + morado de «Florideña». ===== */
 .root{
-  --must:#E3A92B;--mustDeep:#C98A12;--mustSoft:#F6DFA5;--cream:#FBF4E6;--ink:#2A1240;--purple:#5B2A8C;--violet:#7A4BC2;
+  --must:#F7CD1E;--mustDeep:#8C6A00;--mustSoft:#FFF0B3;--cream:#FBF4E6;--ink:#2A1240;--purple:#5E33A0;--rosa:#EE62BE;--rosaDeep:#B0207A;--naranja:#F2A65A;--violet:#7A55C2;
   --bg:var(--cream);--surface:#fff;--text:var(--ink);--muted:#2a1240c7;--line:#2a124022;--accent:var(--purple);--shadow:#2a124040;
   background:var(--bg);color:var(--text);font-family:var(--f-body),system-ui,sans-serif;font-size:1.0625rem;line-height:1.65;overflow-x:clip;min-height:100svh
 }
@@ -15,7 +15,7 @@
 /* ===== encabezado ===== */
 .header{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 16px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .logo{font-family:var(--f-display),serif;font-weight:700;text-decoration:none;font-size:1.2rem;color:var(--text);white-space:nowrap}
-.logo span{color:var(--mustDeep);font-style:italic}
+.logo span{color:var(--purple);font-style:italic}
 :global(html[data-theme="dark"]) .logo span{color:var(--must)}
 .nav{display:none;gap:22px;align-items:center}
 .nav a{text-decoration:none;font-size:.95rem;font-weight:600;color:var(--text)}
@@ -52,7 +52,7 @@
 .heroImg::before{content:none}
 .heroImg img{-webkit-mask-image:linear-gradient(180deg,#000 78%,transparent 99%);mask-image:linear-gradient(180deg,#000 78%,transparent 99%)}
 /* fundido suave hacia el mostaza (curva en varios pasos para que no se vea la raya) */
-.heroImg::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,#e3a92b00 0%,#e3a92b00 55%,#e3a92b40 68%,#e3a92b99 82%,#e3a92be6 94%,var(--must) 100%)}
+.heroImg::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,#F7CD1E00 0%,#F7CD1E00 55%,#F7CD1E40 68%,#F7CD1E99 82%,#F7CD1Ee6 94%,var(--must) 100%)}
 .collage{position:absolute;inset:0;z-index:3;pointer-events:none}
 .scrim{position:absolute;inset:0;background:linear-gradient(180deg,#2a1240aa,#2a1240dd)}
 .base{position:absolute;inset:0;background:var(--ink)}
@@ -75,7 +75,7 @@
 .heroSoc .icons a{color:var(--ink);border-color:#2a124055}
 .heroSoc .icons a:hover{background:var(--ink);color:var(--must)}
 @media(min-width:960px){
-  .heroImg::after{inset:0 0 0 -2px;background:linear-gradient(90deg,var(--must) 0%,#e3a92bf2 8%,#e3a92bd0 16%,#e3a92b99 26%,#e3a92b5c 36%,#e3a92b2e 46%,#e3a92b0f 56%,#e3a92b00 66%)}
+  .heroImg::after{inset:0 0 0 -2px;background:linear-gradient(90deg,var(--must) 0%,#F7CD1Ef2 8%,#F7CD1Ed0 16%,#F7CD1E99 26%,#F7CD1E5c 36%,#F7CD1E2e 46%,#F7CD1E0f 56%,#F7CD1E00 66%)}
   /* la foto trae una franja oscura/blanca en su borde izquierdo: se difumina contra el fondo mostaza */
   .heroImg img{-webkit-mask-image:linear-gradient(90deg,transparent 0,transparent 3%,#000 26%);mask-image:linear-gradient(90deg,transparent 0,transparent 3%,#000 26%)}
   .hero{grid-template-columns:1.05fr 1fr;min-height:calc(100svh - 66px)}
@@ -190,7 +190,7 @@
 .timeline{background:var(--bg)}
 .tGrid{list-style:none;margin:0;padding:0 0 0 22px;display:grid;gap:18px;border-left:3px solid var(--must)}
 .tItem{position:relative;display:grid;gap:4px;align-content:start}
-.tItem::before{content:"";position:absolute;left:-31px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--must);box-shadow:0 0 0 5px #e3a92b33}
+.tItem::before{content:"";position:absolute;left:-31px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--must);box-shadow:0 0 0 5px #F7CD1E33}
 .tYear{justify-self:start;font-weight:800;font-size:.85rem;letter-spacing:.06em;padding:3px 10px;border-radius:999px;background:var(--ink);color:var(--must)}
 :global(html[data-theme="dark"]) .tYear{background:var(--must);color:var(--ink)}
 .tItem h3{font-size:1.2rem}
@@ -220,7 +220,7 @@
 @media(min-width:1100px){.makerGrid{grid-template-columns:repeat(3,1fr);gap:18px}}
 
 /* reconocimientos: el bloque morado (acento) */
-.awards{background:radial-gradient(900px circle at 85% 0%,#7a4bc255,transparent 60%),var(--ink);color:var(--cream)}
+.awards{background:radial-gradient(900px circle at 85% 0%,#7A55C255,transparent 60%),var(--ink);color:var(--cream)}
 .awards .eyebrow{color:var(--must)}
 .awards .secHead p:not(.eyebrow){color:#fbf4e6cc}
 .awards .more{color:var(--cream)}
@@ -229,14 +229,14 @@
 .award h3{font-size:1.45rem;margin-bottom:6px}
 .award p{opacity:.9}
 .awardYear{font-family:var(--f-display),serif;font-style:italic;font-weight:700;font-size:2.4rem;line-height:1;color:var(--must)}
-.awardSrc{display:inline-block;margin-top:12px;color:var(--must);font-weight:700;text-decoration:none;border-bottom:2px solid #e3a92b66}
+.awardSrc{display:inline-block;margin-top:12px;color:var(--must);font-weight:700;text-decoration:none;border-bottom:2px solid #F7CD1E66}
 .awardSrc:hover{border-color:var(--must)}
 @media(min-width:960px){.awardList{grid-template-columns:1fr 1fr;gap:24px}.award{grid-template-columns:auto 1fr;padding:34px;gap:26px}.awardYear{font-size:3.2rem}}
 
 /* acuerdos */
 .tl{list-style:none;margin:0;padding:0 0 0 26px;border-left:2px solid var(--must);display:grid;gap:40px}
 .tl li{position:relative;display:grid;gap:6px}
-.tl li::before{content:"";position:absolute;left:-35px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--must);box-shadow:0 0 0 6px #e3a92b33}
+.tl li::before{content:"";position:absolute;left:-35px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--must);box-shadow:0 0 0 6px #F7CD1E33}
 .tlYear{color:var(--mustDeep);font-weight:700;letter-spacing:.08em}
 .tl h3{font-size:1.5rem}
 .tlN{color:var(--muted);font-size:.9rem}
@@ -432,7 +432,7 @@
 @media(prefers-reduced-motion:reduce){.roleChips li,.tagline::after{animation:none}}
 
 /* ===== reconocimientos: foto con ella resaltada ===== */
-.awardPhoto{position:relative;margin:0;border-radius:26px;overflow:hidden;border:3px solid var(--must);box-shadow:0 26px 50px -28px #000,0 0 0 6px #e3a92b22}
+.awardPhoto{position:relative;margin:0;border-radius:26px;overflow:hidden;border:3px solid var(--must);box-shadow:0 26px 50px -28px #000,0 0 0 6px #F7CD1E22}
 .awardPhoto img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:60% 30%;filter:saturate(1.08) brightness(1.04)}
 /* ella queda iluminada; el resto de la escena se oscurece suavemente */
 .awardPhoto::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 30% 40% at 62% 36%,transparent 0%,transparent 55%,#150a2488 100%),radial-gradient(ellipse 30% 36% at 62% 34%,#fff0c755,transparent 70%)}
@@ -760,3 +760,9 @@
 @media(min-width:960px) and (max-height:660px){.snap .hechoGrid .entry{padding:16px 18px;gap:4px}.snapOn .hechoGrid .entryPic{margin:-16px -18px 4px}}
 @media(min-width:960px) and (min-height:661px) and (max-height:820px){.snap .hechoGrid .entryPic{aspect-ratio:16/7}.snap .makers .secHead p:not(.eyebrow){display:none}}
 @media(min-width:960px) and (min-height:661px) and (max-height:820px){.snap .makers h2{font-size:clamp(1.8rem,5.4svh,2.5rem)}.snap .hechoGrid .entryPic{aspect-ratio:16/6.2}.snap .hechoGrid .entry{padding:18px 20px;gap:6px}.snapOn .hechoGrid .entryPic{margin:-18px -20px 4px}}
+
+/* ===== Sello de la Bitácora: rosa y naranja, como sus portadas en Instagram ===== */
+.entry{border-left-color:var(--rosa)}
+.entry .eM{color:var(--rosaDeep);font-weight:600}
+:global(html[data-theme="dark"]) .entry .eM{color:#F7A6DA}
+.filtros button[aria-pressed="true"]{background:var(--rosaDeep);color:#fff;border-color:var(--rosaDeep)}

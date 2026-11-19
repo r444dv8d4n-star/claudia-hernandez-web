@@ -1,14 +1,14 @@
 /* ===== Red de referidos: tarjeta morada sobre fondo oscuro, botón mostaza, letra Barlow ===== */
 .fondo{
-  --must:#F7CD1E;--mustHover:#FFD93D;--ink:#2B2118;--card:#FFFDF6;--line:#2B21181f;--text:#2B2118;--muted:#6B5D4F;--error:#B3261E;--ok:#1E7B46;
-  --acento:#5B2A8C;--campo:#FFFFFF;--suave:#FFF6CC;--borde:#2B211833;
+  --must:#F7CD1E;--mustHover:#FFD93D;--ink:#2A1240;--card:#FFFDF6;--line:#2A12401f;--text:#2A1240;--muted:#5C5070;--error:#B3261E;--ok:#1E7B46;
+  --acento:#5E33A0;--campo:#FFFFFF;--suave:#FFF6CC;--borde:#2A124033;
   min-height:100svh;display:flex;flex-direction:column;align-items:center;
   background:radial-gradient(900px circle at 50% -10%,#FFF3B0,transparent 60%),var(--must);
   color:var(--text);font-family:var(--f-red),system-ui,sans-serif;padding:24px 16px 32px
 }
 .marca{width:100%;max-width:560px;display:flex;justify-content:center;margin:8px 0 22px}
 .logo{display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none}
-.monograma{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--must);color:var(--acento);border:3px solid #FFFDF6;box-shadow:0 6px 16px -8px #6b4e0099;font-weight:800;font-size:1.05rem;letter-spacing:.02em}
+.monograma{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--must);color:var(--acento);border:3px solid #FFFDF6;box-shadow:0 6px 16px -8px #2a124099;font-weight:800;font-size:1.05rem;letter-spacing:.02em}
 .logo strong{display:block;font-size:1.25rem;font-weight:700;line-height:1.1}
 .logo strong em{font-style:italic;color:var(--acento)}
 .logo small{display:block;font-size:.85rem;color:var(--ink);opacity:.75;letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
@@ -16,7 +16,7 @@
 .pie{margin-top:22px;font-size:.85rem}
 .pie a{color:var(--ink)}
 
-.tarjeta{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px 20px;box-shadow:0 24px 60px -30px #6b4e0080}
+.tarjeta{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px 20px;box-shadow:0 24px 60px -30px #2a124080}
 @media(min-width:560px){.tarjeta{padding:34px 34px}}
 .tarjeta h1{margin:0;font-size:2rem;font-weight:800;line-height:1.1}
 .sub{margin:6px 0 22px;color:var(--muted);font-size:1.05rem}
@@ -28,8 +28,8 @@
 .campo label{font-weight:600;font-size:.95rem}
 .opcional{font-weight:400;color:var(--muted)}
 .campo input,.campo select{width:100%;font:inherit;font-size:1rem;color:var(--text);background:var(--campo);border:1.5px solid var(--borde);border-radius:12px;padding:12px 14px;min-height:48px}
-.campo input::placeholder{color:#6B5D4F99}
-.campo input:focus,.campo select:focus{outline:none;border-color:var(--acento);box-shadow:0 0 0 3px #5B2A8C33}
+.campo input::placeholder{color:#5C507099}
+.campo input:focus,.campo select:focus{outline:none;border-color:var(--acento);box-shadow:0 0 0 3px #5E33A033}
 .campo input[aria-invalid="true"],.campo select[aria-invalid="true"]{border-color:var(--error)}
 .campo input[type="date"]{color-scheme:light}
 .ayuda{font-size:.85rem;color:var(--muted)}
@@ -37,7 +37,7 @@
 .clave{position:relative}
 .clave input{padding-right:52px}
 .ojo{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;border-radius:10px;background:transparent;color:var(--muted);cursor:pointer;display:grid;place-items:center}
-.ojo:hover,.ojo:focus-visible{color:var(--text);background:#2B211810}
+.ojo:hover,.ojo:focus-visible{color:var(--text);background:#2A124010}
 .ojo svg{width:22px;height:22px}
 
 .check{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;font-size:.95rem;line-height:1.45}
@@ -45,7 +45,7 @@
 .check a{color:var(--acento)}
 
 .boton{width:100%;min-height:52px;border:0;border-radius:14px;background:var(--ink);color:var(--must);font:inherit;font-size:1.1rem;font-weight:800;cursor:pointer;transition:background .2s,transform .2s}
-.boton:hover{background:#4A3A2C}
+.boton:hover{background:#3D2260}
 .boton:active{transform:translateY(1px)}
 .boton:disabled{opacity:.6;cursor:wait}
 .alerta{border-radius:12px;padding:12px 14px;background:#B3261E14;border:1px solid #B3261E55;color:var(--text);font-weight:600}
@@ -54,7 +54,7 @@
 
 .exito{text-align:center;display:grid;gap:14px;justify-items:center}
 .exito h1{font-size:1.9rem}
-.codigoGrande{font-size:2.2rem;font-weight:800;letter-spacing:.18em;color:var(--acento);background:var(--suave);border:1.5px dashed #2B211866;border-radius:14px;padding:10px 22px}
+.codigoGrande{font-size:2.2rem;font-weight:800;letter-spacing:.18em;color:var(--acento);background:var(--suave);border:1.5px dashed #2A124066;border-radius:14px;padding:10px 22px}
 .enlaceBoton{justify-self:start;background:none;border:0;padding:4px 0;font:inherit;font-size:.92rem;font-weight:700;color:var(--acento);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .enlaceDer{justify-self:end;font-size:.92rem;font-weight:600;color:var(--acento)}
 .aviso{border-radius:12px;padding:12px 14px;background:#1E7B461a;border:1px solid #1E7B4666;color:var(--text);font-weight:600}
@@ -81,7 +81,7 @@
 .nivel{margin-top:16px;display:grid;gap:8px}
 .nivelCab{display:flex;justify-content:space-between;gap:8px;font-size:1.05rem}
 .nivelCab strong{color:var(--ink)}
-.barra{height:12px;border-radius:99px;background:#2B211814;overflow:hidden}
+.barra{height:12px;border-radius:99px;background:#2A124014;overflow:hidden}
 .barra span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#C29400,var(--must))}
 .niveles summary{cursor:pointer;font-weight:700;color:var(--acento);font-size:.92rem}
 .niveles ul{margin:8px 0 0;padding-left:18px;color:var(--muted);display:grid;gap:4px}
@@ -118,13 +118,13 @@
 .grafica .barra2:hover,.grafica g:focus-visible .barra2{fill:#8F6D00}
 .grafica g:focus-visible{outline:none}
 .grafica text{fill:var(--muted);font-size:11px;font-family:var(--f-red),sans-serif}
-.grafica .eje{stroke:#2B211840;stroke-width:1}
-.grafica .guia{stroke:#2B211814;stroke-width:1}
+.grafica .eje{stroke:#2A124040;stroke-width:1}
+.grafica .guia{stroke:#2A124014;stroke-width:1}
 .grafica .burbuja{fill:#F7CD1EAA;stroke:#C29400;stroke-width:2}
 .grafica .ciudad{fill:var(--text);font-size:13px;font-weight:700}
 .tabla{width:100%;border-collapse:collapse;font-size:.92rem}
 .tabla th{text-align:left;color:var(--muted);font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;padding:8px 10px;border-bottom:1px solid var(--line)}
-.tabla td{padding:9px 10px;border-bottom:1px solid #2B211812;vertical-align:top}
+.tabla td{padding:9px 10px;border-bottom:1px solid #2A124012;vertical-align:top}
 .tabla td.num,.tabla th.num{text-align:right;font-variant-numeric:tabular-nums}
 .tablaWrap{overflow-x:auto;margin:0 -4px}
 .buscador{display:grid;grid-template-columns:1fr auto;gap:8px}
@@ -154,14 +154,14 @@
 .fecha legend{font-weight:600;font-size:.95rem;padding:0;margin-bottom:6px}
 .fechaListas{display:grid;grid-template-columns:.8fr 1.4fr 1fr;gap:8px}
 .fechaListas select{width:100%;font:inherit;font-size:1rem;color:var(--text);background:var(--campo);border:1.5px solid var(--borde);border-radius:12px;padding:12px 8px;min-height:48px}
-.fechaListas select:focus{outline:none;border-color:var(--acento);box-shadow:0 0 0 3px #5B2A8C33}
+.fechaListas select:focus{outline:none;border-color:var(--acento);box-shadow:0 0 0 3px #5E33A033}
 .fechaListas select[aria-invalid="true"]{border-color:var(--error)}
 /* Letra de ayuda más legible */
 .ayuda{font-size:.92rem}
 
 /* ===== Registro en 2 pasos ===== */
 .pasos{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-8px 0 18px;font-size:.9rem;font-weight:700;color:var(--muted)}
-.pasos span{padding-top:8px;border-top:4px solid #2B211822}
+.pasos span{padding-top:8px;border-top:4px solid #2A124022}
 .pasos .pasoActivo{color:var(--ink);border-top-color:var(--must)}
 .pasos .pasoHecho{color:var(--ink);border-top-color:#C29400}
 .form[hidden]{display:none!important}
@@ -169,7 +169,7 @@
 /* ===== Tu primera misión ===== */
 .mision{border:2px solid var(--must)}
 .misionPuntos{display:flex;gap:10px;margin:4px 0 10px}
-.misionPuntos span{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:2px dashed #2B211855;font-weight:800;color:var(--muted)}
+.misionPuntos span{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:2px dashed #2A124055;font-weight:800;color:var(--muted)}
 .misionPuntos .misionHecho{background:var(--must);border:2px solid var(--ink);color:var(--ink)}
 .misionBotones{display:grid;gap:8px;margin-top:10px}
 @media(min-width:560px){.misionBotones{grid-template-columns:repeat(3,1fr)}}
@@ -178,6 +178,6 @@
 .embudo{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:8px}
 .embudo li{display:grid;grid-template-columns:minmax(0,15rem) 1fr 3.5rem;gap:12px;align-items:center;font-size:.95rem}
 .embudo strong{text-align:right;font-variant-numeric:tabular-nums;font-size:1.1rem}
-.embudoBarra{height:14px;border-radius:99px;background:#2B211812;overflow:hidden}
+.embudoBarra{height:14px;border-radius:99px;background:#2A124012;overflow:hidden}
 .embudoBarra i{display:block;height:100%;border-radius:99px;background:#C29400}
 @media(max-width:560px){.embudo li{grid-template-columns:1fr 3rem}.embudoBarra{grid-column:1 / -1;order:3}}

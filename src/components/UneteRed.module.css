@@ -1,29 +1,29 @@
 /* Sección de la red («De aquí, como tú») en el inicio: el amarillo de Claudia (su foto de perfil), texto oscuro y morado solo de acento. */
-.unete{background:radial-gradient(900px circle at 10% 0%,#FFF3B0,transparent 60%),#F7CD1E;color:#2B2118;display:grid;gap:clamp(28px,4vw,56px);align-items:center}
+.unete{background:radial-gradient(900px circle at 10% 0%,#FFF3B0,transparent 60%),#F7CD1E;color:#2A1240;display:grid;gap:clamp(28px,4vw,56px);align-items:center}
 @media(min-width:960px){.unete{grid-template-columns:minmax(0,6fr) minmax(0,5fr)}}
 .texto{display:grid;gap:16px;justify-items:start}
-.eyebrow{font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5B2A8C}
-.texto h2{color:#2B2118}
-.texto h2 em{color:#5B2A8C}
-.lead{font-size:clamp(1.05rem,1.6vw,1.25rem);max-width:46ch;color:#2B2118d9}
+.eyebrow{font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5E33A0}
+.texto h2{color:#2A1240}
+.texto h2 em{color:#5E33A0}
+.lead{font-size:clamp(1.05rem,1.6vw,1.25rem);max-width:46ch;color:#2A1240d9}
 .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
 .btn,.btnGhost{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:999px;font-weight:800;text-decoration:none;transition:transform .2s,background .2s}
-.btn{background:#2B2118;color:#F7CD1E}
-.btn:hover{background:#4A3A2C;transform:translateY(-2px)}
-.btnGhost{border:2px solid #2B211866;color:#2B2118}
-.btnGhost:hover{border-color:#2B2118;background:#ffffff55}
-.nota{font-size:.88rem;color:#2B2118b3}
-.nota a{color:#5B2A8C;font-weight:600}
+.btn{background:#2A1240;color:#F7CD1E}
+.btn:hover{background:#3D2260;transform:translateY(-2px)}
+.btnGhost{border:2px solid #2A124066;color:#2A1240}
+.btnGhost:hover{border-color:#2A1240;background:#ffffff55}
+.nota{font-size:.88rem;color:#2A1240b3}
+.nota a{color:#5E33A0;font-weight:600}
 .pasos{list-style:none;margin:0;padding:0;display:grid;gap:14px}
-.pasos li{display:flex;gap:16px;align-items:flex-start;background:#FFFDF6;border-radius:20px;padding:18px 20px;box-shadow:0 16px 36px -26px #6b4e0080}
-.num{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#F7CD1E;color:#2B2118;font-weight:800;font-size:1.2rem;border:2px solid #2B2118}
-.pasos h3{font-size:1.2rem;color:#2B2118;margin:0 0 4px}
-.pasos p{color:#6B5D4F;font-size:.95rem}
-:global(html[data-theme="dark"]) .pasos li{background:#2B2118}
+.pasos li{display:flex;gap:16px;align-items:flex-start;background:#FFFDF6;border-radius:20px;padding:18px 20px;box-shadow:0 16px 36px -26px #2a124080}
+.num{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#F7CD1E;color:#2A1240;font-weight:800;font-size:1.2rem;border:2px solid #2A1240}
+.pasos h3{font-size:1.2rem;color:#2A1240;margin:0 0 4px}
+.pasos p{color:#5C5070;font-size:.95rem}
+:global(html[data-theme="dark"]) .pasos li{background:#2A1240}
 :global(html[data-theme="dark"]) .pasos h3{color:#FFFDF6}
 :global(html[data-theme="dark"]) .pasos p{color:#e9dfcf}
 
 /* Botón «Soy de aquí» del encabezado, junto a «Hablemos»: el amarillo de Claudia. */
-.pillRed{display:none;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#F7CD1E;color:#2B2118;font-weight:800;text-decoration:none;white-space:nowrap;border:2px solid #2B2118;transition:transform .2s,background .2s}
+.pillRed{display:none;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#F7CD1E;color:#2A1240;font-weight:800;text-decoration:none;white-space:nowrap;border:2px solid #2A1240;transition:transform .2s,background .2s}
 .pillRed:hover{background:#FFD93D;transform:translateY(-1px)}
 @media(min-width:960px){.pillRed{display:inline-flex}}

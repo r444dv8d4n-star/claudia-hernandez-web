@@ -8,16 +8,16 @@ export const contentType = "image/png";
 export default function Image() {
   return new ImageResponse(
     (
-      <div style={{ width: "100%", height: "100%", display: "flex", background: "#E3A92B", color: "#2A1240", fontFamily: "serif" }}>
+      <div style={{ width: "100%", height: "100%", display: "flex", background: "#F7CD1E", color: "#2A1240", fontFamily: "serif" }}>
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "70px 80px", width: "100%" }}>
           <div style={{ display: "flex", fontSize: 28, letterSpacing: 6, textTransform: "uppercase", fontFamily: "sans-serif", fontWeight: 700 }}>
             Concejala de Floridablanca · 2024–2027
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", fontSize: 112, fontWeight: 800, lineHeight: 1 }}>Claudia</div>
-            <div style={{ display: "flex", fontSize: 112, fontWeight: 800, lineHeight: 1, fontStyle: "italic", color: "#5B2A8C" }}>Hernández</div>
+            <div style={{ display: "flex", fontSize: 112, fontWeight: 800, lineHeight: 1, fontStyle: "italic", color: "#5E33A0" }}>Hernández</div>
           </div>
-          <div style={{ display: "flex", alignSelf: "flex-start", background: "#2A1240", color: "#E3A92B", fontFamily: "sans-serif", fontSize: 30, fontWeight: 700, padding: "16px 34px", borderRadius: 999 }}>
+          <div style={{ display: "flex", alignSelf: "flex-start", background: "#2A1240", color: "#F7CD1E", fontFamily: "sans-serif", fontSize: 30, fontWeight: 700, padding: "16px 34px", borderRadius: 999 }}>
             De aquí, como tú.
           </div>
         </div>
