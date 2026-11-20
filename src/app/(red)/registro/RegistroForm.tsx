@@ -102,6 +102,10 @@ export default function RegistroForm() {
             </label>
             {e.autoriza && <p id="autoriza-err" className={s.err} style={{ margin: "6px 0 0 34px" }}>{e.autoriza}</p>}
           </div>
+          <label className={s.check}>
+            <input type="checkbox" name="aceptaMensajes" defaultChecked={estado.valores?.aceptaMensajes === "on"} />
+            <span>Quiero recibir noticias de Claudia por WhatsApp. <span className={s.opcional}>(Opcional: puedes registrarte sin marcarla y cambiarlo después en «Mi perfil».)</span></span>
+          </label>
           <button className={s.boton} disabled={enviando}>{enviando ? "Creando tu cuenta…" : "Crear cuenta"}</button>
           <button type="button" className={s.enlaceBoton} style={{ justifySelf: "center" }} onClick={() => setPaso(1)}>← Volver al paso 1</button>
         </div>

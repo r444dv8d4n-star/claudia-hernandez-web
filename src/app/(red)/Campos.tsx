@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { municipios, barriosFloridablanca } from "@/content/red";
+import { TIPOS_DOCUMENTO } from "@/lib/red/validar";
 import s from "./red.module.css";
 
 type Valores = Record<string, string | undefined>;
@@ -60,6 +61,24 @@ function FechaNacimiento({ v, e }: { v: Valores; e: Errs }) {
   );
 }
 
+/** Tipo y número de documento. El pasaporte acepta letras; los demás, solo números. */
+function Documento({ v, e }: { v: Valores; e: Errs }) {
+  const [tipo, setTipo] = useState(v.tipoDocumento || "CC");
+  const pasaporte = tipo === "PA";
+  return (
+    <div className={s.fila}>
+      <div className={s.campo}>
+        <label htmlFor="tipoDocumento">Tipo de documento</label>
+        <select id="tipoDocumento" name="tipoDocumento" value={tipo} onChange={(ev) => setTipo(ev.target.value)}>
+          {TIPOS_DOCUMENTO.map((x) => <option key={x.v} value={x.v}>{x.t}</option>)}
+        </select>
+      </div>
+      <Campo v={v} e={e} name="documento" label="Número de documento" placeholder={pasaporte ? "AB123456" : "1098765432"}
+        inputMode={pasaporte ? "text" : "numeric"} autoComplete="off" maxLength={12} style={pasaporte ? { textTransform: "uppercase" } : undefined} />
+    </div>
+  );
+}
+
 /** Datos personales: los mismos en el registro y en «Mi perfil». */
 export function CamposPersona({ v, e, parte = "todo" }: { v: Valores; e: Errs; parte?: "todo" | "contacto" | "lugar" }) {
   const [municipio, setMunicipio] = useState(v.municipio || "Floridablanca");
@@ -75,7 +94,7 @@ export function CamposPersona({ v, e, parte = "todo" }: { v: Valores; e: Errs; p
   );
   const lugar = (
     <>
-      <Campo v={v} e={e} name="documento" label="Número de documento" placeholder="1098765432" inputMode="numeric" autoComplete="off" maxLength={12} />
+      <Documento v={v} e={e} />
       <div className={s.fila}>
         <div className={s.campo}>
           <label htmlFor="municipio">Municipio</label>
@@ -98,10 +117,8 @@ export function CamposPersona({ v, e, parte = "todo" }: { v: Valores; e: Errs; p
     <>
       <Campo v={v} e={e} name="nombre" label="Nombres y apellidos" placeholder="Como aparece en tu cédula" autoComplete="name" ayuda="Escríbelos completos, los dos nombres y los dos apellidos." />
 
-      <div className={s.fila}>
-        <Campo v={v} e={e} name="documento" label="Número de documento" placeholder="1098765432" inputMode="numeric" autoComplete="off" maxLength={12} />
-        <Campo v={v} e={e} name="telefono" label="Celular" placeholder="3001234567" type="tel" inputMode="numeric" autoComplete="tel-national" maxLength={13} />
-      </div>
+      <Documento v={v} e={e} />
+      <Campo v={v} e={e} name="telefono" label="Celular" placeholder="3001234567" type="tel" inputMode="numeric" autoComplete="tel-national" maxLength={13} />
 
       <div className={s.fila}>
         <div className={s.campo}>

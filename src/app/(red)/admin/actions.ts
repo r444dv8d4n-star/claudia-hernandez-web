@@ -3,9 +3,19 @@
 import { exigirAdmin } from "@/lib/red/admin";
 
 export type Fila = {
-  nombre: string; documento: string; telefono: string; correo: string; municipio: string; barrio: string | null;
-  codigo: string; registrado: string; invitado_por: string | null; directos: number;
+  nombre: string; tipo_documento: string; documento: string; telefono: string; correo: string; municipio: string; barrio: string | null;
+  codigo: string; registrado: string; invitado_por: string | null; directos: number; acepta_mensajes: boolean;
 };
+export type Completo = { nombre: string; tipo_documento: string; documento: string; telefono: string; correo: string; direccion: string };
+
+/** Datos completos de una persona (el buscador los muestra ocultos). Cada consulta queda en la auditoría. */
+export async function verDatos(codigo: string): Promise<Completo | null> {
+  if (!/^[A-Z2-9]{6}$/.test(codigo)) return null;
+  const yo = await exigirAdmin();
+  const { data, error } = await yo.sb.rpc("admin_ver_persona", { p_codigo: codigo });
+  if (error || !data) return null;
+  return data as Completo;
+}
 export type EstadoBusqueda = { q: string; filas?: Fila[]; error?: string };
 
 export async function buscar(_: EstadoBusqueda, fd: FormData): Promise<EstadoBusqueda> {

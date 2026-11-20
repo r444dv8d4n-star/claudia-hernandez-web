@@ -9,10 +9,10 @@ export async function GET() {
   if (error) return new NextResponse("No encontrado", { status: 404 });
 
   const columnas: [string, string][] = [
-    ["nombre", "Nombre"], ["documento", "Documento"], ["telefono", "Celular"], ["correo", "Correo"], ["direccion", "Dirección"],
+    ["nombre", "Nombre"], ["tipo_documento", "Tipo de documento"], ["documento", "Documento"], ["telefono", "Celular"], ["correo", "Correo"], ["direccion", "Dirección"],
     ["municipio", "Municipio"], ["barrio", "Barrio"], ["fecha_nacimiento", "Fecha de nacimiento"], ["codigo", "Código"],
     ["codigo_invitador", "Código de quien lo invitó"], ["registrado", "Fecha de registro"], ["politica_version", "Versión de la política"],
-    ["autorizado_en", "Autorizó el"],
+    ["autorizado_en", "Autorizó el"], ["acepta_mensajes", "Acepta mensajes por WhatsApp"], ["acepta_mensajes_en", "Aceptó mensajes el"],
   ];
   // Comillas en todo y sin fórmulas: evita que Excel ejecute algo escrito en un campo.
   const celda = (v: unknown) => {

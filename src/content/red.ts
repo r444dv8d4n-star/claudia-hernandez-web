@@ -11,7 +11,7 @@ export const RED = {
   /** Texto del botón para unirse (encabezado y portada). */
   boton: "Soy de aquí",
   /** Versión de la política de datos que acepta quien se registra. Cambiarla cuando cambie /terminos. */
-  politicaVersion: "2026-11-v1",
+  politicaVersion: "2026-11-v2",
   /** Edad mínima para registrarse. */
   edadMinima: 18,
   /** Mensaje que se comparte por WhatsApp junto al enlace. */

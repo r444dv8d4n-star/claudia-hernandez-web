@@ -1,8 +1,18 @@
 import { RED } from "@/content/red";
 
 /** Datos del formulario de registro, ya limpios. */
+/** Tipos de documento aceptados (mayores de edad). */
+export const TIPOS_DOCUMENTO = [
+  { v: "CC", t: "Cédula de ciudadanía" },
+  { v: "CE", t: "Cédula de extranjería" },
+  { v: "PPT", t: "Permiso por Protección Temporal (PPT)" },
+  { v: "PA", t: "Pasaporte" },
+] as const;
+export type TipoDocumento = (typeof TIPOS_DOCUMENTO)[number]["v"];
+
 export type DatosRegistro = {
   nombre: string;
+  tipoDocumento: TipoDocumento;
   documento: string;
   telefono: string;
   direccion: string;
@@ -13,6 +23,8 @@ export type DatosRegistro = {
   codigo: string;
   contrasena: string;
   autoriza: boolean;
+  /** Permiso aparte y opcional para recibir noticias por WhatsApp. */
+  aceptaMensajes: boolean;
 };
 
 export type Errores = Partial<Record<keyof DatosRegistro, string>>;
@@ -22,9 +34,12 @@ const soloDigitos = (v: string) => v.replace(/\D/g, "");
 export function leerRegistro(fd: FormData): DatosRegistro {
   const t = (k: string) => String(fd.get(k) ?? "").trim();
   const municipio = t("municipio") === "Otro" ? t("municipioOtro") : t("municipio");
+  const tipo = TIPOS_DOCUMENTO.find((x) => x.v === t("tipoDocumento"))?.v ?? "CC";
   return {
     nombre: t("nombre").replace(/\s+/g, " "),
-    documento: soloDigitos(t("documento")),
+    tipoDocumento: tipo,
+    // El pasaporte lleva letras y números; los demás, solo números.
+    documento: tipo === "PA" ? t("documento").toUpperCase().replace(/[^A-Z0-9]/g, "") : soloDigitos(t("documento")),
     telefono: soloDigitos(t("telefono")).replace(/^57(?=3\d{9}$)/, ""),
     direccion: t("direccion").replace(/\s+/g, " "),
     municipio,
@@ -34,6 +49,7 @@ export function leerRegistro(fd: FormData): DatosRegistro {
     codigo: t("codigo").toUpperCase().replace(/[^A-Z0-9]/g, ""),
     contrasena: String(fd.get("contrasena") ?? ""),
     autoriza: fd.get("autoriza") === "on",
+    aceptaMensajes: fd.get("aceptaMensajes") === "on",
   };
 }
 
@@ -52,7 +68,9 @@ export function validarDatos(d: DatosRegistro): Errores {
   if (palabras.length < 2) e.nombre = "Escribe tu nombre y tu apellido.";
   else if (d.nombre.length > 120) e.nombre = "El nombre es demasiado largo.";
 
-  if (!/^\d{5,12}$/.test(d.documento)) e.documento = "Escribe tu número de documento, solo números.";
+  if (d.tipoDocumento === "CC" && !/^\d{5,10}$/.test(d.documento)) e.documento = "Escribe tu número de cédula, solo números.";
+  if ((d.tipoDocumento === "CE" || d.tipoDocumento === "PPT") && !/^\d{4,12}$/.test(d.documento)) e.documento = "Escribe el número del documento, solo números.";
+  if (d.tipoDocumento === "PA" && !/^[A-Z0-9]{5,12}$/.test(d.documento)) e.documento = "Escribe el número del pasaporte, con sus letras y números.";
   if (!/^3\d{9}$/.test(d.telefono)) e.telefono = "Escribe un celular de 10 dígitos que empiece por 3.";
   if (d.direccion.length < 4) e.direccion = "Escribe tu dirección.";
   if (d.municipio.length < 3) e.municipio = "Elige tu municipio.";

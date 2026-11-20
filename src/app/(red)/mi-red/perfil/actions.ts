@@ -11,9 +11,9 @@ export async function actualizarPerfil(prev: EstadoPerfil, fd: FormData): Promis
   const n = prev.n + 1;
   const d = leerRegistro(fd);
   const valores = {
-    nombre: d.nombre, documento: d.documento, telefono: d.telefono, direccion: d.direccion,
+    nombre: d.nombre, tipoDocumento: d.tipoDocumento, documento: d.documento, telefono: d.telefono, direccion: d.direccion,
     municipio: String(fd.get("municipio") ?? ""), municipioOtro: String(fd.get("municipioOtro") ?? ""),
-    barrio: d.barrio, fechaNacimiento: d.fechaNacimiento, correo: d.correo,
+    barrio: d.barrio, fechaNacimiento: d.fechaNacimiento, correo: d.correo, aceptaMensajes: d.aceptaMensajes ? "on" : "",
   };
   const fallo = (e: Partial<EstadoPerfil>): EstadoPerfil => ({ n, valores, ...e });
 
@@ -25,11 +25,13 @@ export async function actualizarPerfil(prev: EstadoPerfil, fd: FormData): Promis
   const sb = supabaseAdmin();
   const { data: nodo } = await sb.from("nodos").select("id").eq("user_id", yo.id).maybeSingle();
   if (!nodo) redirect("/login");
-  const { data: actual } = await sb.from("personas").select("correo").eq("nodo_id", nodo.id).maybeSingle();
+  const { data: actual } = await sb.from("personas").select("correo, acepta_mensajes").eq("nodo_id", nodo.id).maybeSingle();
 
   // Documento, celular y correo no pueden ser de otra persona.
   const deOtro = async (campo: "documento" | "telefono" | "correo", valor: string) => {
-    const { count } = await sb.from("personas").select("nodo_id", { count: "exact", head: true }).eq(campo, valor).neq("nodo_id", nodo.id);
+    let q = sb.from("personas").select("nodo_id", { count: "exact", head: true }).eq(campo, valor).neq("nodo_id", nodo.id);
+    if (campo === "documento") q = q.eq("tipo_documento", d.tipoDocumento);
+    const { count } = await q;
     return (count ?? 0) > 0;
   };
   const rep: Errores = {};
@@ -45,7 +47,10 @@ export async function actualizarPerfil(prev: EstadoPerfil, fd: FormData): Promis
   }
 
   const { error } = await sb.from("personas").update({
-    nombre: d.nombre, documento: d.documento, telefono: d.telefono, correo: d.correo, direccion: d.direccion,
+    nombre: d.nombre, tipo_documento: d.tipoDocumento, documento: d.documento, telefono: d.telefono, correo: d.correo, direccion: d.direccion,
+    // El permiso de mensajes guarda cuándo se dio; si lo quita, se borra la fecha.
+    acepta_mensajes: d.aceptaMensajes,
+    ...(d.aceptaMensajes !== !!actual?.acepta_mensajes ? { acepta_mensajes_en: d.aceptaMensajes ? new Date().toISOString() : null } : {}),
     municipio: d.municipio, barrio: d.barrio || null, fecha_nacimiento: d.fechaNacimiento, actualizado_en: new Date().toISOString(),
   }).eq("nodo_id", nodo.id);
   if (error) return fallo({ error: "No pudimos guardar los cambios. Intenta de nuevo." });

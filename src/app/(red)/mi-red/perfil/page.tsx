@@ -26,13 +26,13 @@ async function Datos() {
   if (!yo) redirect("/login");
   // La seguridad por filas solo deja leer los datos propios.
   const { data: p } = await yo.sb.from("personas")
-    .select("nombre, documento, telefono, correo, direccion, municipio, barrio, fecha_nacimiento, autorizado_en, politica_version")
+    .select("nombre, tipo_documento, documento, acepta_mensajes, telefono, correo, direccion, municipio, barrio, fecha_nacimiento, autorizado_en, politica_version")
     .maybeSingle();
   if (!p) redirect("/login");
 
   const conocido = (municipios as readonly string[]).includes(p.municipio);
   const valores = {
-    nombre: p.nombre, documento: p.documento, telefono: p.telefono, correo: p.correo, direccion: p.direccion,
+    nombre: p.nombre, tipoDocumento: p.tipo_documento, documento: p.documento, aceptaMensajes: p.acepta_mensajes ? "on" : "", telefono: p.telefono, correo: p.correo, direccion: p.direccion,
     municipio: conocido ? p.municipio : "Otro", municipioOtro: conocido ? "" : p.municipio, barrio: p.barrio ?? "",
     fechaNacimiento: p.fecha_nacimiento,
   };

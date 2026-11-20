@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: "Administradores" };
 type Admin = { correo: string; nombre: string | null; desde: string; soy_yo: boolean };
 type Mov = { accion: string; detalle: string | null; creado_en: string; admin: string | null };
 
-const ACCION: Record<string, string> = { descargar_csv: "Descargó el listado", agregar_admin: "Agregó administrador", quitar_admin: "Quitó administrador" };
+const ACCION: Record<string, string> = { descargar_csv: "Descargó el listado", agregar_admin: "Agregó administrador", quitar_admin: "Quitó administrador", ver_datos: "Vio los datos completos de" };
 
 export default function EquipoPage() {
   return (

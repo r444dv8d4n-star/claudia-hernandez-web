@@ -12,6 +12,10 @@ export default function PerfilForm({ valores }: { valores: Record<string, string
       {estado.ok && <p className={s.aviso} role="status">Listo, tus datos quedaron guardados.</p>}
       {estado.error && <p className={s.alerta} role="alert">{estado.error}</p>}
       <CamposPersona v={estado.valores ?? valores} e={estado.errores ?? {}} />
+      <label className={s.check}>
+        <input type="checkbox" name="aceptaMensajes" defaultChecked={(estado.valores ?? valores).aceptaMensajes === "on"} />
+        <span>Quiero recibir noticias de Claudia por WhatsApp. <span className={s.opcional}>(Opcional. Puedes quitarlo cuando quieras.)</span></span>
+      </label>
       <button className={s.boton} disabled={enviando}>{enviando ? "Guardando…" : "Guardar cambios"}</button>
     </form>
   );

@@ -46,9 +46,10 @@ export default function Terminos() {
       <section id="p2">
         <h2>2. Qué datos pedimos</h2>
         <ul>
-          <li><strong>Para registrarte:</strong> nombres y apellidos, número de documento, celular, municipio, barrio (opcional), dirección, fecha de nacimiento y correo.</li>
+          <li><strong>Para registrarte:</strong> nombres y apellidos, tipo y número de documento, celular, municipio, barrio (opcional), dirección, fecha de nacimiento y correo.</li>
           <li><strong>Tu lugar en la red:</strong> el código de quien te invitó (si lo tienes), tu propio código para invitar y la fecha en que te registraste.</li>
           <li><strong>Tu autorización:</strong> la fecha y la versión de esta política que aceptaste.</li>
+          <li><strong>Tu permiso para recibir noticias por WhatsApp (opcional):</strong> si lo diste y desde cuándo. Es una casilla aparte; puedes registrarte sin marcarla.</li>
           <li><strong>Tu contraseña:</strong> se guarda cifrada; nadie, ni siquiera los administradores, puede verla.</li>
           <li><strong>Datos de seguridad:</strong> para frenar ataques guardamos durante un día la dirección de conexión (IP) de los intentos de iniciar sesión, y una huella cifrada (no el dato) del celular o correo usado.</li>
         </ul>
@@ -60,7 +61,8 @@ export default function Terminos() {
         <ul>
           <li>Crear tu cuenta, dejarte entrar y mostrarte tu red.</li>
           <li>Saber quién invitó a quién, para contar tus invitados, tus puntos y tu nivel.</li>
-          <li>Comunicarnos contigo por WhatsApp, llamada, mensaje de texto o correo sobre actividades, reuniones y noticias de Claudia Hernández.</li>
+          <li>Comunicarnos contigo por llamada, mensaje de texto o correo sobre tu cuenta y sobre actividades y reuniones de la red.</li>
+          <li><strong>Solo si lo aceptas aparte</strong> (casilla opcional), enviarte noticias de Claudia Hernández por WhatsApp. Puedes quitar ese permiso cuando quieras en <Link href="/mi-red/perfil">Mi perfil</Link>.</li>
           <li>Hacer estadísticas por municipio y barrio para organizar el trabajo en el territorio.</li>
           <li>Comprobar que eres mayor de 18 años y evitar cuentas repetidas.</li>
           <li>Proteger la red contra fraudes y ataques.</li>
@@ -84,7 +86,8 @@ export default function Terminos() {
         <ul>
           <li><strong>Tú</strong> ves y puedes corregir todos tus datos en <Link href="/mi-red/perfil">Mi perfil</Link>.</li>
           <li><strong>Quien te invitó, y la persona que invitó a esa persona,</strong> ven solo tu <strong>nombre</strong> y la fecha en que te uniste. Nunca tu documento, celular, correo ni dirección.</li>
-          <li><strong>Los administradores de la red</strong>, que son personas del equipo de la campaña con acceso por invitación, ven tus datos completos para cumplir las finalidades del punto 3. Cada descarga del listado queda registrada con quién la hizo y cuándo.</li>
+          <li><strong>Las personas que invitaste</strong> ven tu <strong>primer nombre</strong> como la persona que las invitó.</li>
+          <li><strong>Los administradores de la red</strong>, que son personas del equipo de la campaña con acceso por invitación, pueden ver tus datos para cumplir las finalidades del punto 3. En el buscador aparecen ocultos (por ejemplo, 300•••4567) y solo se muestran completos cuando un administrador los pide. Cada consulta completa y cada descarga del listado quedan registradas con quién la hizo y cuándo.</li>
         </ul>
       </section>
 

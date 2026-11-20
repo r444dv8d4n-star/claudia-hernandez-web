@@ -10,7 +10,9 @@ export const metadata: Metadata = { title: "Administración" };
 
 type Resumen = {
   total: number; eliminados: number; hoy: number; semana: number; invitados: number;
+  mensajes: number;
   por_dia: { dia: string; n: number }[];
+  por_mes: { mes: string; n: number; total: number }[];
   municipios: { municipio: string; n: number }[];
   barrios: { municipio: string; barrio: string; n: number }[];
   ranking: { nombre: string; municipio: string; directos: number }[];
@@ -46,6 +48,8 @@ async function Panel() {
     { t: "Abrieron una publicación en la Bitácora", v: n("bitacora_ver_publicacion") },
   ];
   const tope = Math.max(1, ...embudo.map((x) => x.v));
+  const topeMes = Math.max(1, ...(r.por_mes ?? []).map((m) => m.n));
+  const mesTexto = (iso: string) => new Date(`${iso}T12:00:00`).toLocaleDateString("es-CO", { month: "short", year: "numeric" });
   const conInvitacion = r.total ? Math.round((r.invitados / r.total) * 100) : 0;
 
   return (
@@ -64,6 +68,7 @@ async function Panel() {
           <div><dt>Hoy</dt><dd>{r.hoy}</dd><span>registros nuevos</span></div>
           <div><dt>Últimos 7 días</dt><dd>{r.semana}</dd><span>registros nuevos</span></div>
           <div><dt>Llegaron invitados</dt><dd>{conInvitacion}%</dd><span>{r.eliminados} cuenta{r.eliminados === 1 ? "" : "s"} eliminada{r.eliminados === 1 ? "" : "s"}</span></div>
+          <div><dt>Aceptan mensajes</dt><dd>{r.mensajes}</dd><span>por WhatsApp (permiso aparte)</span></div>
         </dl>
       </section>
 
@@ -105,6 +110,20 @@ async function Panel() {
             <tbody>{r.por_dia.filter((d) => d.n > 0).map((d) => <tr key={d.dia}><td>{d.dia}</td><td className={s.num}>{d.n}</td></tr>)}</tbody>
           </table>
         </details>
+      </section>
+
+      <section className={s.tarjeta} aria-labelledby="t-mes">
+        <h2 id="t-mes" className={s.h2}>Crecimiento por mes · últimos 12 meses</h2>
+        <ul className={s.embudo}>
+          {r.por_mes.map((m) => (
+            <li key={m.mes}>
+              <span>{mesTexto(m.mes)}</span>
+              <span className={s.embudoBarra} aria-hidden="true"><i style={{ width: `${Math.max(m.n ? 3 : 0, (m.n / topeMes) * 100)}%` }} /></span>
+              <strong>+{m.n}</strong>
+            </li>
+          ))}
+        </ul>
+        <p className={s.ayuda}>Personas nuevas cada mes. Total acumulado al cierre de este mes: <strong>{r.por_mes.at(-1)?.total ?? 0}</strong>.</p>
       </section>
 
       <div className={s.dos}>

@@ -186,3 +186,12 @@
 .alertas{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:8px}
 .alertas li{padding:12px 14px;border-radius:12px;background:#fff4d6;color:#4a3300;border:1px solid #f0d58a;font-weight:600;line-height:1.4}
 :global(html[data-theme="dark"]) .alertas li{background:#3a2f12;color:#ffe9a8;border-color:#6b5520}
+
+/* Mi red: quién me invitó y código QR */
+.invito{margin:-4px 0 6px;font-size:1.02rem;color:var(--muted)}
+.invito strong{color:var(--text)}
+.qr{display:grid;gap:18px;align-items:center}
+.qr img{width:min(240px,70vw);height:auto;border-radius:16px;background:#fff;padding:8px;box-shadow:0 10px 30px -18px #0006;justify-self:center}
+.qrTexto{display:grid;gap:10px;justify-items:start}
+.qrTexto p{margin:0}
+@media(min-width:620px){.qr{grid-template-columns:auto 1fr}}

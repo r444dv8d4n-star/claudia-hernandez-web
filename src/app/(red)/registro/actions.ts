@@ -27,9 +27,10 @@ const MENSAJES: Record<string, { campo?: keyof Errores; texto: string }> = {
 export async function registrar(prev: EstadoRegistro, fd: FormData): Promise<EstadoRegistro> {
   const d = leerRegistro(fd);
   const valores = {
-    nombre: d.nombre, documento: d.documento, telefono: d.telefono, direccion: d.direccion,
+    nombre: d.nombre, tipoDocumento: d.tipoDocumento, documento: d.documento, telefono: d.telefono, direccion: d.direccion,
     municipio: String(fd.get("municipio") ?? ""), municipioOtro: String(fd.get("municipioOtro") ?? ""),
     barrio: d.barrio, fechaNacimiento: d.fechaNacimiento, correo: d.correo, codigo: d.codigo,
+    aceptaMensajes: d.aceptaMensajes ? "on" : "",
   };
   const n = prev.n + 1;
   const fallo = (e: Partial<EstadoRegistro>): EstadoRegistro => ({ n, valores, ...e });
@@ -42,7 +43,9 @@ export async function registrar(prev: EstadoRegistro, fd: FormData): Promise<Est
   // No repetir documento, teléfono ni correo.
   // (Tres consultas con .eq: los valores nunca se pegan dentro de un filtro de texto.)
   const existe = async (campo: "documento" | "telefono" | "correo", valor: string) => {
-    const { count, error } = await sb.from("personas").select("nodo_id", { count: "exact", head: true }).eq(campo, valor);
+    let q = sb.from("personas").select("nodo_id", { count: "exact", head: true }).eq(campo, valor);
+    if (campo === "documento") q = q.eq("tipo_documento", d.tipoDocumento);
+    const { count, error } = await q;
     if (error) throw error;
     return (count ?? 0) > 0;
   };
@@ -71,9 +74,10 @@ export async function registrar(prev: EstadoRegistro, fd: FormData): Promise<Est
   }
 
   // Guardar su lugar en la red y sus datos, con la versión de la política que aceptó.
-  const { data: codigo, error: errRed } = await sb.rpc("registrar_persona", {
+  const { data: codigo, error: errRed } = await sb.rpc("registrar_persona_v2", {
     p_user_id: creado.user.id,
     p_nombre: d.nombre,
+    p_tipo_documento: d.tipoDocumento,
     p_documento: d.documento,
     p_telefono: d.telefono,
     p_correo: d.correo,
@@ -83,6 +87,7 @@ export async function registrar(prev: EstadoRegistro, fd: FormData): Promise<Est
     p_fecha_nacimiento: d.fechaNacimiento,
     p_codigo_invitacion: d.codigo,
     p_politica_version: RED.politicaVersion,
+    p_acepta_mensajes: d.aceptaMensajes,
   });
   if (errRed || !codigo) {
     await sb.auth.admin.deleteUser(creado.user.id); // no dejar cuentas a medias

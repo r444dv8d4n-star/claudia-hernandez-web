@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import Link from "next/link";
+import QRCode from "qrcode";
 import { redirect } from "next/navigation";
 import { usuarioActual } from "@/lib/supabase/server";
 import { origen } from "@/lib/red/origen";
@@ -38,19 +39,37 @@ async function Panel() {
   ]);
   if (!resumen) redirect("/login");
 
-  const r = resumen as { codigo: string; directos: number; segundo: number; rama: number };
+  const r = resumen as { codigo: string; directos: number; segundo: number; rama: number; invito: string | null; invitada: boolean };
   const red = (lista ?? []) as Invitado[];
   const nivel = calcularNivel(r.directos, r.segundo);
   const enlace = `${await origen()}/registro?ref=${r.codigo}`;
   const nombre = (datos?.nombre ?? "").split(" ")[0];
+  // Código QR de su enlace: en persona, la otra persona lo escanea con la cámara y queda invitada.
+  const qr = await QRCode.toDataURL(enlace, { width: 480, margin: 2, errorCorrectionLevel: "M", color: { dark: "#2A1240", light: "#FFFFFF" } });
 
   return (
     <div className={s.panel}>
       <section className={s.tarjeta}>
         <p className={s.etiqueta}>Mi red</p>
         <h1>Hola{nombre ? `, ${nombre}` : ""}</h1>
+        {r.invitada && (
+          <p className={s.invito}>{r.invito ? <>Te invitó <strong>{r.invito}</strong> 🤝</> : "Llegaste invitada o invitado por alguien que ya no está en la red."}</p>
+        )}
         <p className={s.sub}>Comparte tu enlace: cada persona que se registre con él suma a tu red.</p>
         <Compartir enlace={enlace} codigo={r.codigo} />
+      </section>
+
+      <section className={s.tarjeta} aria-labelledby="qr-red">
+        <h2 id="qr-red" className={s.h2}>Invita en persona con tu código QR</h2>
+        <div className={s.qr}>
+          {/* eslint-disable-next-line @next/next/no-img-element -- imagen generada aquí mismo, sin archivo */}
+          <img src={qr} width={240} height={240} alt={`Código QR para registrarse con el código ${r.codigo}`} />
+          <div className={s.qrTexto}>
+            <p>Muéstralo en tu celular: la otra persona lo escanea con la cámara y se registra en tu red, sin escribir nada.</p>
+            <a className={s.botonSec} href={qr} download={`mi-codigo-qr-${r.codigo}.png`}>Descargar mi código QR</a>
+            <p className={s.ayuda}>También puedes imprimirlo o ponerlo en tu negocio.</p>
+          </div>
+        </div>
       </section>
 
       {r.directos < 3 && <Mision directos={r.directos} enlace={enlace} />}
