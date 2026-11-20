@@ -305,11 +305,13 @@
 /* Páginas del menú: el scroll pasa de una sección completa a la siguiente ("portview").
    En el inicio no se aplica (allí el scroll es libre). En celular solo ayuda a encajar. */
 :global(html.pantallas){scroll-snap-type:y proximity;scroll-padding-top:64px}
-.snapOn > *{scroll-snap-align:start}
+/* Los puntos de encaje solo existen con el portview encendido: si quedaran en la página oculta en memoria,
+   el navegador seguiría pegado a ellos en la página nueva (la Bitácora no dejaba subir). */
+:global(html.pantallas) .snapOn > *{scroll-snap-align:start}
 :global(html.pantallas) .footer{scroll-snap-align:end}
 @media(min-width:960px) and (min-height:480px){
   :global(html.pantallas){scroll-snap-type:y mandatory;scroll-padding-top:72px}
-  .snapOn > *{scroll-snap-stop:always}
+  :global(html.pantallas) .snapOn > *{scroll-snap-stop:always}
 }
 @media (prefers-reduced-motion:reduce){:global(html.pantallas){scroll-snap-type:y proximity}}
 @media(min-width:960px) and (min-height:480px){

@@ -24,12 +24,22 @@ export default function ScrollArriba() {
     if (primera.current) { primera.current = false; return; }
     if (historial.current) { historial.current = false; return; }
     if (location.hash) return;
-    // Un cuadro después: para entonces la página anterior ya apagó su portview (si no, el navegador
-    // «encaja» el scroll en el pie de página y la persona queda al final).
-    const subir = () => window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    // Se repite durante el primer cuarto de segundo: la página anterior apaga su portview un instante
+    // después y, mientras tanto, el navegador puede «encajar» el scroll en el pie de página.
+    // Si la persona ya empezó a moverse, no se le toca el scroll.
+    let movio = false;
+    const parar = () => { movio = true; };
+    const eventos = ["wheel", "touchstart", "keydown", "pointerdown"] as const;
+    eventos.forEach((e) => window.addEventListener(e, parar, { passive: true }));
+    const subir = () => { if (!movio) window.scrollTo({ top: 0, left: 0, behavior: "instant" }); };
     subir();
     const id = requestAnimationFrame(() => requestAnimationFrame(subir));
-    return () => cancelAnimationFrame(id);
+    const t1 = setTimeout(subir, 80);
+    const t2 = setTimeout(subir, 250);
+    return () => {
+      cancelAnimationFrame(id); clearTimeout(t1); clearTimeout(t2);
+      eventos.forEach((e) => window.removeEventListener(e, parar));
+    };
   }, [ruta]);
 
   return null;
