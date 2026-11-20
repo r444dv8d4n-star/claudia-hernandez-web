@@ -69,7 +69,7 @@ export const posts: Post[] = [
       "«¡Ven, siéntelos y llévate un pedacito de Floridablanca!»",
     ],
     ig: "https://www.instagram.com/p/Dff4Q1bDkR0/",
-    foto: foto("emprendedores-ferias-dulce-de-corazon", 900, 1200, "50% 22%"),
+    foto: foto("emprendedores-ferias-dulce-de-corazon", 900, 1200, "50% 14%"),
   },
   {
     slug: "mujeres-imparables-jardin-de-limoncitos",

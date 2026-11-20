@@ -305,7 +305,6 @@ export function Muro() {
         {wall.map((p, i) => (
           <figure key={p.src} className={s.shot}>
             <Image src={p.src} alt={p.alt} width={p.w} height={p.h} sizes={i === 0 ? "(max-width:960px) 92vw, 50vw" : "(max-width:960px) 92vw, 25vw"} loading="lazy" style={{ objectPosition: p.pos }} />
-            <figcaption>{p.caption}</figcaption>
           </figure>
         ))}
       </div>
