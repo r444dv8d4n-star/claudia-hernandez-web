@@ -30,10 +30,11 @@ async function Panel() {
   if (!yo) redirect("/login");
 
   // Todo sale de funciones que solo devuelven lo de esta persona (nombres y conteos).
-  const [{ data: resumen }, { data: lista }, { data: datos }] = await Promise.all([
+  const [{ data: resumen }, { data: lista }, { data: datos }, { data: esAdmin }] = await Promise.all([
     yo.sb.rpc("mi_resumen"),
     yo.sb.rpc("mi_red"),
     yo.sb.from("personas").select("nombre").maybeSingle(),
+    yo.sb.rpc("es_admin"),
   ]);
   if (!resumen) redirect("/login");
 
@@ -111,6 +112,7 @@ async function Panel() {
       </section>
 
       <nav className={s.acciones} aria-label="Mi cuenta">
+        {esAdmin === true && <Link className={s.boton} href="/admin">Panel de administración</Link>}
         <Link className={s.botonSec} href="/mi-red/perfil">Mi perfil</Link>
         <form action={salir}><button className={s.botonSec}>Cerrar sesión</button></form>
       </nav>
