@@ -304,14 +304,14 @@
 .snap{--hdr:72px}
 /* Páginas del menú: el scroll pasa de una sección completa a la siguiente ("portview").
    En el inicio no se aplica (allí el scroll es libre). En celular solo ayuda a encajar. */
-:global(html):has(.snapOn){scroll-snap-type:y proximity;scroll-padding-top:64px}
+:global(html.pantallas){scroll-snap-type:y proximity;scroll-padding-top:64px}
 .snapOn > *{scroll-snap-align:start}
-:global(html):has(.snapOn) .footer{scroll-snap-align:end}
+:global(html.pantallas) .footer{scroll-snap-align:end}
 @media(min-width:960px) and (min-height:480px){
-  :global(html):has(.snapOn){scroll-snap-type:y mandatory;scroll-padding-top:72px}
+  :global(html.pantallas){scroll-snap-type:y mandatory;scroll-padding-top:72px}
   .snapOn > *{scroll-snap-stop:always}
 }
-@media (prefers-reduced-motion:reduce){:global(html):has(.snapOn){scroll-snap-type:y proximity}}
+@media (prefers-reduced-motion:reduce){:global(html.pantallas){scroll-snap-type:y proximity}}
 @media(min-width:960px) and (min-height:480px){
   :global(html):has(.snap) .header{height:72px;padding-block:0}
   .snap > *{min-height:calc(100svh - var(--hdr));box-sizing:border-box}
@@ -694,7 +694,7 @@
 /* ===== Portview: dónde sí y dónde no =====
    Solo en computador (pantalla ancha y alta): Inicio, Historia, Logros y Proyectos saltan de pantalla en pantalla.
    En celular y en pantallas bajas casi ninguna sección cabe completa, así que el scroll es normal. */
-@media (max-width:959px),(max-height:479px){:global(html):has(.snapOn){scroll-snap-type:none}}
+@media (max-width:959px),(max-height:479px){:global(html.pantallas){scroll-snap-type:none}}
 /* Inicio · Bitácora: que quepa en una pantalla (texto de cada entrada en máximo 3 líneas). */
 
 @media(min-width:960px) and (max-height:800px){.snap .bitHome .secHead p:not(.eyebrow){display:none}}

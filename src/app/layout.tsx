@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import ScrollArriba from "@/components/ScrollArriba";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://claudia-hernandez-web.vercel.app"),
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body>
         <noscript><style>{`.rv{opacity:1!important;transform:none!important;clip-path:none!important}[data-collage]{display:none!important}`}</style></noscript>
+        <ScrollArriba />
         {children}
       </body>
     </html>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
+import ActivarPantallas from "@/components/ActivarPantallas";
 import { socialIcon } from "@/components/Icons";
 import { SHOW_CONTACT_FORM } from "@/config/features";
 import Counter from "@/components/Counter";
@@ -351,7 +352,7 @@ export function Hablemos({ frase = true }: { frase?: boolean }) {
 export function Pantallas({ children, saltar = true }: { children: React.ReactNode; saltar?: boolean }) {
   // snapOn: en las páginas del menú el scroll salta de una sección completa a la siguiente.
   // saltar=false: mismo diseño por pantallas, pero con scroll libre (páginas largas de leer).
-  return <div className={saltar ? `${s.snap} ${s.snapOn}` : s.snap}>{children}</div>;
+  return <div className={saltar ? `${s.snap} ${s.snapOn}` : s.snap}>{saltar && <ActivarPantallas />}{children}</div>;
 }
 
 type Foto = { src: string; w: number; h: number; alt: string; pos?: string };

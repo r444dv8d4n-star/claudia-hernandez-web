@@ -5,6 +5,7 @@ import Spotlight from "@/components/Spotlight";
 import HeroName from "@/components/HeroName";
 import HeroCollage from "@/components/HeroCollage";
 import ExtraSection from "@/components/ExtraSection";
+import ActivarPantallas from "@/components/ActivarPantallas";
 import UneteRed from "@/components/UneteRed";
 import { RED, redAbierta } from "@/content/red";
 import LinkMedido from "@/components/LinkMedido";
@@ -30,6 +31,7 @@ export default function Inicio() {
 
       {/* Inicio por pantallas: cada sección ocupa una pantalla y el scroll pasa de una a otra */}
       <div className={`${s.snap} ${s.snapOn}`}>
+        <ActivarPantallas />
       {/* PORTADA: panel mostaza + foto */}
       <Spotlight className={s.hero}>
         <div className={s.heroImg}>
