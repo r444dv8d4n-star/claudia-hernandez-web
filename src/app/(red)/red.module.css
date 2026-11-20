@@ -181,3 +181,8 @@
 .embudoBarra{height:14px;border-radius:99px;background:#2A124012;overflow:hidden}
 .embudoBarra i{display:block;height:100%;border-radius:99px;background:#C29400}
 @media(max-width:560px){.embudo li{grid-template-columns:1fr 3rem}.embudoBarra{grid-column:1 / -1;order:3}}
+
+/* Avisos de datos sospechosos (panel) */
+.alertas{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:8px}
+.alertas li{padding:12px 14px;border-radius:12px;background:#fff4d6;color:#4a3300;border:1px solid #f0d58a;font-weight:600;line-height:1.4}
+:global(html[data-theme="dark"]) .alertas li{background:#3a2f12;color:#ffe9a8;border-color:#6b5520}

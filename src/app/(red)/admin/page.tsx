@@ -28,7 +28,10 @@ export default function Admin() {
 
 async function Panel() {
   const yo = await exigirAdmin();
-  const [{ data }, { data: emb }] = await Promise.all([yo.sb.rpc("admin_resumen"), yo.sb.rpc("admin_embudo")]);
+  const [{ data }, { data: emb }, { data: al }] = await Promise.all([
+    yo.sb.rpc("admin_resumen"), yo.sb.rpc("admin_embudo"), yo.sb.rpc("admin_alertas"),
+  ]);
+  const alertas = (al ?? []) as { tipo: string; detalle: string }[];
   const r = data as Resumen;
   const ev = (emb ?? {}) as Record<string, number>;
   const n = (...k: string[]) => k.reduce((a, x) => a + (ev[x] ?? 0), 0);
@@ -62,6 +65,21 @@ async function Panel() {
           <div><dt>Últimos 7 días</dt><dd>{r.semana}</dd><span>registros nuevos</span></div>
           <div><dt>Llegaron invitados</dt><dd>{conInvitacion}%</dd><span>{r.eliminados} cuenta{r.eliminados === 1 ? "" : "s"} eliminada{r.eliminados === 1 ? "" : "s"}</span></div>
         </dl>
+      </section>
+
+      <section className={s.tarjeta} aria-labelledby="t-alertas">
+        <h2 id="t-alertas" className={s.h2}>Avisos para revisar</h2>
+        {alertas.length === 0 ? (
+          <p className={s.sub}>✅ Nada raro por ahora.</p>
+        ) : (
+          <ul className={s.alertas}>
+            {alertas.map((x, i) => <li key={i}><span aria-hidden="true">⚠️</span> {x.detalle}</li>)}
+          </ul>
+        )}
+        <p className={s.ayuda}>
+          Señales de posibles registros inventados: muchos invitados en pocos minutos, celulares o documentos
+          seguidos, o muchos registros en una misma hora. No bloquean a nadie; búscalos abajo y revisa con calma.
+        </p>
       </section>
 
       <section className={s.tarjeta} aria-labelledby="t-embudo">
